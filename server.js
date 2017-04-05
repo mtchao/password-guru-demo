@@ -159,9 +159,10 @@ function makeRouter() {
 
 function startParty() {
   console.log("Connecting to rocket_db");
-  connectToDb().then() => {
+  connectToDb().then(() => {
     makeRouter();
     app.listen(process.env.PORT || 3000);
   })
 }
+
 startParty()
