@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>INFO445 rocket</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <!--<link rel="stylesheet" href="static/main.css" />-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script src="js/main.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Front end for Rocket_db</h1>
+        </header>
+        <div class="login-inputs">
+          <h2 id="test">example of entry into database</h2>
+          <span>PlayerID<input type="text" id="PlayerIDField"/></span>
+          <span>level <input type="text" id="level"/></span> 
+          <span id="result1">feedback that determines success</span>
+          <button id="submit1">Submit</button>
+          <button id="btn-showAllPlayers" type="submit" class="btn btn-info"><i class="icon-hand-right">
+          </i>Show Top 100 players</button>
+          <button id="btn-updatePlayerLevel" type="submit" class="btn btn-info"><i class="icon-hand-right">
+          </i>Update Player</button>
+        <div class="container">
+          <table class="table table-striped">
+            <thead>
+              <tr id="tablehead">
+
+              </tr>
+            </thead>
+            <tbody id="resultsTable">
+            </tbody>
+          </table>
+       </div>
+	    </div>
+    </body>
+</html>
