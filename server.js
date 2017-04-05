@@ -11,21 +11,25 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 function getPass() {
-  var pass = 'GoHuskies!'
+  var pass = 'gohuskies'
   if (!pass) {
     throw new Error('Missing PASSWORD environment variable')
   }
   return pass
 }
 
+var sql = require("mssql");
+
 function connectToDb() {
   var config = {
-    user: 'Info445',
-    password: getPass(),
-    server: 'IS-HAY04.ischool.uw.edu',
-    database: 'rocket_db'
+    user: 'guru',
+    password: 'gohuskies',
+    server: 'localhost',
+    database: 'master',
   }
-  return sql.connect(config)
+  sql.connect(config, function (err) {
+	  if (err) console.log(err);
+  })
 }
 
 /*
@@ -158,11 +162,19 @@ function makeRouter() {
 }
 
 function startParty() {
-  console.log("Connecting to rocket_db");
-  connectToDb().then(() => {
-    makeRouter();
-    app.listen(process.env.PORT || 3000);
-  })
+
+  console.log("Connecting to guru_db");
+  connectToDb();
+  makeRouter();
+//.then() => {
+//    makeRouter();
+//    app.listen(process.env.PORT || 3000);
+//}
 }
 
-startParty()
+startParty();
+
+
+var server = app.listen(1433, function () {
+    console.log('Server is running..');
+});
