@@ -1,4 +1,4 @@
-# INFO445 Rocket League Database App
+# Password Guru Test Environment
 Implemented using Microsoft SQL Server, express.js, and JQuery.
 
 To get this up and running follow these steps:
