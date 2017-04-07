@@ -133,7 +133,7 @@ function makeRouter() {
 		})
       }).catch(function (error) {
       console.log(error);
-    })
+      })
     })
  
 }
@@ -143,16 +143,16 @@ function makeRouter() {
 function startParty() {
 
   console.log("Connecting to guru_db");
-  connectToDb().then(() => {
+ // connectToDb();
+  //.then(() => {
     makeRouter();
-	app.listen(process.env.PORT || 3000);
-})
+	//app.listen(process.env.PORT || 3000);
 }
+//}
 
 startParty();
 
-/*
+
 var server = app.listen(1433, function () {
     console.log('Server is running..');
-});(
-*/
+})
