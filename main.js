@@ -15,7 +15,7 @@ alert("1st part")
 
 
     function submitData(){
-      $.post("/submitData1", {username: $("#username").val(), password: $("#level"+index).val()})
+      $.post("/submitData1", {username: $("#username").val(), password: $("#password").val()})
         //.done(function(data){
           /*if(data.result == "failed"){
             console.log(data)

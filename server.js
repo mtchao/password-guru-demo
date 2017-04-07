@@ -27,10 +27,14 @@ function connectToDb() {
     server: 'localhost',
     database: 'master',
   }
-  sql.connect(config, function (err) {
+  return sql.connect(config, function (err) {
 	  if (err) console.log(err);
   })
+  
 }
+
+//Select all users in table
+
 
 /*
 Returns the top 100 players in the DB
@@ -89,6 +93,22 @@ function insertPlayer(data) {
                                    VALUES('" + username1 + "', '" + fName + "', '" + lName + "', '" + email1 +"', " + levelID +", (SELECT GETDATE()))");
 }
 
+function loginPlayer(username, password) {
+ 
+   if (!password || !username)
+    {      
+        console.log('Error:Missing username or password');
+        return null;
+    }
+    console.log(new sql.Request().query("SELECT * FROM guruUsers"));
+	
+    var request = new sql.Request().query("SELECT * FROM guruUsers");
+	request.then(function(){
+		return request;
+	})
+}
+    
+
 //ROUTES
 function makeRouter() {
     app.use(cors())  
@@ -103,78 +123,36 @@ function makeRouter() {
         return res.json(data);
       });
     })
-
-    app.post('/', function (req, res) {
-      var PPlayerID = req.body.PlayerID
-      var WhatToDo = req.body.whatToDo
-      switch (WhatToDo)
-      {
-          case 'updatePlayerLevel':
-          {
-              updatePlayerLevel(req.body).then(function ()
-              {
-                  res.redirect('/');
-              });
-              break;
-          }
-          case 'deletePlayer':
-          {
-              deletePlayer(req.body).then(function()
-              {                
-                  return res.redirect('/');
-              });
-              break;
-          }
-          case 'insertPlayer':
-          {
-              insertPlayer(req.body).then(function()
-              {
-                  return res.redirect('/')
-              });
-              break;
-          }
-          default:
-          {
-              console.log('Unknown form type');
-              break;
-          }
-      }
-      // if(WhatToDo == 'updatePlayerLevel')
-      // {      
-      //   updatePlayerLevel(req.body).then(function (data) {
-      //     return res.json(data);
-      //   });
-      // }
-      // else if(WhatToDo == 'deletePlayer'){
-      //   console.log("got to delete if")
-      //   deletePlayer(req.body).then(function (data) {
-      //       if (data)
-      //       {
-      //           return res.json(data);
-      //       } 
-      //       else
-      //       {
-      //           console.log('Error getting data from SQL');
-      //       }
-      //   });
-      // } else if ()
-    });
+	
+	app.post('/', function(req, res) {
+    connectToDb().then(function () {
+		var password = req.body.username;
+		var username = req.body.password;
+		loginPlayer(username, password).then(function () {
+			res.redirect('/')
+		})
+      }).catch(function (error) {
+      console.log(error);
+    })
+    })
+ 
 }
+
+
 
 function startParty() {
 
   console.log("Connecting to guru_db");
-  connectToDb();
-  makeRouter();
-//.then() => {
-//    makeRouter();
-//    app.listen(process.env.PORT || 3000);
-//}
+  connectToDb().then(() => {
+    makeRouter();
+	app.listen(process.env.PORT || 3000);
+})
 }
 
 startParty();
 
-
+/*
 var server = app.listen(1433, function () {
     console.log('Server is running..');
-});
+});(
+*/
