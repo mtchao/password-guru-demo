@@ -98,9 +98,10 @@ function loginPlayer(username, password) {
         console.log('Error:Missing username or password');
         return null;
     }
-    console.log(new sql.Request().query("SELECT * FROM guruUsers"));
+    console.log(new sql.Request().query("insert into Users (username, password) values ('" + username + 
+	"', '" + password + "');"));
 	
-    var request = new sql.Request().query("SELECT * FROM guruUsers");
+    var request = new sql.Request().query("IN * FROM guruUsers");
 	request.then(function(){
 		return request;
 	})
@@ -151,6 +152,6 @@ function startParty() {
 startParty();
 
 
-var server = app.listen(42000, function () {
+var server = app.listen(80, function () {
     console.log('Server is running..');
 })
