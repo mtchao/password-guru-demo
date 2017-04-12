@@ -98,6 +98,8 @@ function insertPlayer(data) {
 }
 
 function loginPlayer(username, password) {
+	
+	Console.log("made it here");
  
    if (!password || !username)
     {      
