@@ -22,8 +22,9 @@ function connectToDb() {
   var config = {
     user: 'root',
     password: '491capstoneteam10a+',
-    host: '127.0.0.1:42000',
-    database: 'master',
+    host: 'localhost',
+    port: 42000,
+    database: 'guru_db',
   }
   return mysql.createConnection(config, function (err) {
 	  if (err) console.log(err);
@@ -152,6 +153,6 @@ function startParty() {
 startParty();
 
 
-var server = app.listen(80, function () {
+var server = app.listen(1433, function () {
     console.log('Server is running..');
 })
