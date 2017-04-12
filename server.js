@@ -104,13 +104,24 @@ function loginPlayer(username, password) {
         console.log('Error:Missing username or password');
         return null;
     }
-    console.log(new sql.Request().query("insert into Users (username, password) values ('" + username + 
-	"', '" + password + "');"));
 	
-    var request = new sql.Request().query("IN * FROM guruUsers");
+	var query = "insert into Users (username, password) values ('" + username + 
+	"', '" + password + "');"
+	
+connection.query(query, function(err, rows, fields) {
+    if (err) throw err;
+ 
+});
+
+Console.log("Database updated.");
+
+/* 
+ var request = new sql.Request().query("IN * FROM guruUsers");
 	request.then(function(){
 		return request;
 	})
+*/
+	
 }
     
 
@@ -150,14 +161,7 @@ function startParty() {
   console.log("Connecting to guru_db");
  var connection = connectToDb();
  
- var query = "insert into Users (username, password) values ('hey', 'hello');"
-connection.query(query, function(err, rows, fields) {
-    if (err) throw err;
  
-    for (var i in rows) {
-        console.log('Post Titles: ', rows[i].post_title);
-    }
-});
   //.then(() => {
     makeRouter();
 	//app.listen(process.env.PORT || 3000);
