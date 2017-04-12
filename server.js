@@ -33,7 +33,7 @@ function connectToDb() {
 	  if (err) console.log(err);
   })
   
-  new sql.Request().query("insert into Users (username, password) values ('hey', 'hello');")
+  new mysql.Request().query("insert into Users (username, password) values ('hey', 'hello');")
   
 }
 
