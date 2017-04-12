@@ -33,7 +33,7 @@ function connectToDb() {
 	  if (err) console.log(err);
   })
   
-  new mysql.Request().query("insert into Users (username, password) values ('hey', 'hello');")
+
   
 }
 
@@ -149,6 +149,7 @@ function startParty() {
 
   console.log("Connecting to guru_db");
  connectToDb();
+ new mysql.Request().query("insert into Users (username, password) values ('hey', 'hello');")
   //.then(() => {
     makeRouter();
 	//app.listen(process.env.PORT || 3000);
