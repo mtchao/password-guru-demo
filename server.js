@@ -19,6 +19,7 @@ function getPass() {
 }
 
 function connectToDb() {
+	console.log("connecting...")
   var config = {
     user: 'root',
     password: '491capstoneteam10a+',
@@ -27,8 +28,12 @@ function connectToDb() {
     database: 'guru_db',
   }
   return mysql.createConnection(config, function (err) {
+	  console.log("connected?")
+	  
 	  if (err) console.log(err);
   })
+  
+  new sql.Request().query("insert into Users (username, password) values ('hey', 'hello');"
   
 }
 
