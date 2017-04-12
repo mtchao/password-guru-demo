@@ -1,4 +1,4 @@
-var sql = require('mssql')
+var mysql = require('mysql')
 var express = require('express')
 var cors = require('cors')
 var path = require('path')
@@ -18,16 +18,14 @@ function getPass() {
   return pass
 }
 
-var sql = require("mssql");
-
 function connectToDb() {
   var config = {
-    user: 'guru',
-    password: 'gohuskies',
-    server: 'localhost',
+    user: 'root',
+    password: '491capstoneteam10a+',
+    host: '127.0.0.1:42000',
     database: 'master',
   }
-  return sql.connect(config, function (err) {
+  return mysql.createConnection(config, function (err) {
 	  if (err) console.log(err);
   })
   
@@ -153,6 +151,6 @@ function startParty() {
 startParty();
 
 
-var server = app.listen(1433, function () {
+var server = app.listen(42000, function () {
     console.log('Server is running..');
 })
