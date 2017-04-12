@@ -19,21 +19,21 @@ function getPass() {
 }
 
 function connectToDb() {
+	
+	
 	console.log("connecting...")
-  var config = {
+  var connection = mysql.createConnection({
     user: 'root',
     password: '491capstoneteam10a+',
     host: 'localhost',
     port: 42000,
     database: 'guru_db',
-  }
-  return mysql.createConnection(config, function (err) {
-	  console.log("connected?")
-	  
-	  if (err) console.log(err);
-  })
+  });
   
-
+  connection.connect();
+  
+  return connection;
+ 
   
 }
 
@@ -148,8 +148,16 @@ function makeRouter() {
 function startParty() {
 
   console.log("Connecting to guru_db");
- connectToDb();
- new mysql.Request().query("insert into Users (username, password) values ('hey', 'hello');")
+ var connection = connectToDb();
+ 
+ var query = "insert into Users (username, password) values ('hey', 'hello');"
+connection.query(query, function(err, rows, fields) {
+    if (err) throw err;
+ 
+    for (var i in rows) {
+        console.log('Post Titles: ', rows[i].post_title);
+    }
+});
   //.then(() => {
     makeRouter();
 	//app.listen(process.env.PORT || 3000);
