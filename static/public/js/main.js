@@ -7,11 +7,12 @@ showAllPlayersBtn.click(function (event) {
   getPlayers();
 });
 
-var updateLevelBtn = $('#btn-updatePlayerLevel');
-updateLevelBtn.click(function (event) {
+var Btn = $('#btn-submit');
+Btn.click(function (event) {
   console.log("button pressed")
-  var PlayerID = $('#PlayerIDField');
-  updateLevel(PlayerID);
+  var Username = $('#username');
+  var Password = $('#password');
+  updateDatabase(Username, Password);
 });
 
 function getPlayers() {
@@ -40,9 +41,16 @@ function getPlayers() {
   });
 }
 
-function updateLevel(PlayerID) {
-  
+function updateDatabase(Username, Password) {
+
 }
+
+function getForm (form) {
+  console.log("button pressed")
+  var Username = form.Username;
+  var Password = form.Password;
+  updateDatabase(Username, Password);
+};
 
 function deletePerson(PersonID) {
   console.log("Delete Person");

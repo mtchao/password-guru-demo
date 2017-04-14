@@ -26,7 +26,7 @@ function connectToDb() {
     user: 'root',
     password: '491capstoneteam10a+',
     host: 'localhost',
-    port: 42000,
+    port: 42001,
     database: 'guru_db',
   });
   
