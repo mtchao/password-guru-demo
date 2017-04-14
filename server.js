@@ -99,7 +99,7 @@ function insertPlayer(data) {
 
 function loginPlayer(username, password) {
 	
-	Console.log("made it here");
+	Console.log("got to server login player");
  
    if (!password || !username)
     {      
@@ -143,6 +143,7 @@ function makeRouter() {
     })
 	
 	app.post('/', function(req, res) {
+    console.log("got to the post request");
     connectToDb().then(function () {
 		var password = req.body.username;
 		var username = req.body.password;
