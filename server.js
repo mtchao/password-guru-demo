@@ -161,11 +161,10 @@ function makeRouter() {
 function startParty() {
 
 console.log("Connecting to guru_db");
- var connection = connectToDb().then( => {
+ connectToDb();
  makeRouter();
 	//app.listen(process.env.PORT || 3000);
-});
-//}
+}
 
 startParty();
 
