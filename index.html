@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
         <!--<link rel="stylesheet" href="static/main.css" />-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-        <script src="/static/public/js/main.js"></script>
+       <!-- <script src="/static/public/js/main.js"></script> -->
         <script>
 
         function getForm (form) {
@@ -21,7 +21,7 @@
     if(Password1.length > 3) document.getElementById("picture1").src = "che.jpg";
     if(Password1.length < 4) document.getElementById("picture1").src = "cross.jpg";
       $.post("/Password-Guru-Test-Environment", {username: Username1, password: Password1})
-        .done(function(data){
+        /*.done(function(data){
           console.log("post request is done")
           if(data.result == "failed"){
             console.log("failed post")
@@ -31,6 +31,7 @@
             $("#result"+index).text("Logged in as: " + data.username + (data.randomCode ? " (CODE: " + data.randomCode + ")" : ""));
           }
         });
+        */
     }
 
      function checkCommon(Password1) {
