@@ -18,7 +18,7 @@ function getPass() {
   return pass
 }
 
-function connectToDb() {
+var promiseConnect = new Promise (function(resolve, reject) {
 	
 	
 	console.log("connecting...")
@@ -30,11 +30,7 @@ function connectToDb() {
     database: 'guru_db',
   });
   
-  connection.connect();
-  
-  return connection;
- 
-  
+  resolve(connection.connect())
 }
 
 //Select all users in table
@@ -163,13 +159,13 @@ function startParty() {
 
 console.log("Connecting to guru_db");
  connectToDb();
- makeRouter();
+ promiseConnect.then(function(value) {
+  app.listen(3001, function () {
+    console.log('Server is running..');
+  });
+});
 	//app.listen(process.env.PORT || 3000);
-}
+
 
 startParty();
 
-
-var server = app.listen(3001, function () {
-    console.log('Server is running..');
-})
