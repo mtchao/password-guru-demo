@@ -21,11 +21,12 @@
     if(Password1.length < 4) document.getElementById("picture1").src = "cross.jpg";
       $.post("/", {username: Username1, password: Password1})
         .done(function(data){
+          console.log("post request is done")
           if(data.result == "failed"){
-            console.log(data)
+            console.log("failed post")
             $("#result").text("Failed to login! " + data.message);
           } else {
-            console.log(data)
+            console.log("success post")
             $("#result"+index).text("Logged in as: " + data.username + (data.randomCode ? " (CODE: " + data.randomCode + ")" : ""));
           }
         });
