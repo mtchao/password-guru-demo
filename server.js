@@ -17,7 +17,7 @@ function getPass() {
   }
   return pass
 }
-
+startParty();
 var promiseConnect = new Promise (function(resolve, reject) {
 	
 	
@@ -156,7 +156,6 @@ function makeRouter() {
 
 
 function startParty() {
-
 console.log("Connecting to guru_db");
  connectToDb();
  promiseConnect.then(function(value) {
@@ -166,8 +165,5 @@ console.log("Connecting to guru_db");
 });
 };
 	//app.listen(process.env.PORT || 3000);
- }
 
-
-startParty();
 
