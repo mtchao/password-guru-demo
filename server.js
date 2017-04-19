@@ -18,20 +18,7 @@ function getPass() {
   return pass
 }
 startParty();
-var promiseConnect = new Promise (function(resolve, reject) {
-	
-	
-	console.log("connecting...")
-  var connection = mysql.createConnection({
-    user: 'root',
-    password: '491capstoneteam10a+',
-    host: 'localhost',
-    port: 42001,
-    database: 'guru_db',
-  });
-  
-  resolve(connection.connect())
-});
+
 
 //Select all users in table
 
@@ -157,6 +144,18 @@ function makeRouter() {
 
 function startParty() {
 console.log("Connecting to guru_db");
+var promiseConnect = new Promise (function(resolve, reject) {
+  console.log("connecting...")
+  var connection = mysql.createConnection({
+    user: 'root',
+    password: '491capstoneteam10a+',
+    host: 'localhost',
+    port: 42001,
+    database: 'guru_db',
+  });
+  
+  resolve(connection.connect())
+});
 promiseConnect.then(function(value) {
   app.listen(3001, function () {
     console.log('Server is running..');
