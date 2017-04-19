@@ -17,7 +17,7 @@
   checkCommon(Password1);
   };
    function updateDatabase(Username1, Password1){
-    console.log(Username1);
+    console.log(Username1 + Password1);
     if(Password1.length > 3) document.getElementById("picture1").src = "che.jpg";
     if(Password1.length < 4) document.getElementById("picture1").src = "cross.jpg";
       $.post("/Password-Guru-Test-Environment", {username: Username1, password: Password1})
