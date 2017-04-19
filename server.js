@@ -144,7 +144,7 @@ function makeRouter() {
 
 function startParty() {
 console.log("Connecting to guru_db");
-var promiseConnect = new Promise (function(resolve, reject) {
+var promiseConnect = new Promise(function(resolve, reject) {
   console.log("connecting...")
   var connection = mysql.createConnection({
     user: 'root',
