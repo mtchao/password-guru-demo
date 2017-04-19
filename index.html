@@ -8,6 +8,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script src="/static/public/js/main.js"></script>
         <script>
+
         function getForm (form) {
   console.log("button pressed");
   var Username1 = $('#username').val();
@@ -19,7 +20,7 @@
     console.log(Username1);
     if(Password1.length > 3) document.getElementById("picture1").src = "che.jpg";
     if(Password1.length < 4) document.getElementById("picture1").src = "cross.jpg";
-      $.post("/", {username: Username1, password: Password1})
+      $.post("/index.html", {username: Username1, password: Password1})
         .done(function(data){
           console.log("post request is done")
           if(data.result == "failed"){
