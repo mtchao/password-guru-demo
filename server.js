@@ -149,9 +149,7 @@ function makeRouter() {
 		loginPlayer(username, password).then(function () {
 			res.redirect('/')
 		})
-      }).catch(function (error) {
-      console.log(error);
-    })
+  })
  
 }
 
