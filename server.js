@@ -31,7 +31,7 @@ var promiseConnect = new Promise (function(resolve, reject) {
   });
   
   resolve(connection.connect())
-}
+});
 
 //Select all users in table
 
