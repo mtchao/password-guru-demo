@@ -20,7 +20,7 @@
     console.log(Username1 + Password1);
     if(Password1.length > 3) document.getElementById("picture1").src = "che.jpg";
     if(Password1.length < 4) document.getElementById("picture1").src = "cross.jpg";
-      $.post("/Password-Guru-Test-Environment", {username: Username1, password: Password1})
+      $.post("/", {username: Username1, password: Password1})
         /*.done(function(data){
           console.log("post request is done")
           if(data.result == "failed"){
@@ -35,14 +35,13 @@
     }
 
      function checkCommon(Password1) {
-        console.log("into parse")
+        //console.log("into parse")
         /*$.get('10k_most_common.txt', function(data) {
         //split on new lines
         var lines = data.split('\n');
         console.log(lines);
        });*/
-       var secret = "password";
-       console.log(typeof Password1);
+       //console.log(typeof Password1);
        Password1 = Password1.toString();
        //reader.readAsText(10k_most_common.txt, "UTF-8");
        if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";

@@ -142,9 +142,8 @@ function makeRouter() {
       });
     })
 	
-	app.post('/Password-Guru-Test_Environment', function(req, res) {
+	app.post('/', function(req, res) {
     console.log("got to the post request");
-    connectToDb().then(function () {
 		var password = req.body.username;
 		var username = req.body.password;
 		loginPlayer(username, password).then(function () {
@@ -152,7 +151,6 @@ function makeRouter() {
 		})
       }).catch(function (error) {
       console.log(error);
-      })
     })
  
 }
