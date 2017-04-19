@@ -19,7 +19,7 @@
     console.log(Username1);
     if(Password1.length > 3) document.getElementById("picture1").src = "che.jpg";
     if(Password1.length < 4) document.getElementById("picture1").src = "cross.jpg";
-     /* $.post("/", {username: Username1, password: Password1})
+      $.post("/", {username: Username1, password: Password1})
         .done(function(data){
           if(data.result == "failed"){
             console.log(data)
@@ -29,7 +29,6 @@
             $("#result"+index).text("Logged in as: " + data.username + (data.randomCode ? " (CODE: " + data.randomCode + ")" : ""));
           }
         });
-        */
     }
 
      function checkCommon(Password1) {
@@ -48,9 +47,6 @@
     };
     </script>
     <script type="text/javascript">
-   
-
- }
 </script>
     </head>
     <body>
