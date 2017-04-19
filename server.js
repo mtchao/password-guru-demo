@@ -157,8 +157,7 @@ function makeRouter() {
 
 function startParty() {
 console.log("Connecting to guru_db");
- connectToDb();
- promiseConnect.then(function(value) {
+promiseConnect.then(function(value) {
   app.listen(3001, function () {
     console.log('Server is running..');
   });
