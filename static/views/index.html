@@ -13,11 +13,13 @@
   var Username1 = $('#username').val();
   var Password1 = $('#password').val();
   updateDatabase(Username1, Password1);
+  checkCommon(Password1);
   };
-
    function updateDatabase(Username1, Password1){
     console.log(Username1);
-      $.post("/", {username: Username1, password: Password1})
+    if(Password1.length > 3) document.getElementById("picture1").src = "che.jpg";
+    if(Password1.length < 4) document.getElementById("picture1").src = "cross.jpg";
+     /* $.post("/", {username: Username1, password: Password1})
         .done(function(data){
           if(data.result == "failed"){
             console.log(data)
@@ -27,7 +29,28 @@
             $("#result"+index).text("Logged in as: " + data.username + (data.randomCode ? " (CODE: " + data.randomCode + ")" : ""));
           }
         });
+        */
     }
+
+     function checkCommon(Password1) {
+        console.log("into parse")
+        /*$.get('10k_most_common.txt', function(data) {
+        //split on new lines
+        var lines = data.split('\n');
+        console.log(lines);
+       });*/
+       var secret = "password";
+       console.log(typeof Password1);
+       Password1 = Password1.toString();
+       //reader.readAsText(10k_most_common.txt, "UTF-8");
+       if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
+       if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
+    };
+    </script>
+    <script type="text/javascript">
+   
+
+ }
 </script>
     </head>
     <body>
@@ -50,14 +73,17 @@
                     <div class="form-group">
                         <label for="password" class="control-label col-xs-2">Password</label>
                         <div class="col-xs-10">
-                            <input type="text" class="form-control" id="password" placeholder="Password" name="password">
+                            <input type="text" class="form-control" id="password" placeholder="Password" name="password" onkeyup="getForm(this.form)">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-offset-4 col-xs-4">
                             <input style="width:100%;" type="button" value="submit" onClick="getForm(this.form)" name="btn-submit" class="btn btn-primary">Submit</input>
                         </div>
+
                     </div>
+                    <label>length minimum 3 chars</label><img src="cross.jpg" id="picture1" alt="HTML5 Icon" style="width:30px;height:30px;"><p></p> 
+                    <label>not a common password</label><img src="cross.jpg" id="picture2" alt="HTML5 Icon" style="width:30px;height:30px;">
                 </form>
 
 
