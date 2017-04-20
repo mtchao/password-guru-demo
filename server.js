@@ -19,6 +19,28 @@ function getPass() {
 }
 
 function connectToDb() {
+	
+	console.log("connecting...")
+  var connection = mysql.createConnection({
+    user: 'bf229b15bc2a3e',
+    password: '478b8184',
+    host: 'us-cdbr-iron-east-03.cleardb.net',
+    database: 'heroku_155a5011faf681f',
+  });
+  
+  
+  connection.connect();
+  
+  connection.query("INSERT into Users (username, password) VALUES ('bingus', 'connected',);", function(err, rows, fields) {
+      if (err) {
+        console.log('error: ', err);
+        throw err;
+      }
+     // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
+    });
+  
+  
+  return connection;
 	/*
 	
 	console.log("connecting...")
@@ -161,7 +183,6 @@ function startParty() {
 console.log("Connecting to guru_db");
  connectToDb();
  makeRouter();
-	//app.listen(process.env.PORT || 3000);
 }
 
 startParty();
