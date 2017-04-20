@@ -50,6 +50,15 @@
     };
     </script>
     <script type="text/javascript">
+	$(function(){
+
+
+$('.submitnewuser').submit(function () {
+		alert("Form Submitted")
+      $.post("/createnewuser", {username: $("#username").val(), password: $("#password").val()})
+    });
+})
+
 </script>
     </head>
     <body>
