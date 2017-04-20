@@ -13,9 +13,10 @@ alert("1st part")
       submitData();
     });
 
+	$submitForm = $('#submitnewuser");
 
     function submitData(){
-      $.post("/submitData1", {username: $("#username").val(), password: $("#password").val()})
+      $.post("/createnewuser", {username: $("#username").val(), password: $("#password").val()})
         //.done(function(data){
           /*if(data.result == "failed"){
             console.log(data)
