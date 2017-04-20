@@ -21,7 +21,7 @@ function getPass() {
 function connectToDb() {
 	
 	console.log("connecting...")
-  var dbconfig = ({
+  var db_config = ({
     user: 'bf229b15bc2a3e',
     password: '478b8184',
     host: 'us-cdbr-iron-east-03.cleardb.net',
