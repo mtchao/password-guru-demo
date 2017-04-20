@@ -19,7 +19,7 @@ function getPass() {
 }
 
 function connectToDb() {
-	
+	/*
 	
 	console.log("connecting...")
   var connection = mysql.createConnection({
@@ -33,7 +33,8 @@ function connectToDb() {
   connection.connect();
   
   return connection;
- 
+ */
+ return null;
   
 }
 
