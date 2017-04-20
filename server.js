@@ -31,7 +31,7 @@ function connectToDb() {
   
   connection.connect();
   
-  connection.query("INSERT into Users (username, password) VALUES ('bingus', 'connected',);", function(err, rows, fields) {
+  connection.query("INSERT into Users (username, password) VALUES ('bingus', 'connected');", function(err, rows, fields) {
       if (err) {
         console.log('error: ', err);
         throw err;
