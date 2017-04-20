@@ -30,15 +30,7 @@ function connectToDb() {
   
   
   connection.connect();
-  
-  connection.query("INSERT into Users (username, password) VALUES ('bingus', 'connected');", function(err, rows, fields) {
-      if (err) {
-        console.log('error: ', err);
-        throw err;
-      }
-     // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
-    });
-  
+   
   
   return connection;
 	/*
@@ -74,33 +66,6 @@ function displayAllPlayers() {
 
 // This will update the player level
 // Takes player first name, last name, email, and level
-function updatePlayerLevel(data) {
-    var fName = data.fname;
-    var lName = data.lname;
-    var email = data.email;
-    var level = data.level;
-
-    if (!fName || !lName || !email || !level)
-    {      
-        console.log('Error: [updatePlayerLevel] Missing fname, lname, email, or level');
-        return null;
-    }
-    return new sql.Request().query("UPDATE Player SET levelID = " + level + " WHERE fName='" + fName + "' AND lName='" + lName + "' AND email='" + email + "'");
-}
-
-function deletePlayer(data) {
-    var fName = data.fname;
-    var lName = data.lname;
-    var email = data.email;
-
-    if (!fName || !lName || !email)
-    {      
-        console.log('Error: [deletePlayer] Missing fname, lname, or email');
-        return null;
-    }
-
-    return new sql.Request().query("DELETE FROM Player WHERE fName='" + fName + "' AND lName='" + lName + "' AND email='" + email + "'");
-}
 
 
 function insertPlayer(data) {
@@ -175,6 +140,20 @@ function makeRouter() {
   })
  
 }
+
+app.post('createnewuser', function(req, res) {
+	connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
+      if (err) {
+        console.log('error: ', err);
+        throw err;
+      }
+	  res.send('Created user: ' + req.body.username + ' successfully.');
+     // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
+    });
+	
+});
+
+
 
 
 
