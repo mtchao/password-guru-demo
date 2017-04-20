@@ -167,6 +167,6 @@ console.log("Connecting to guru_db");
 startParty();
 
 
-var server = app.listen(80, function () {
+var server = app.listen(3001, function () {
     console.log('Server is running..');
 })
