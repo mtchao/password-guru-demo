@@ -135,15 +135,14 @@ function makeRouter(connection) {
   
   app.post('/createnewuser', function(req, res) {
 	  
-
-	console.log("made it");
 	connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
       if (err) {
         console.log('error: ', err);
         throw err;
       }
-	  console.log("made it 2");
-	  res.send('Created user: ' + req.body.username + ' successfully.');
+	 res.header("Access-Control-Allow-Origin", "*");
+	 res.json({"data":'all good'},200);
+	 // res.send('Created user: ' + req.body.username + ' successfully.');
      // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
 
 	
