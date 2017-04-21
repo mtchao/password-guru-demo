@@ -141,7 +141,7 @@ function makeRouter(connection) {
         throw err;
       }
 	 res.header("Access-Control-Allow-Origin", "*");
-	 res.json({"data":'all good'},200);
+	 res.status(200).json({"data":'all good'});
 	 // res.send('Created user: ' + req.body.username + ' successfully.');
      // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
 
