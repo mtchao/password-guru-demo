@@ -139,7 +139,7 @@ Console.log("Database updated.");
     
 
 //ROUTES
-function makeRouter() {
+function makeRouter(connection) {
     app.use(cors())  
     console.log("Creating routes");
     // frames
@@ -161,43 +161,8 @@ function makeRouter() {
 			res.redirect('/')
 		})
   })
- 
-}
-
-app.post('/createnewuser', function(req, res) {
-	  var db_config = ({
-    user: 'bf229b15bc2a3e',
-    password: '478b8184',
-    host: 'us-cdbr-iron-east-03.cleardb.net',
-    database: 'heroku_155a5011faf681f',
-  });
   
-  var connection;
-  
-  //copeied from http://stackoverflow.com/questions/20210522/nodejs-mysql-error-connection-lost-the-server-closed-the-connection
- function handleDisconnect() {
-  connection = mysql.createConnection(db_config); // Recreate the connection, since
-                                                  // the old one cannot be reused.
-
-  connection.connect(function(err) {              // The server is either down
-    if(err) {                                     // or restarting (takes a while sometimes).
-      console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
-    }                                     // to avoid a hot loop, and to allow our node script to
-  });                                     // process asynchronous requests in the meantime.
-                                          // If you're also serving http, display a 503 error.
-  connection.on('error', function(err) {
-    console.log('db error', err);
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
-      handleDisconnect();                         // lost due to either server restart, or a
-    } else {                                      // connnection idle timeout (the wait_timeout
-      throw err;                                  // server variable configures this)
-    }
-  });
-}
-
-handleDisconnect();
-
+  app.post('/createnewuser', function(req, res) {
 	connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
       if (err) {
         console.log('error: ', err);
@@ -208,6 +173,10 @@ handleDisconnect();
     });
 	
 });
+ 
+}
+
+
 
 
 
@@ -216,8 +185,8 @@ handleDisconnect();
 function startParty() {
 
 console.log("Connecting to guru_db");
- // connectToDb();
- makeRouter();
+ var connection = connectToDb();
+ makeRouter(connection);
 }
 
 startParty();
