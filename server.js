@@ -110,7 +110,7 @@ Console.log("Database updated.");
     
 
 //ROUTES
-function makeRouter(db_config) {
+function makeRouter(connection) {
     app.use(cors())  
     console.log("Creating routes");
     // frames
@@ -134,7 +134,6 @@ function makeRouter(db_config) {
   })
   
   app.post('/createnewuser', function(req, res) {
-	var connection = connectToDb(db_config);
 	
 	connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
       if (err) {
@@ -148,7 +147,7 @@ function makeRouter(db_config) {
 });
  
   app.post('/loginuser', function(req, res) {
-	var connection = connectToDb(db_config);
+	
 	connection.query("SELECT 1 FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + " ORDER BY username LIMIT 1;"), function(err, rows, fields) {
       if (err) {
         console.log('error: ', err);
@@ -176,7 +175,8 @@ function startParty() {
 
 console.log("Starting Party...");
  var db_config = getConfig();
- makeRouter(db_config);
+ var connection = connectToDb(db_config);
+ makeRouter(connection);
 }
 
 startParty();
