@@ -135,7 +135,7 @@ function makeRouter(db_config) {
   
   app.post('/createnewuser', function(req, res) {
 	var con;
-	con = connectToDb(db_config).then(function (connection) {
+	con = mysql.createConnection(db_config).then(function (connection) {
 		return connection;
 	});
 	
