@@ -187,7 +187,7 @@ function makeRouter(connection) {
     };
 	});
 	*/
-}); 
+}; 
  
 }
 
