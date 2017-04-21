@@ -134,20 +134,45 @@ function makeRouter(connection) {
   })
   
   app.post('/createnewuser', function(req, res) {
-	
+	  
+
 	connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
       if (err) {
         console.log('error: ', err);
         throw err;
       }
+	  res.redirect('/');
 	  res.send('Created user: ' + req.body.username + ' successfully.');
      // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
-    });
+
 	
-});
+  });
+  });
  
   app.post('/loginuser', function(req, res) {
+	  
+	  
+	  connection.query("SELECT 1 FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + " ORDER BY username LIMIT 1;"), function(err, rows, fields) {
+      if (err) {
+        console.log('error: ', err);
+        throw err;
+      }
+	  if(rows){
+		  res.send('Login Successful');
+	  } else {
+		  res.send('Login Unsuccessful');
+	  }
+     // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
+	  };
+  });
+	  
+	/*
+	var con;
+	con = connectToDb(db_config).then(function (connection) {
+		return connection;
+	});
 	
+	con.then(function (connection) {
 	connection.query("SELECT 1 FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + " ORDER BY username LIMIT 1;"), function(err, rows, fields) {
       if (err) {
         console.log('error: ', err);
@@ -160,10 +185,9 @@ function makeRouter(connection) {
 	  }
      // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
     };
-	
-}); 
- 
-}
+	});
+	*/
+}; 
 
 
 
@@ -175,8 +199,8 @@ function startParty() {
 
 console.log("Starting Party...");
  var db_config = getConfig();
- var connection = connectToDb(db_config);
- makeRouter(connection);
+ var con = mysql.createConnection(db_config)
+ makeRouter(con);
 }
 
 startParty();
