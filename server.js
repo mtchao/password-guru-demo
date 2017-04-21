@@ -134,8 +134,12 @@ function makeRouter(db_config) {
   })
   
   app.post('/createnewuser', function(req, res) {
-	var connection = connectToDb(db_config);
+	var con;
+	con = connectToDb(db_config).then(function (connection) {
+		return connection;
+	});
 	
+	con.then(function (connection) {
 	connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
       if (err) {
         console.log('error: ', err);
@@ -143,6 +147,7 @@ function makeRouter(db_config) {
       }
 	  res.send('Created user: ' + req.body.username + ' successfully.');
      // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
+	   };
     });
 	
 });
