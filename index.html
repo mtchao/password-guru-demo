@@ -69,6 +69,7 @@
                         }
                     });
 					*/
+          /*
 $('#register-button').click(function () {
 		alert("register submitted")
       $.post("/createnewuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
@@ -83,8 +84,23 @@ $('#login-button').click(function () {
     });
 })
 })
+*/
 
+$('.submitnewuser').submit(function () {
+		alert("login submitted")
+      $.post("/loginuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
+	  alert( "Response: " + data);
+    });
+})
+})
 
+$('.loginolduser').submit(function () {
+		alert("login submitted")
+      $.post("/loginuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
+	  alert( "Response: " + data);
+    });
+})
+})
 
 </script>
     </head>
@@ -114,10 +130,32 @@ $('#login-button').click(function () {
                     <div class="form-group">
                         <div class="col-xs-offset-4 col-xs-4">
                             <input style="width:100%;" type="submit" value="Register" name="btn-submit" id="register-button" class="btn btn-primary"></input>
-                            <p></p>
+                        <!--  onClick="getForm(this.form)" -->
+						            </div>
+
+                    </div>
+
+                </form>
+
+                <form class="loginolduser">
+                    <input type="hidden" name="whatToDo" value="updatePlayerLevel" />
+                    <div class="form-group">
+                        <label for="username" class="control-label col-xs-2">Username</label>
+                        <div class="col-xs-10">
+                            <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label col-xs-2">Password</label>
+                        <div class="col-xs-10">
+                            <input type="text" class="form-control" id="password" placeholder="Password" name="password" onkeyup="getForm(this.form)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-offset-4 col-xs-4">
                             <input style="width:100%;" type="submit" value="Login" name="btn-login" id="login-button" class="btn btn-primary"></input>
                         <!--  onClick="getForm(this.form)" -->
-						</div>
+						            </div>
 
                     </div>
 
