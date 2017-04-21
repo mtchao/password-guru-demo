@@ -69,7 +69,7 @@
                         }
                     });
 					*/
-$('#submit-button').submit(function () {
+$('#register-button').onClick(function () {
 		alert("Form Submitted")
       $.post("/createnewuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
 	  alert( "Response: " + data);
