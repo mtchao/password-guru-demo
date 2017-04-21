@@ -70,12 +70,21 @@
                     });
 					*/
 $('#register-button').click(function () {
-		alert("Form Submitted")
+		alert("register submitted")
       $.post("/createnewuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
 	  alert( "Response: " + data);
     });
 })
+
+$('#login-button').click(function () {
+		alert("login submitted")
+      $.post("/loginuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
+	  alert( "Response: " + data);
+    });
 })
+})
+
+
 
 </script>
     </head>
