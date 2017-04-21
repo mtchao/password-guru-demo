@@ -151,7 +151,7 @@ function makeRouter(connection) {
 
 	
   });
-  });
+  //});
  
   app.post('/loginuser', function(req, res) {
 	  
