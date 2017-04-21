@@ -163,7 +163,7 @@ function makeRouter(db_config) {
   })
   
   app.post('/createnewuser', function(req, res) {
-	var connection = connectToDb(db_config);
+	connectToDb(db_config).then(function (connection) {
 	connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
       if (err) {
         console.log('error: ', err);
@@ -174,6 +174,7 @@ function makeRouter(db_config) {
     });
 	
 });
+  });
  
   app.post('/loginuser', function(req, res) {
 	var connection = connectToDb(db_config);
