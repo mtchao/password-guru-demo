@@ -62,7 +62,7 @@
 						type: 'POST',
 						data: JSON.stringify(data),
 				        contentType: 'application/json',
-                        url: 'http://localhost:3000/endpoint',						
+                        url: 'http://localhost:3000/endpoint',
                         success: function(data) {
                             console.log('success');
                             console.log(JSON.stringify(data));
@@ -105,11 +105,13 @@ $('.submitnewuser').submit(function () {
                     <div class="form-group">
                         <div class="col-xs-offset-4 col-xs-4">
                             <input style="width:100%;" type="submit" value="Submit" name="btn-submit" id="submit-button" class="btn btn-primary">Submit</input>
+                            <p></p>
+                            <input style="width:100%;" type="submit" value="Login" name="btn-login" id="submit-login" class="btn btn-primary">Submit</input>
                         <!--  onClick="getForm(this.form)" -->
 						</div>
 
                     </div>
-                    <label>length minimum 3 chars</label><img src="cross.jpg" id="picture1" alt="HTML5 Icon" style="width:30px;height:30px;"><p></p> 
+                    <label>length minimum 3 chars</label><img src="cross.jpg" id="picture1" alt="HTML5 Icon" style="width:30px;height:30px;"><p></p>
                     <label>not a common password</label><img src="cross.jpg" id="picture2" alt="HTML5 Icon" style="width:30px;height:30px;">
                 </form>
 
