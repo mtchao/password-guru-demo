@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
         <!--<link rel="stylesheet" href="static/main.css" />-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-        <script src="main.js"></script>
+        <!-- <script src="main.js"></script> -->
         <script>
 
         function getForm (form) {
@@ -52,11 +52,29 @@
     <script type="text/javascript">
 	$(function(){
 
+	var data = {};
+	data.user = $("#username").val();
+	data.password = $("#password").val();
 
+	console.log (data);
+	/*
+	$.ajax({
+						type: 'POST',
+						data: JSON.stringify(data),
+				        contentType: 'application/json',
+                        url: 'http://localhost:3000/endpoint',						
+                        success: function(data) {
+                            console.log('success');
+                            console.log(JSON.stringify(data));
+                        }
+                    });
+					*/
 $('.submitnewuser').submit(function () {
 		alert("Form Submitted")
-      $.post("/createnewuser", {username: $("#username").val(), password: $("#password").val()})
+      $.post("/createnewuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
+	  alert( "Response: " + data);
     });
+})
 })
 
 </script>

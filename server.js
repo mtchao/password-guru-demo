@@ -164,7 +164,7 @@ function makeRouter() {
  
 }
 
-app.post('createnewuser', function(req, res) {
+app.post('/createnewuser', function(req, res) {
 	connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
       if (err) {
         console.log('error: ', err);
