@@ -190,7 +190,7 @@ function makeRouter(db_config) {
      // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
     });
 	
-}); 
+}; 
  
 }
 
