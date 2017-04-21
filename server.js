@@ -136,12 +136,12 @@ function makeRouter(connection) {
   app.post('/createnewuser', function(req, res) {
 	  
 
+	
 	connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
       if (err) {
         console.log('error: ', err);
         throw err;
       }
-	  res.redirect('/');
 	  res.send('Created user: ' + req.body.username + ' successfully.');
      // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
 
