@@ -188,8 +188,6 @@ function makeRouter(connection) {
 	});
 	*/
 }; 
- 
-}
 
 
 
