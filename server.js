@@ -152,6 +152,7 @@ function makeRouter(db_config) {
 	con = connectToDb(db_config).then(function (connection) {
 		return connection;
 	});
+	
 	con.then(function (connection) {
 	connection.query("SELECT 1 FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + " ORDER BY username LIMIT 1;"), function(err, rows, fields) {
       if (err) {
@@ -165,7 +166,7 @@ function makeRouter(db_config) {
 	  }
      // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
     };
-	}
+	});
 	
 }); 
  
