@@ -16,22 +16,11 @@ function getPass() {
     throw new Error('Missing PASSWORD environment variable')
   }
   return pass
+
 }
 
-function connectToDb() {
-	
-	console.log("connecting...")
-  var db_config = ({
-    user: 'bf229b15bc2a3e',
-    password: '478b8184',
-    host: 'us-cdbr-iron-east-03.cleardb.net',
-    database: 'heroku_155a5011faf681f',
-  });
-  
-  var connection;
-  
-  //copeied from http://stackoverflow.com/questions/20210522/nodejs-mysql-error-connection-lost-the-server-closed-the-connection
- function handleDisconnect() {
+
+function connectToDb(db_config) {
   connection = mysql.createConnection(db_config); // Recreate the connection, since
                                                   // the old one cannot be reused.
 
@@ -52,10 +41,22 @@ function connectToDb() {
   });
 }
 
-handleDisconnect();
+
+function getConfig() {
+	
+  var db_config = ({
+    user: 'bf229b15bc2a3e',
+    password: '478b8184',
+    host: 'us-cdbr-iron-east-03.cleardb.net',
+    database: 'heroku_155a5011faf681f',
+  });
+ 
+  return db_config;
+ 
+
 //end copied code
 
-  return connection;
+
 	/*
 	
 	console.log("connecting...")
@@ -71,7 +72,6 @@ handleDisconnect();
   
   return connection;
  */
- return null;
   
 }
 
@@ -139,7 +139,7 @@ Console.log("Database updated.");
     
 
 //ROUTES
-function makeRouter(connection) {
+function makeRouter(db_config) {
     app.use(cors())  
     console.log("Creating routes");
     // frames
@@ -163,6 +163,7 @@ function makeRouter(connection) {
   })
   
   app.post('/createnewuser', function(req, res) {
+	var connection = connectToDb(db_config);
 	connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
       if (err) {
         console.log('error: ', err);
@@ -174,6 +175,23 @@ function makeRouter(connection) {
 	
 });
  
+  app.post('/loginuser', function(req, res) {
+	var connection = connectToDb(db_config);
+	connection.query("SELECT 1 FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + " ORDER BY username LIMIT 1;"), function(err, rows, fields) {
+      if (err) {
+        console.log('error: ', err);
+        throw err;
+      }
+	  if(rows){
+		  res.send('Login Successful');
+	  } else {
+		  res.send('Login Unsuccessful');
+	  }
+     // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
+    };
+	
+}); 
+ 
 }
 
 
@@ -184,9 +202,9 @@ function makeRouter(connection) {
 
 function startParty() {
 
-console.log("Connecting to guru_db");
- var connection = connectToDb();
- makeRouter(connection);
+console.log("Starting Party...");
+ var db_config = getConfig();
+ makeRouter(db_config);
 }
 
 startParty();
