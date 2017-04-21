@@ -147,7 +147,7 @@ function makeRouter(db_config) {
       }
 	  res.send('Created user: ' + req.body.username + ' successfully.');
      // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
-	   };
+	   });
     });
 	
 });
