@@ -27,14 +27,14 @@ function connectToDb(db_config) {
   connection.connect(function(err) {              // The server is either down
     if(err) {                                     // or restarting (takes a while sometimes).
       console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+      setTimeout(connectToDb, 2000); // We introduce a delay before attempting to reconnect,
     }                                     // to avoid a hot loop, and to allow our node script to
   });                                     // process asynchronous requests in the meantime.
                                           // If you're also serving http, display a 503 error.
   connection.on('error', function(err) {
     console.log('db error', err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
-      handleDisconnect();                         // lost due to either server restart, or a
+      connectToDb();                         // lost due to either server restart, or a
     } else {                                      // connnection idle timeout (the wait_timeout
       throw err;                                  // server variable configures this)
     }
@@ -78,35 +78,6 @@ function getConfig() {
 //Select all users in table
 
 
-/*
-Returns the top 100 players in the DB
-*/
-function displayAllPlayers() {
-  console.log("displaying top 100 Players");
-  return new sql.Request().query(
-    'SELECT TOP 100 username, fName, lName, email, levelID FROM dbo.Player ORDER BY playerID DESC');
-}
-
-// This will update the player level
-// Takes player first name, last name, email, and level
-
-
-function insertPlayer(data) {
-    var fName = data.fname;
-    var lName = data.lname;
-    var email1 = data.email;
-    var username1 = data.username;
-    var levelID = data.level;
-
-    if (!fName || !lName || !email1)
-    {      
-        console.log('Error: [insertPlayer] Missing fname, lname, or email');
-        return null;
-    }
-
-    return new sql.Request().query("INSERT INTO dbo.Player(username, fName, lName, email, levelID, datecreated) \
-                                   VALUES('" + username1 + "', '" + fName + "', '" + lName + "', '" + email1 +"', " + levelID +", (SELECT GETDATE()))");
-}
 
 function loginPlayer(username, password) {
 	
@@ -163,7 +134,8 @@ function makeRouter(db_config) {
   })
   
   app.post('/createnewuser', function(req, res) {
-	connectToDb(db_config).then(function (connection) {
+	var connection = connectToDb(db_config);
+	
 	connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
       if (err) {
         console.log('error: ', err);
@@ -174,7 +146,6 @@ function makeRouter(db_config) {
     });
 	
 });
-  });
  
   app.post('/loginuser', function(req, res) {
 	var connection = connectToDb(db_config);
