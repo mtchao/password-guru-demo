@@ -188,9 +188,9 @@ function makeRouter(db_config) {
 		  res.send('Login Unsuccessful');
 	  }
      // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
-    });
+    };
 	
-}; 
+}); 
  
 }
 
