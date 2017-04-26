@@ -142,6 +142,9 @@ function makeRouter(connection) {
                         } else {
 							
 							var salt = new csprng(256, 36);
+							console.log(salt);
+							console.log(salt[0];
+							console.log(salt.value);
 							
 							connection.query("INSERT into Users (username, password, salt) VALUES ('" + req.body.username + "', '" + req.body.password + "', '" + salt + "');", function(err, rows, fields) {
 								if (err) {
