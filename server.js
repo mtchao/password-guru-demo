@@ -131,7 +131,8 @@ function makeRouter(connection) {
             res.send('Error: Missing username or password');
         } else {
 
-            connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
+            connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');",
+				function(err, rows, fields) {
                     if (err) {
                         console.log('error: ', err);
                         throw err;
@@ -139,9 +140,9 @@ function makeRouter(connection) {
 
                     res.send('Created user: ' + req.body.username + ' successfully.');
 
-                }
+                });
 
-            });
+            };
     });
 
     app.post('/loginuser', function(req, res) {
@@ -156,26 +157,19 @@ function makeRouter(connection) {
                 throw err;
             }
 
-            connection.query("SELECT username FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + "' ORDER BY username LIMIT 1;"),
+            connection.query("SELECT username FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + "' ORDER BY username LIMIT 1;",
                 function(err, rows, fields) {
 
                     for (var i in rows) {
-                        if (rows[i]) {
+                        if (rows[i] != null) {
                             res.send('Successfully logged in user: ', rows[i].username);
                         } else {
                             res.send('Login Unsuccessful');
                         }
-
                     }
-                }
+					res.send('Login Unsuccessful 2');
+                });
 
-            /*
-	  if(rows){
-		  res.send('Login Successful');
-	  } else {
-		  res.send('Login Unsuccessful');
-	  }
-	  */
         };
     });
 
