@@ -147,7 +147,7 @@ function makeRouter(connection) {
 							var salt = csprng(256, 32);	
 							var saltedpass = salt+req.body.password;
 							var hash = crypto.createHash('sha256');
-							var hashedsaltedpass = hash.update(saltedpass).digest('utf8');
+							var hashedsaltedpass = hash.update(saltedpass).digest('base64');
 							
 									
 							connection.query("INSERT into Users (username, password, salt) VALUES ('" + req.body.username + "', '" + hashedsaltedpass + "', '" + salt + "');", function(err, rows, fields) {
