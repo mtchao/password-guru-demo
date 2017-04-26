@@ -136,7 +136,6 @@ function makeRouter(connection) {
 						console.log('error: ', err);
 						throw err;
 					}
-						console.log(rows[0].username);
                         if (rows[0] != null) {
 							res.send('User "' + rows[0].username + '" already exists.');
                         } else {
