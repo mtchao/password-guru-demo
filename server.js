@@ -152,20 +152,21 @@ function makeRouter(connection) {
         } else {
 
 
-            if (err) {
-                console.log('error: ', err);
-                throw err;
-            }
+          
 
             connection.query("SELECT username FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + "' ORDER BY username LIMIT 1;",
                 function(err, rows, fields) {
-
+					if (err) {
+						console.log('error: ', err);
+						throw err;
+					}
+					
                     for (var i in rows) {
                         if (rows[i] != null) {
-                            res.send('Successfully logged in user: ', rows[i].username);
+                         //   res.send('Successfully logged in user: ', rows[i].username);
                         }
                     }
-					//res.send('Login Unsuccessful 2');
+					res.send('Login Unsuccessful 2');
                 });
 
         };
