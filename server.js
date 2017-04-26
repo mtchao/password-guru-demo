@@ -163,11 +163,9 @@ function makeRouter(connection) {
                     for (var i in rows) {
                         if (rows[i] != null) {
                             res.send('Successfully logged in user: ', rows[i].username);
-                        } else {
-                            res.send('Login Unsuccessful');
                         }
                     }
-					res.send('Login Unsuccessful 2');
+					//res.send('Login Unsuccessful 2');
                 });
 
         };
