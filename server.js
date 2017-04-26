@@ -132,7 +132,7 @@ function makeRouter(connection) {
       }
 	  
 	// res.header("Access-Control-Allow-Origin", "*");
-	 res.send('Created' + req.body.username);
+	 res.send('Created user ' + req.body.username + ' successfully.');
 	 
 	 // res.send('Created user: ' + req.body.username + ' successfully.');
      // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
@@ -143,6 +143,7 @@ function makeRouter(connection) {
  
   app.post('/loginuser', function(req, res) {
 	  
+	  res.send('Made it here');
 	  
 	  connection.query("SELECT 1 FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + "' ORDER BY username LIMIT 1;"), function(err, rows, fields) {
       if (err) {
