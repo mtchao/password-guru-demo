@@ -159,9 +159,12 @@ function makeRouter(connection) {
 						throw err;
 					}
 					
-            
-                        if (rows[1] != null) {
+						console.log(rows[0].username);
+						console.log(rows[1].username);
+						console.log(rows[2].username);
+                        if (rows[0] != null) {
 							console.log("made it to login successful")
+							console.log(rows[1].username);
                          res.send('Logged in user: ' + rows[1].username + ' successfully.');
                         } else {
 							console.log("made it to login unsuccessful")
