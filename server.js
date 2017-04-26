@@ -152,14 +152,15 @@ function makeRouter(connection) {
     }
 
 	  connection.query("SELECT username FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + "' ORDER BY username LIMIT 1;"), function(err, rows, fields) {
-      
-	  res.send(rows);
-	  
-	  if (err) {
+      	
+		if (err) {
         console.log('error: ', err);
         throw err;
 		
-		
+	      for (var i in rows) {
+        res.send('Successfully logged in user: ', rows[i].username);
+		}
+	  		
       }
 	  /*
 	  if(rows){
