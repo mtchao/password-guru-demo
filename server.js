@@ -5,6 +5,7 @@ var path = require('path')
 var app = express();
 var bodyParser = require('body-parser');
 var csprng = require('csprng');
+var crypto = require('crypto');
 
 app.use(express.static(__dirname + '/static/public'));
 
@@ -141,8 +142,15 @@ function makeRouter(connection) {
 							res.send('User "' + rows[0].username + '" already exists.');
                         } else {
 							
-							var salt = csprng(256, 36);							
-							connection.query("INSERT into Users (username, password, salt) VALUES ('" + req.body.username + "', '" + req.body.password + "', '" + salt + "');", function(err, rows, fields) {
+							
+							//create salt, add salt to password, create hash, hash salted password.
+							var salt = csprng(256, 32);	
+							var saltedpass = salt+req.body.password;
+							var hash = crypto.createHmac('sha256');
+							var hashedsaltedpass = hash.update(saltedpass);
+							
+									
+							connection.query("INSERT into Users (username, password, salt) VALUES ('" + req.body.username + "', '" + hashedsaltedpass + "', '" + salt + "');", function(err, rows, fields) {
 								if (err) {
 									console.log('error: ', err);
 								throw err;
