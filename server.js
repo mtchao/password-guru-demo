@@ -143,18 +143,27 @@ function makeRouter(connection) {
  
   app.post('/loginuser', function(req, res) {
 	  
-	  res.send('Made it here');
-	  
+	  if (!req.body.password || !req.body.username)
+    {      
+        res.send('Error: Missing username or password');
+    }
+
 	  connection.query("SELECT 1 FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + "' ORDER BY username LIMIT 1;"), function(err, rows, fields) {
-      if (err) {
+      
+	  res.send(rows);
+	  
+	  if (err) {
         console.log('error: ', err);
         throw err;
+		
+		/*
       }
 	  if(rows){
 		  res.send('Login Successful');
 	  } else {
 		  res.send('Login Unsuccessful');
 	  }
+	  */
      // response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
 	  };
   });
