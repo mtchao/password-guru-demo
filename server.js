@@ -4,6 +4,7 @@ var cors = require('cors')
 var path = require('path')
 var app = express();
 var bodyParser = require('body-parser');
+var csprng = require('csprng');
 
 app.use(express.static(__dirname + '/static/public'));
 
@@ -126,8 +127,8 @@ function makeRouter(connection) {
 
     app.post('/createnewuser', function(req, res) {
 
-
         if (!req.body.password || !req.body.username) {
+
             res.send('Error: Missing register username or password');
         } else {
 			
@@ -139,7 +140,10 @@ function makeRouter(connection) {
                         if (rows[0] != null) {
 							res.send('User "' + rows[0].username + '" already exists.');
                         } else {
-							connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
+							
+							var salt = new csprng(256, 36);
+							
+							connection.query("INSERT into Users (username, password, salt) VALUES ('" + req.body.username + "', '" + req.body.password + "', '" + salt + "');", function(err, rows, fields) {
 								if (err) {
 									console.log('error: ', err);
 								throw err;
