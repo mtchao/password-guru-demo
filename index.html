@@ -89,14 +89,14 @@ $('#login-button').click(function () {
 $('.submitnewuser').submit(function () {
 		//alert("register submitted")
       $.post("/createnewuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
-	  alert( "Response: " + data);
+	  alert(data);
     });
 });
 
 $('.loginolduser').submit(function () {
 		//alert("login submitted")
-      $.post("/loginuser", {username: $("#username").val(), password: $("#password").val()}), (function( data ) {
-	  alert( "Response: " + data);
+      $.post("/loginuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
+	  alert(data);
     });
 })
 })
