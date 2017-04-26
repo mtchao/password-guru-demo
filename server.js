@@ -141,11 +141,7 @@ function makeRouter(connection) {
 							res.send('User "' + rows[0].username + '" already exists.');
                         } else {
 							
-							var salt = new csprng(256, 36);
-							console.log(salt);
-							console.log(salt[0];
-							console.log(salt.value);
-							
+							var salt = csprng(256, 36);							
 							connection.query("INSERT into Users (username, password, salt) VALUES ('" + req.body.username + "', '" + req.body.password + "', '" + salt + "');", function(err, rows, fields) {
 								if (err) {
 									console.log('error: ', err);
