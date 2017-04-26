@@ -155,8 +155,8 @@ function makeRouter(connection) {
 									console.log('error: ', err);
 								throw err;
 							}
-
-						res.send('Created user: ' + req.body.username + ' successfully.');
+						res.send('created');
+						//send('Created user: ' + req.body.username + ' successfully.');
 
 						});
 					}
