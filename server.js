@@ -128,7 +128,7 @@ function makeRouter(connection) {
 
 
         if (!req.body.password || !req.body.username) {
-            res.send('Error: Missing username or password');
+            res.send('Error: Missing register username or password');
         } else {
 
             connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');",
@@ -148,7 +148,7 @@ function makeRouter(connection) {
     app.post('/loginuser', function(req, res) {
 
         if (!req.body.password || !req.body.username) {
-            res.send('Error: Missing username or password');
+            res.send('Error: Missing login username or password');
         } else {
 
 
