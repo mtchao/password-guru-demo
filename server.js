@@ -98,13 +98,6 @@ connection.query(query, function(err, rows, fields) {
 });
 
 Console.log("Database updated.");
-
-/* 
- var request = new sql.Request().query("IN * FROM guruUsers");
-	request.then(function(){
-		return request;
-	})
-*/
 	
 }
     
@@ -118,11 +111,6 @@ function makeRouter(connection) {
       res.sendFile('/index.html', { root: __dirname })
     })
 
-    app.get('/Players/all', function (req, res) {
-      displayAllPlayers().then(function (data) {
-        return res.json(data);
-      });
-    })
 	
 	app.post('/', function(req, res) {
     console.log("got to the post request");
