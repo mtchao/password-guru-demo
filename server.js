@@ -130,17 +130,27 @@ function makeRouter(connection) {
         if (!req.body.password || !req.body.username) {
             res.send('Error: Missing register username or password');
         } else {
+			
+			  connection.query("SELECT username FROM Users where username = '" + req.body.username + " ORDER BY username LIMIT 1;", function(err, rows, fields) {
+					if (err) {
+						console.log('error: ', err);
+						throw err;
+					}
+						console.log(rows[0].username);
+                        if (rows[0] != null) {
+							res.send('User "' + rows[0].username + '" already exists.');
+                        } else {
+							connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
+								if (err) {
+									console.log('error: ', err);
+								throw err;
+							}
 
-            connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
-                    if (err) {
-                        console.log('error: ', err);
-                        throw err;
-                    }
+						res.send('Created user: ' + req.body.username + ' successfully.');
 
-                    res.send('Created user: ' + req.body.username + ' successfully.');
-
+						});
+					}
                 });
-
             };
     });
 
@@ -163,7 +173,7 @@ function makeRouter(connection) {
                         if (rows[0] != null) {
 							console.log("made it to login successful")
 							console.log(rows[0].username);
-							res.send('Logged in user: ' + rows[0].username + ' successfully.');
+							res.send('Logged in "' + rows[0].username + '" successfully.');
                         } else {
 							console.log("made it to login unsuccessful")
 							res.send('Login unsuccessful')
