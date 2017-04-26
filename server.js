@@ -166,6 +166,7 @@ function makeRouter(connection) {
                          //   res.send('Successfully logged in user: ', rows[i].username);
                         }
                     }
+					console.log("made it to login unsuccessful")
 					res.send('Login Unsuccessful 2');
                 });
 
