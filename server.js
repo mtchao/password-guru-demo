@@ -168,10 +168,8 @@ function makeRouter(connection) {
 						throw err;
 					}
 					
-						console.log(rows[0].username);
                         if (rows[0] != null) {
 							console.log("made it to login successful")
-							console.log(rows[0].username);
 							res.send('Logged in "' + rows[0].username + '" successfully.');
                         } else {
 							console.log("made it to login unsuccessful")
