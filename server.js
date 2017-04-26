@@ -5,7 +5,7 @@ var path = require('path')
 var app = express();
 var bodyParser = require('body-parser');
 var csprng = require('csprng');
-var crypto = require('crypto');
+const crypto = require('crypto');
 
 app.use(express.static(__dirname + '/static/public'));
 
@@ -146,7 +146,7 @@ function makeRouter(connection) {
 							//create salt, add salt to password, create hash, hash salted password.
 							var salt = csprng(256, 32);	
 							var saltedpass = salt+req.body.password;
-							var hash = crypto.createHmac('sha256');
+							const hash = crypto.createHmac('sha256');
 							var hashedsaltedpass = hash.update(saltedpass);
 							
 									
@@ -171,7 +171,7 @@ function makeRouter(connection) {
         } else {
 
 
-          
+         // connection.query("SELECT username FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + "' ORDER BY username LIMIT 1;", function(err, rows, fields) {
 
             connection.query("SELECT username FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + "' ORDER BY username LIMIT 1;", function(err, rows, fields) {
 					if (err) {
