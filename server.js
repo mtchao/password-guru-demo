@@ -173,14 +173,21 @@ function makeRouter(connection) {
 
          // connection.query("SELECT username FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + "' ORDER BY username LIMIT 1;", function(err, rows, fields) {
 
-            connection.query("SELECT username FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + "' ORDER BY username LIMIT 1;", function(err, rows, fields) {
+            connection.query("SELECT username, password, salt FROM Users where username = '" + req.body.username + "' ORDER BY username LIMIT 1;", function(err, rows, fields) {
 					if (err) {
 						console.log('error: ', err);
 						throw err;
 					}
 					
-                        if (rows[0] != null) {
-							console.log("made it to login successful")
+					if(rows[0] != null) {
+					
+					var passwordattempt = rows[0].salt + req.body.password;
+					var hash = crypto.createHash('sha256');
+					var paHash = hash.update(passwordattempt).digest('base64');
+					
+					
+                        if ((paHash == rows[0].password)) {
+							console.log("made it to username exists")
 							res.send('Logged in "' + rows[0].username + '" successfully.');
                         } else {
 							console.log("made it to login unsuccessful")
@@ -189,8 +196,10 @@ function makeRouter(connection) {
                     
 					console.log("made it to login unsuccessful 2")
 					//res.send('Login Unsuccessful 2');
+					} else {
+					res.send('Login unsuccessful')
+					}
                 });
-
         };
     });
 
