@@ -156,8 +156,9 @@ function makeRouter(connection) {
         console.log('error: ', err);
         throw err;
 		
-		/*
+		
       }
+	  /*
 	  if(rows){
 		  res.send('Login Successful');
 	  } else {
