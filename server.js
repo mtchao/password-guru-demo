@@ -122,12 +122,13 @@ function makeRouter(connection) {
   })
   
   app.post('/createnewuser', function(req, res) {
-	  
+	 
+/*	 
 	   if (!req.body.password || !req.body.username)
     {      
         res.send('Error: Missing username or password');
     }
-	 
+	*/ 
 	connection.query("INSERT into Users (username, password) VALUES ('" + req.body.username + "', '" + req.body.password + "');", function(err, rows, fields) {
       if (err) {
         console.log('error: ', err);
@@ -151,17 +152,18 @@ function makeRouter(connection) {
         res.send('Error: Missing username or password');
     }
 
-	  connection.query("SELECT username FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + "' ORDER BY username LIMIT 1;"), function(err, rows, fields) {
-      	
-		if (err) {
+		  
+	  if (err) {
         console.log('error: ', err);
         throw err;
-		
+      }
+	
+	  connection.query("SELECT username FROM Users where username = '" + req.body.username + "' AND password = '" + req.body.password + "' ORDER BY username LIMIT 1;"), function(err, rows, fields) {
+      
 	      for (var i in rows) {
         res.send('Successfully logged in user: ', rows[i].username);
-		}
-	  		
-      }
+    }
+
 	  /*
 	  if(rows){
 		  res.send('Login Successful');
