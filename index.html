@@ -86,14 +86,14 @@ $('#login-button').click(function () {
 })
 */
 
-$('.submitnewuser').submit(function () {
+$('#register-button').click(function () {
 		//alert("register submitted")
       $.post("/createnewuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
 	  alert(data);
     });
 });
 
-$('.loginolduser').submit(function () {
+$('#login-button').click(function () {
 		//alert("login submitted")
       $.post("/loginuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
 	  alert(data);
@@ -136,7 +136,7 @@ $('.loginolduser').submit(function () {
 						            </div>
 									    <div class="form-group">
                         <div class="col-xs-offset-4 col-xs-4">
-                            <input style="width:100%;" type="submit" value="Login Existing User" name="btn-login" id="login-button" class="btn btn-primary"></input>
+                            <input style="width:100%;" type="submit" value="Login Existing User" name="btn-login" id="login-button" class="btn btn-primary "></input>
                         <!--  onClick="getForm(this.form)" -->
 						            </div>
 
