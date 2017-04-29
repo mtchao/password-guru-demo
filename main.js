@@ -14,6 +14,47 @@
 
 
 
+  function getForm (form) {
+  console.log("button pressed");
+  var Username1 = $('#username').val();
+  var Password1 = $('#password').val();
+  updateDatabase(Username1, Password1);
+  checkCommon(Password1);
+  };
+   function updateDatabase(Username1, Password1){
+    console.log(Username1 + Password1);
+    if(Password1.length > 3) document.getElementById("picture1").src = "che.jpg";
+    if(Password1.length < 4) document.getElementById("picture1").src = "cross.jpg";
+      $.post("/ddimov/Password-Guru-Test-Environment", {username: Username1, password: Password1})
+        /*.done(function(data){
+          console.log("post request is done")
+          if(data.result == "failed"){
+            console.log("failed post")
+            $("#result").text("Failed to login! " + data.message);
+          } else {
+            console.log("success post")
+            $("#result"+index).text("Logged in as: " + data.username + (data.randomCode ? " (CODE: " + data.randomCode + ")" : ""));
+          }
+        });
+        */
+    }
+
+     function checkCommon(Password1) {
+        //console.log("into parse")
+        /*$.get('10k_most_common.txt', function(data) {
+        //split on new lines
+        var lines = data.split('\n');
+        console.log(lines);
+       });*/
+       var secret = "password";
+       //console.log(typeof Password1);
+       Password1 = Password1.toString();
+       //reader.readAsText(10k_most_common.txt, "UTF-8");
+       if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
+       if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
+    };
+
+
 	$(function(){
 
 	var data = {};
@@ -82,5 +123,3 @@ $('.submitnewuser').submit(function () {
           */
         //};
     });
-
-
