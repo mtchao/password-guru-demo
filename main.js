@@ -18,7 +18,8 @@ $( document ).ready(function() {
   if(response.ok) {
 		 response.text().then(function(text) {
 			   console.log(typeof text);
-				 string[] words = text.Split('\n');
+				 var words = text.Split('\n');
+				 console.log(words.length);
 		 });
     }
  else {
