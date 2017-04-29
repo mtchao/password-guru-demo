@@ -12,7 +12,60 @@
     });
 */
 
-$(function(){
+
+
+	$(function(){
+
+	var data = {};
+	data.user = $("#username").val();
+	data.password = $("#password").val();
+
+	console.log (data);
+	/*
+	$.ajax({
+						type: 'POST',
+						data: JSON.stringify(data),
+				        contentType: 'application/json',
+                        url: 'http://localhost:3000/endpoint',
+                        success: function(data) {
+                            console.log('success');
+                            console.log(JSON.stringify(data));
+                        }
+                    });
+					*/
+          /*
+$('#register-button').click(function () {
+		alert("register submitted")
+      $.post("/createnewuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
+	  alert( "Response: " + data);
+    });
+})
+
+$('#login-button').click(function () {
+		alert("login submitted")
+      $.post("/loginuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
+	  alert( "Response: " + data);
+    });
+})
+})
+*/
+
+$('#register-button').click(function () {
+		//alert("register submitted")
+      $.post("/createnewuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
+	  alert(data);
+    });
+});
+
+$('#login-button').click(function () {
+		//alert("login submitted")
+      $.post("/loginuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
+	  alert(data);
+    });
+})
+})
+
+
 
 
 $('.submitnewuser').submit(function () {
@@ -29,5 +82,5 @@ $('.submitnewuser').submit(function () {
           */
         //};
     });
-})
+
 

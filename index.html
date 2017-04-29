@@ -49,62 +49,7 @@
        if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
     };
     </script>
-    <script type="text/javascript">
-	$(function(){
 
-	var data = {};
-	data.user = $("#username").val();
-	data.password = $("#password").val();
-
-	console.log (data);
-	/*
-	$.ajax({
-						type: 'POST',
-						data: JSON.stringify(data),
-				        contentType: 'application/json',
-                        url: 'http://localhost:3000/endpoint',
-                        success: function(data) {
-                            console.log('success');
-                            console.log(JSON.stringify(data));
-                        }
-                    });
-					*/
-          /*
-$('#register-button').click(function () {
-		alert("register submitted")
-      $.post("/createnewuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
-	  alert( "Response: " + data);
-    });
-})
-
-$('#login-button').click(function () {
-		alert("login submitted")
-      $.post("/loginuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
-	  alert( "Response: " + data);
-    });
-})
-})
-*/
-
-$('#register-button').click(function () {
-		//alert("register submitted")
-      $.post("/createnewuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
-	  alert(data);
-    });
-});
-
-$('#login-button').click(function () {
-		//alert("login submitted")
-      $.post("/loginuser", {username: $("#username").val(), password: $("#password").val()}).done(function( data ) {
-	  alert(data);
-    });
-})
-})
-
-
-
-
-</script>
     </head>
     <body>
         <header>
