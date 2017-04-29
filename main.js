@@ -19,7 +19,9 @@ $( document ).ready(function() {
 		 response.text().then(function(text) {
 			   console.log(typeof text);
 				 var words = text.split('\n');
+
 				 console.log(words.length);
+				 //for(word in words){}
 		 });
     }
  else {
