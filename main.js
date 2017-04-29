@@ -16,9 +16,8 @@
 $( document ).ready(function() {
 	fetch('10k_most_common.txt').then(function(response) {
   if(response.ok) {
-     console.log(response);
 		 response.text().then(function(text) {
-			   console.log(text);
+			   console.log(typeof text);
 		 });
     }
  else {
