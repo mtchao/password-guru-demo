@@ -17,7 +17,7 @@ $( document ).ready(function() {
 	fetch('10k_most_common.txt').then(function(response) {
   if(response.ok) {
      console.log(response);
-		 console.log(JSON.stringify(response));
+		 console.log(JSON.stringify(response.body));
     }
  else {
     console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
