@@ -19,7 +19,7 @@ $( document ).ready(function() {
      console.log(response);
 		 response.text().then(function(text) {
 			   console.log(text);
-		 }
+		 });
     }
  else {
     console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
