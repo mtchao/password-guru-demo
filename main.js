@@ -14,9 +14,16 @@
 
 
 $( document ).ready(function() {
-	 $.get(/10k_most_common.txt, function(data){
-		 console.log(data);
-	 }
+	fetch('10k_most_common.txt').then(function(response) {
+  if(response.ok) {
+    response.json().then(function(json) {
+      products = json;
+      initialize();
+    });
+  } else {
+    console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
+  }
+});
 });
 
 
