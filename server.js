@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var csprng = require('csprng');
 const crypto = require('crypto');
 
-app.use(express.static(__dirname + '/static/public'));
+app.use(express.static(__dirname + '/'));
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({
