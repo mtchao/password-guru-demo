@@ -13,6 +13,10 @@
 */
 
 
+$( document ).ready(function() {
+	 console.log( "ready!" );
+});
+
 
   function getForm (form) {
   console.log("button pressed");
