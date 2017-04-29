@@ -14,7 +14,9 @@
 
 
 $( document ).ready(function() {
-	 console.log( "ready!" );
+	 $.get(/10k_most_common.txt, function(data){
+		 console.log(data);
+	 }
 });
 
 
