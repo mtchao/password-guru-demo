@@ -128,7 +128,7 @@ $('#login-button').click(function () {
 		
         if (pass1.length < 8) {
 			document.getElementById("picture1").src = "cross.jpg"; 
-			score++;
+			score--;
 		}
 		
 		if (pass1.length == 0) {
