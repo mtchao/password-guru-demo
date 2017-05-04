@@ -107,8 +107,10 @@ $('#login-button').click(function () {
 */
     $("#password").keyup(function checkCommon() {
 		
-		var score = 0;
-
+		var totalscore = 0;
+		var lengthscore = 0;
+		var commonpasswordscore = 0;
+		var commonwordscore = 0;
         //console.log("into parse")
         /*$.get('10k_most_common.txt', function(data) {
         //split on new lines
@@ -123,36 +125,43 @@ $('#login-button').click(function () {
         //reader.readAsText(10k_most_common.txt, "UTF-8");
         if (pass1.length > 9) {
 			document.getElementById("picture1").src = "che.jpg";
-			score++;
+			lengthscore = 1;
 		}
 		
-        if (pass1.length <= 9) {
+		 if (pass1.length <= 9 && pass1.length >=8) {
+			document.getElementById("picture1").src = "che.jpg";
+			lengthscore = 0.5;
+		}
+		
+        if (pass1.length <= 7) {
 			document.getElementById("picture1").src = "cross.jpg"; 
-			score--;
+			lengthscore = 0;
 		}
 		
 		
 
         if (commonpasswords.includes(pass1) && pass1 != "") {
             document.getElementById("picture2").src = "cross.jpg";
-			score--;
+			commonpasswordscore = 0;
         } else {
             document.getElementById("picture2").src = "che.jpg";
-			score++;
+			commonpasswordscore = 1;
         }
 
         if (commonwords.includes(pass1) && pass1 != "") {
             document.getElementById("picture3").src = "cross.jpg";
-			score--;
+			commonwordscore = 0;
         } else {
             document.getElementById("picture3").src = "che.jpg";
-			score++;
+			commonwordscore = 1;
         }
 		
 		if (pass1.length == 0) {
 			document.getElementById("picture1").src = "che.jpg"; 
-			score = 0;
+			lengthscore = 0;
 		}
+		
+		totalscore = lengthscore + commonpasswordsscore + commonwordscore;
 
 		if(score < 0) {
 			score = 0;
