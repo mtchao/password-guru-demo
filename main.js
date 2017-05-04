@@ -110,7 +110,7 @@ $("#password").keyup(function checkCommon() {
        //reader.readAsText(10k_most_common.txt, "UTF-8");
 
 	   
-	   if words.contains(pass1){
+	   if words.includes(pass1){
 		   document.getElementById("picture2").src = "cross.jpg";
 	   } else {
 		   document.getElementById("picture2").src = "che.jpg";
