@@ -11,14 +11,13 @@
       submitData();
     });
 */
-
-
+var words = '';
 $( document ).ready(function() {
 	fetch('10k_most_common.txt').then(function(response) {
   if(response.ok) {
 		 response.text().then(function(text) {
-			   console.log(typeof text);
-				 var words = text.split('\n');
+			
+				 words = text.split('\n');
 
 				 console.log(words.length);
 				 //for(word in words){}
@@ -32,7 +31,7 @@ $( document ).ready(function() {
 
 
   function getForm (form) {
-  console.log("button pressed");
+
   var Username1 = $('#username').val();
   var Password1 = $('#password').val();
   updateDatabase(Username1, Password1);
@@ -63,12 +62,19 @@ $( document ).ready(function() {
         var lines = data.split('\n');
         console.log(lines);
        });*/
-       var secret = "password";
+       // var secret = "password";
        //console.log(typeof Password1);
        Password1 = Password1.toString();
        //reader.readAsText(10k_most_common.txt, "UTF-8");
-       if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
-       if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
+
+	   if words.contains(Password1){
+		   document.getElementById("picture2").src = "che.jpg";
+	   } else {
+		   document.getElementById("picture2").src = "cross.jpg";
+	   }
+	   
+     //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
+    //   if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
     };
 
 
