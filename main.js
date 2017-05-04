@@ -130,6 +130,10 @@ $('#login-button').click(function () {
 			document.getElementById("picture1").src = "cross.jpg"; 
 			score++;
 		}
+		
+		if (pass1.length == 0) {
+			document.getElementById("picture1").src = "che.jpg"; 
+		}
 
         if (commonpasswords.includes(pass1)) {
             document.getElementById("picture2").src = "cross.jpg";
@@ -147,6 +151,8 @@ $('#login-button').click(function () {
 			score++;
         }
 
+		document.getElementByID("score") = score;
+		
         //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
         //   if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
     });
