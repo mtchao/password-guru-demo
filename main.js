@@ -55,7 +55,7 @@ $( document ).ready(function() {
         */
     }
 
-$("#password").keyup(function checkCommon($password.value) {
+$("#password").keyup(function checkCommon() {
         //console.log("into parse")
         /*$.get('10k_most_common.txt', function(data) {
         //split on new lines
