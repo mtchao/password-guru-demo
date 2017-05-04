@@ -161,7 +161,7 @@ $('#login-button').click(function () {
 			lengthscore = 0;
 		}
 		
-		totalscore = lengthscore + commonpasswordsscore + commonwordscore;
+		totalscore = lengthscore + commonpasswordscore + commonwordscore;
 
 		if(score < 0) {
 			score = 0;
