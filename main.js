@@ -57,31 +57,6 @@ console.log(words.length);
         */
     }
 
-$("#password").keyup(function checkCommon() {
-	console.log(words.length);
-        //console.log("into parse")
-        /*$.get('10k_most_common.txt', function(data) {
-        //split on new lines
-        var lines = data.split('\n');
-        console.log(lines);
-       });*/
-       // var secret = "password";
-       //console.log(typeof Password1);
-	   var pass1 = $('#password'.val());
-       //Password1 = Password1.toString();
-       //reader.readAsText(10k_most_common.txt, "UTF-8");
-
-	   /*
-	   if words.contains(pass1){
-		   document.getElementById("picture2").src = "cross.jpg";
-	   } else {
-		   document.getElementById("picture2").src = "che.jpg";
-	   }
-	   */
-	   
-     //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
-    //   if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
-    });
 
 
 	$(function(){
@@ -119,6 +94,33 @@ $('#login-button').click(function () {
 })
 })
 */
+$("#password").keyup(function checkCommon() {
+	console.log(words.length);
+        //console.log("into parse")
+        /*$.get('10k_most_common.txt', function(data) {
+        //split on new lines
+        var lines = data.split('\n');
+        console.log(lines);
+       });*/
+       // var secret = "password";
+       //console.log(typeof Password1);
+	   var pass1 = $('#password'.val());
+       //Password1 = Password1.toString();
+       //reader.readAsText(10k_most_common.txt, "UTF-8");
+
+	   /*
+	   if words.contains(pass1){
+		   document.getElementById("picture2").src = "cross.jpg";
+	   } else {
+		   document.getElementById("picture2").src = "che.jpg";
+	   }
+	   */
+	   
+     //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
+    //   if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
+    });
+
+
 
 $('#register-button').click(function () {
 		//alert("register submitted")
