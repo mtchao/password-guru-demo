@@ -15,27 +15,27 @@ var commonwords = '';
 
 $(document).ready(function() {
     fetch('10k_most_common.txt').then(function(response) {
-            if (response.ok) {
-                response.text().then(function(text) {
+        if (response.ok) {
+            response.text().then(function(text) {
 
-                    commonpasswords = text.split('\n');
-                });
-            } else {
-                console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
-            }
+                commonpasswords = text.split('\n');
+            });
+        } else {
+            console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
         }
+    })
 
-        fetch('google-10000-english-usa').then(function(response) {
-            if (response.ok) {
-                response.text().then(function(text) {
+    fetch('google-10000-english-usa').then(function(response) {
+        if (response.ok) {
+            response.text().then(function(text) {
 
-                    commonwords = text.split('\n');
-                });
-            } else {
-                console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
-            }
-        });
-    }));
+                commonwords = text.split('\n');
+            });
+        } else {
+            console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
+        }
+    });
+});
 
 console.log(words.length);
 
