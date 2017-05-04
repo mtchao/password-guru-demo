@@ -121,12 +121,12 @@ $('#login-button').click(function () {
 
         //Password1 = Password1.toString();
         //reader.readAsText(10k_most_common.txt, "UTF-8");
-        if (pass1.length > 8) {
+        if (pass1.length > 9) {
 			document.getElementById("picture1").src = "che.jpg";
 			score++;
 		}
 		
-        if (pass1.length < 8) {
+        if (pass1.length <= 9) {
 			document.getElementById("picture1").src = "cross.jpg"; 
 			score--;
 		}
