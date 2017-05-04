@@ -11,17 +11,25 @@
       submitData();
     });
 */
-var words = '';
+var commonpasswords = '';
+var commonwords = '';
 
 $( document ).ready(function() {
 	fetch('10k_most_common.txt').then(function(response) {
   if(response.ok) {
 		 response.text().then(function(text) {
 			
-				 words = text.split('\n');
-
-				 console.log(words.length);
-				 //for(word in words){}
+				 commonpasswords = text.split('\n');
+		 });
+    }
+ else {
+    console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
+  }
+  	fetch('google-10000-english-usa').then(function(response) {
+  if(response.ok) {
+		 response.text().then(function(text) {
+			
+				 commonwords = text.split('\n');
 		 });
     }
  else {
@@ -41,8 +49,7 @@ console.log(words.length);
   };
    function updateDatabase(Username1, Password1){
     console.log(Username1 + Password1);
-    if(Password1.length > 3) document.getElementById("picture1").src = "che.jpg";
-    if(Password1.length < 4) document.getElementById("picture1").src = "cross.jpg";
+    
       $.post("/ddimov/Password-Guru-Test-Environment", {username: Username1, password: Password1})
         /*.done(function(data){
           console.log("post request is done")
@@ -105,17 +112,24 @@ $("#password").keyup(function checkCommon() {
        // var secret = "password";
        //console.log(typeof Password1);
 	   var pass1 = $('#password').val();
-	   console.log(pass1);
+
        //Password1 = Password1.toString();
        //reader.readAsText(10k_most_common.txt, "UTF-8");
+	   if(pass1.length > 8) document.getElementById("picture1").src = "che.jpg";
+       if(pass1.length < 8) document.getElementById("picture1").src = "cross.jpg";
 
 	 
-	   if (words.includes(pass1)){
+	   if (commonpasswords.includes(pass1)){
 		   document.getElementById("picture2").src = "cross.jpg";
 	   } else {
 		   document.getElementById("picture2").src = "che.jpg";
 	   }
-	   
+	    
+	   if (commonwords.includes(pass1)){
+		   document.getElementById("picture3").src = "cross.jpg";
+	   } else {
+		   document.getElementById("picture3").src = "che.jpg";
+	   }
 	   
      //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
     //   if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
