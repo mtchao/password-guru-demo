@@ -156,12 +156,14 @@ $('#login-button').click(function () {
 			commonwordscore = 1;
         }
 		
-		if (pass1.length == 0) {
-			document.getElementById("picture1").src = "che.jpg"; 
-			lengthscore = 0;
-		}
+		
 		
 		totalscore = lengthscore + commonpasswordscore + commonwordscore;
+		
+		if (pass1.length == 0) {
+			document.getElementById("picture1").src = "che.jpg"; 
+			totalscore = 0;
+		}
 
 		if(totalscore < 0) {
 			totalscore = 0;
