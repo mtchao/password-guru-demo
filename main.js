@@ -25,7 +25,7 @@ $(document).ready(function() {
         }
     })
 
-    fetch('google-10000-english-usa').then(function(response) {
+    fetch('google-10000-english-usa.txt').then(function(response) {
         if (response.ok) {
             response.text().then(function(text) {
 
@@ -37,7 +37,6 @@ $(document).ready(function() {
     });
 });
 
-console.log(words.length);
 
 function getForm(form) {
     console.log(words.length);
