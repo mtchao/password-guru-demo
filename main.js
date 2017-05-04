@@ -163,10 +163,10 @@ $('#login-button').click(function () {
 		
 		totalscore = lengthscore + commonpasswordscore + commonwordscore;
 
-		if(score < 0) {
-			score = 0;
+		if(totalscore < 0) {
+			totalscore = 0;
 		}
-		$('#score').text(score * 25);
+		$('#score').text(totalscore * 25);
 		
         //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
         //   if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
