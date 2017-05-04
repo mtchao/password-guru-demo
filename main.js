@@ -151,7 +151,7 @@ $('#login-button').click(function () {
 			score++;
         }
 
-		document.getElementByID("score") = score;
+		$('#score').text(score);
 		
         //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
         //   if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
