@@ -12,7 +12,7 @@
     });
 */
 var words = '';
-console.log(words.length);
+
 $( document ).ready(function() {
 	fetch('10k_most_common.txt').then(function(response) {
   if(response.ok) {
@@ -58,6 +58,7 @@ console.log(words.length);
     }
 
 $("#password").keyup(function checkCommon() {
+	console.log(words.length);
         //console.log("into parse")
         /*$.get('10k_most_common.txt', function(data) {
         //split on new lines
