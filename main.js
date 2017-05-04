@@ -55,7 +55,7 @@ $( document ).ready(function() {
         */
     }
 
-     function checkCommon(Password1) {
+$("#password").keyup(function checkCommon($password.value) {
         //console.log("into parse")
         /*$.get('10k_most_common.txt', function(data) {
         //split on new lines
@@ -64,10 +64,11 @@ $( document ).ready(function() {
        });*/
        // var secret = "password";
        //console.log(typeof Password1);
-       Password1 = Password1.toString();
+	   var pass1 = $('#password'.val());
+       //Password1 = Password1.toString();
        //reader.readAsText(10k_most_common.txt, "UTF-8");
 
-	   if words.contains(Password1){
+	   if !words.contains(pass1){
 		   document.getElementById("picture2").src = "che.jpg";
 	   } else {
 		   document.getElementById("picture2").src = "cross.jpg";
@@ -75,7 +76,7 @@ $( document ).ready(function() {
 	   
      //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
     //   if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
-    };
+    });
 
 
 	$(function(){
