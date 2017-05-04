@@ -145,7 +145,7 @@ $('#login-button').click(function () {
 			commonpasswordscore = 0;
         } else {
             document.getElementById("picture2").src = "che.jpg";
-			commonpasswordscore = 1;
+			commonpasswordscore = 2;
         }
 
         if (commonwords.includes(pass1) && pass1 != "") {
