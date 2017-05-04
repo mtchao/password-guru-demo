@@ -104,7 +104,7 @@ $("#password").keyup(function checkCommon() {
        });*/
        // var secret = "password";
        //console.log(typeof Password1);
-	   var pass1 = $('#password'.val());
+	   var pass1 = $('#password').val();
        //Password1 = Password1.toString();
        //reader.readAsText(10k_most_common.txt, "UTF-8");
 
