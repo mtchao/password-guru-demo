@@ -107,7 +107,7 @@ $('#login-button').click(function () {
 */
     $("#password").keyup(function checkCommon() {
 		
-		var score = 0;
+		var score = 1;
 
         //console.log("into parse")
         /*$.get('10k_most_common.txt', function(data) {
@@ -135,7 +135,7 @@ $('#login-button').click(function () {
 			document.getElementById("picture1").src = "che.jpg"; 
 		}
 
-        if (commonpasswords.includes(pass1)) {
+        if (commonpasswords.includes(pass1) && pass1 != "") {
             document.getElementById("picture2").src = "cross.jpg";
 			score--;
         } else {
@@ -143,7 +143,7 @@ $('#login-button').click(function () {
 			score++;
         }
 
-        if (commonwords.includes(pass1)) {
+        if (commonwords.includes(pass1) && pass1 != "") {
             document.getElementById("picture3").src = "cross.jpg";
 			score--;
         } else {
@@ -151,7 +151,7 @@ $('#login-button').click(function () {
 			score++;
         }
 
-		$('#score').text(score);
+		$('#score').text(score * 25);
 		
         //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
         //   if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
