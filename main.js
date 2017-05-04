@@ -115,7 +115,7 @@ $("#password").keyup(function checkCommon() {
 	   } else {
 		   document.getElementById("picture2").src = "che.jpg";
 	   }
-	   */
+	   
 	   
      //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
     //   if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
