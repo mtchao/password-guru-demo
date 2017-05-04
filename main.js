@@ -95,7 +95,7 @@ $('#login-button').click(function () {
 })
 */
 $("#password").keyup(function checkCommon() {
-	console.log(words.length);
+	
         //console.log("into parse")
         /*$.get('10k_most_common.txt', function(data) {
         //split on new lines
@@ -105,16 +105,17 @@ $("#password").keyup(function checkCommon() {
        // var secret = "password";
        //console.log(typeof Password1);
 	   var pass1 = $('#password').val();
+	   console.log(pass1);
        //Password1 = Password1.toString();
        //reader.readAsText(10k_most_common.txt, "UTF-8");
 
-	   /*
+	   
 	   if words.contains(pass1){
 		   document.getElementById("picture2").src = "cross.jpg";
 	   } else {
 		   document.getElementById("picture2").src = "che.jpg";
 	   }
-	   */
+	   
 	   
      //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
     //   if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
