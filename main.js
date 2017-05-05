@@ -110,7 +110,6 @@ $('#login-button').click(function () {
     if (totalscore > 85) {
       document.getElementById("register-button").style["color"] = "white";
     }
-		totalscore = 0;
 		var lengthscore = 0;
 		var commonpasswordscore = 0;
 		var commonwordscore = 0;
