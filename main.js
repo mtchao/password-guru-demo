@@ -104,8 +104,11 @@ $('#login-button').click(function () {
 })
 */
     $("#password").keyup(function checkCommon() {
-		if (totalscore < 50) {
+		if (totalscore < 85) {
       document.getElementById("register-button").style["color"] = "grey";
+    }
+    if (totalscore > 85) {
+      document.getElementById("register-button").style["color"] = "white";
     }
 		totalscore = 0;
 		var lengthscore = 0;
@@ -178,13 +181,14 @@ $('#login-button').click(function () {
 
     $('#register-button').click(function() {
         //alert("register submitted")
-
-        $.post("/createnewuser", {
-            username: $("#username").val(),
-            password: $("#password").val()
-        }).done(function(data) {
-            alert(data);
-        });
+        if(totalscore > 85){
+            $.post("/createnewuser", {
+                username: $("#username").val(),
+                password: $("#password").val()
+            }).done(function(data) {
+                alert(data);
+            });
+      }
     });
 
     $('#login-button').click(function() {
