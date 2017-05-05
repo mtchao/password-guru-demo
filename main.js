@@ -12,6 +12,7 @@
 */
 var commonpasswords = '';
 var commonwords = '';
+var totalscore = 0;
 
 $(document).ready(function() {
     fetch('10k_most_common.txt').then(function(response) {
@@ -67,9 +68,6 @@ function updateDatabase(Username1, Password1) {
     */
 }
 
-
-
-
 $(function() {
 
     var data = {};
@@ -106,8 +104,10 @@ $('#login-button').click(function () {
 })
 */
     $("#password").keyup(function checkCommon() {
-		
-		var totalscore = 0;
+		if (totalscore < 50) {
+      document.getElementById("register-button").style["color"] = "grey";
+    }
+		totalscore = 0;
 		var lengthscore = 0;
 		var commonpasswordscore = 0;
 		var commonwordscore = 0;
@@ -127,18 +127,18 @@ $('#login-button').click(function () {
 			document.getElementById("picture1").src = "che.jpg";
 			lengthscore = 1;
 		}
-		
+
 		 if (pass1.length <= 9 && pass1.length >=8) {
 			document.getElementById("picture1").src = "che.jpg";
 			lengthscore = 0.5;
 		}
-		
+
         if (pass1.length <= 7) {
-			document.getElementById("picture1").src = "cross.jpg"; 
+			document.getElementById("picture1").src = "cross.jpg";
 			lengthscore = 0;
 		}
-		
-		
+
+
 
         if (commonpasswords.includes(pass1) && pass1 != "") {
             document.getElementById("picture2").src = "cross.jpg";
@@ -155,13 +155,13 @@ $('#login-button').click(function () {
             document.getElementById("picture3").src = "che.jpg";
 			commonwordscore = 1;
         }
-		
-		
-		
+
+
+
 		totalscore = lengthscore + commonpasswordscore + commonwordscore;
-		
+
 		if (pass1.length == 0) {
-			document.getElementById("picture1").src = "che.jpg"; 
+			document.getElementById("picture1").src = "che.jpg";
 			totalscore = 0;
 		}
 
@@ -169,7 +169,7 @@ $('#login-button').click(function () {
 			totalscore = 0;
 		}
 		$('#score').text(totalscore * 25);
-		
+
         //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
         //   if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
     });
@@ -178,6 +178,7 @@ $('#login-button').click(function () {
 
     $('#register-button').click(function() {
         //alert("register submitted")
+
         $.post("/createnewuser", {
             username: $("#username").val(),
             password: $("#password").val()
