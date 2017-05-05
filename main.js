@@ -104,6 +104,7 @@ $('#login-button').click(function () {
 })
 */
     $("#password").keyup(function checkCommon() {
+    console.log(totalscore);
 		if (totalscore < 85) {
       document.getElementById("register-button").style["color"] = "grey";
     }
@@ -180,6 +181,7 @@ $('#login-button').click(function () {
 
     $('#register-button').click(function() {
         //alert("register submitted")
+        console.log(totalscore)
         if(totalscore > 85){
             $.post("/createnewuser", {
                 username: $("#username").val(),
