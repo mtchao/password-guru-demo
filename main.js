@@ -105,10 +105,10 @@ $('#login-button').click(function () {
 */
     $("#password").keyup(function checkCommon() {
     console.log(totalscore);
-		if (totalscore < 85) {
+		if (totalscore < 3.0) {
       document.getElementById("register-button").style["color"] = "grey";
     }
-    if (totalscore > 85) {
+    if (totalscore > 3.0) {
       document.getElementById("register-button").style["color"] = "white";
     }
 		var lengthscore = 0;
@@ -182,7 +182,7 @@ $('#login-button').click(function () {
     $('#register-button').click(function() {
         //alert("register submitted")
         console.log(totalscore)
-        if(totalscore > 85){
+        if(totalscore > 3.0){
             $.post("/createnewuser", {
                 username: $("#username").val(),
                 password: $("#password").val()
