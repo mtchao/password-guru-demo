@@ -104,7 +104,7 @@ $('#login-button').click(function () {
 })
 */
     $("#password").keyup(function checkCommon() {
-    console.log(totalscore);
+
 		if (totalscore < 3.0) {
       document.getElementById("register-button").style["color"] = "grey";
     }
@@ -167,12 +167,14 @@ $('#login-button').click(function () {
 
 		var i;
 		for (i = 0; i <= commonwords.length; i++) {
-			if(pass1.includes(commonwords[i])){
-				commonwordcount++;
-			}
+			if(pass1.includes(commonwords[i])) {
+                commonwordcount++;
+            }
 		}
-		
+
 		console.log(commonwordcount);
+
+        var commonwordcount = 0;
 		
 		/*
 		for (int i = 0; i <= pass1.length; i++) {
@@ -214,7 +216,7 @@ $('#login-button').click(function () {
         //alert("register submitted")
 		
 		//This doesn't work when you use backspace to go down to a lower score.
-        console.log(totalscore);
+
         if($('#score').text > 3.0){
             $.post("/createnewuser", {
                 username: $("#username").val(),
