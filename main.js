@@ -189,8 +189,6 @@ $('#login-button').click(function () {
 			}
 			
 			*/
-		}
-
 
 
 		totalscore = lengthscore + commonpasswordscore + commonwordscore;
@@ -216,7 +214,7 @@ $('#login-button').click(function () {
         //alert("register submitted")
 		
 		//This doesn't work when you use backspace to go down to a lower score.
-        console.log(totalscore)
+        console.log(totalscore);
         if($('#score').text > 3.0){
             $.post("/createnewuser", {
                 username: $("#username").val(),
