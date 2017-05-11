@@ -123,6 +123,9 @@ $('#login-button').click(function () {
         // var secret = "password";
         //console.log(typeof Password1);
         var pass1 = $('#password').val();
+		
+		//value of password once it has been split to check for combination of common words
+		var splitpass = '';
 
         //Password1 = Password1.toString();
         //reader.readAsText(10k_most_common.txt, "UTF-8");
@@ -145,7 +148,7 @@ $('#login-button').click(function () {
 
         if (commonpasswords.includes(pass1) && pass1 != "") {
             document.getElementById("picture2").src = "cross.jpg";
-			commonpasswordscore = 0;
+			commonpasswordscore = -10;
         } else {
             document.getElementById("picture2").src = "che.jpg";
 			commonpasswordscore = 2;
@@ -158,6 +161,34 @@ $('#login-button').click(function () {
             document.getElementById("picture3").src = "che.jpg";
 			commonwordscore = 1;
         }
+		
+		var buildpass = '';
+		var commonwordcount = 0;
+		
+		for (String s: commonpasswords){
+			if(pass1.includes(s)){
+				commonwordcount++;
+			}
+		}
+		
+		console.log(commonwordcount);
+		
+		/*
+		for (int i = 0; i <= pass1.length; i++) {
+			buildpass = pass1.substring(0, i);
+			if(commonwords.includes(buildpass) && buildpass.length){
+					commonwordcount++;
+			}
+			
+			if(commonwordcount > 1){
+				document.getElementById("picture3").src = "cross.jpg";
+				commonwordscore = 0;
+			} else () {
+				
+			}
+			
+			*/
+		}
 
 
 
@@ -171,6 +202,7 @@ $('#login-button').click(function () {
 		if(totalscore < 0) {
 			totalscore = 0;
 		}
+		
 		$('#score').text(totalscore * 25);
 
         //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
@@ -181,8 +213,10 @@ $('#login-button').click(function () {
 
     $('#register-button').click(function() {
         //alert("register submitted")
+		
+		//This doesn't work when you use backspace to go down to a lower score.
         console.log(totalscore)
-        if(totalscore > 3.0){
+        if($('#score').text > 3.0){
             $.post("/createnewuser", {
                 username: $("#username").val(),
                 password: $("#password").val()
