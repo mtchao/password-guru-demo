@@ -164,9 +164,10 @@ $('#login-button').click(function () {
 		
 		var buildpass = '';
 		var commonwordcount = 0;
-		
-		for (String s: commonpasswords){
-			if(pass1.includes(s)){
+
+		var i;
+		for (i = 0; i <= commonwords.length; i++) {
+			if(pass1.includes(commonwords[i])){
 				commonwordcount++;
 			}
 		}
