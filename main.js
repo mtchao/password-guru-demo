@@ -167,8 +167,9 @@ $('#login-button').click(function () {
 
 		var i;
 		for (i = 0; i <= commonwords.length; i++) {
-			if(pass1.includes(commonwords[i])) {
+			if(pass1.includes(commonwords[i]) && commonwords[i].length > 2) {
                 commonwordcount++;
+                console.log("contains: " + commonwords[i]);
             }
 		}
 
