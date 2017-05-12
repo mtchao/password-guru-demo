@@ -236,6 +236,7 @@ $('#login-button').click(function () {
 			document.getElementById("picture4").src = "cross.jpg";
             commonwordscore = 0;
         } else {
+			console.log("hit");
 			document.getElementById("picture4").src = "che.jpg";
 			commonwordscore++;
         }
