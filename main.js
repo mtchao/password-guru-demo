@@ -226,6 +226,7 @@ $('#login-button').click(function () {
 
 		var commonwordcount = containslist.length;
 		console.log(containslist);
+		console.log(commonwordcount);
         containslist = [""];
 
         if(commonwordcount > 1) {
@@ -234,10 +235,11 @@ $('#login-button').click(function () {
         } else if (commonwordcount = 1) {
 			document.getElementById("picture4").src = "cross.jpg";
             commonwordscore = 0;
-        } else if (commonwordcount = 0){
-            commonwordscore++;
+        } else {
 			document.getElementById("picture4").src = "che.jpg";
+			commonwordscore++;
         }
+		console.log(commonwordcount);
         commonwordcount = 0;
 		
 
