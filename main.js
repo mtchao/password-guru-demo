@@ -186,7 +186,7 @@ $('#login-button').click(function () {
                     } 
 					
 					if(!alreadycontained){
-						containslist.push(commonwords[i];
+						containslist.push(commonwords[i]);
 					}
                 }
             }
