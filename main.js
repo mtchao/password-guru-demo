@@ -229,10 +229,10 @@ $('#login-button').click(function () {
 		console.log(commonwordcount);
         containslist = [""];
 
-        if(commonwordcount.val > 1) {
+        if(commonwordcount > 1) {
             document.getElementById("picture4").src = "cross.jpg";
             commonwordscore = 0;
-        } else if (commonwordcount.val = 1) {
+        } else if (commonwordcount == 1) {
 			document.getElementById("picture4").src = "cross.jpg";
             commonwordscore = 0;
         } else {
