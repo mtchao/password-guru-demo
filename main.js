@@ -268,7 +268,7 @@ $('#login-button').click(function () {
 		
 		//This doesn't work when you use backspace to go down to a lower score.
 
-        if($('#score').text > 3.0){
+        if($('#score').text == "100" || $('#score').text == "90" ){
             $.post("/createnewuser", {
                 username: $("#username").val(),
                 password: $("#password").val()
