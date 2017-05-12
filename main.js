@@ -175,6 +175,14 @@ $('#login-button').click(function () {
 
 		console.log(commonwordcount);
 
+        if(commonwordcount > 0) {
+            document.getElementById("picture3").src = "cross.jpg";
+            commonwordscore++;
+        } else if (commonwordcount > 1) {
+            commonwordscore++;
+        } else {
+            commonwordscore = 0;
+        }
         var commonwordcount = 0;
 		
 		/*
