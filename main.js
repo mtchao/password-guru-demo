@@ -163,7 +163,7 @@ $('#login-button').click(function () {
         }
 
 		var commonwordcount = 0;
-        var containslist = [];
+        var containslist = [""];
 
 		var i;
         var j;
@@ -186,7 +186,7 @@ $('#login-button').click(function () {
 		}
 
 		console.log(containslist);
-        containslist = [];
+        containslist = [""];
 
         if(commonwordcount > 0) {
             document.getElementById("picture3").src = "cross.jpg";
