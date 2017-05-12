@@ -177,7 +177,7 @@ $('#login-button').click(function () {
                     if (!containslist[i].includes(commonwords[i]) && !commonwords[i].includes(containslist[i])) {
                         containslist.push(commonwords[i]);
                         commonwordcount++;
-                    } else if ((containslist[i].includes(commonwords[i]) || commonwords[i].includes(containslist[i])) && commonwords[i].length > containslist[i]){
+                    } else if ((containslist[i].includes(commonwords[i]) || commonwords[i].includes(containslist[i])) && commonwords[i].length > containslist[i].length){
                         containslist[i] = commonwords[i];
                     }
                 }
