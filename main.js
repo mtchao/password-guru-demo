@@ -176,9 +176,10 @@ $('#login-button').click(function () {
                 for (j = 0; j < containslist.length; j++) {
                     console.log(containslist[j]);
                     console.log(commonwords[i]);
-                    if (commonwords[i].includes(containslist[j]) && commonwords[i].length > containslist[j].length){
+                    if ((commonwords[i].includes(containslist[j]) || containslist[j].includes(commonwords[i])) && commonwords[i].length > containslist[j].length){
                         containslist.splice(j, 1);
 						containslist.push(commonwords[i]);
+						alreadycontained = true;
                     } else if (containslist[j].includes(commonwords[i]) || commonwords[i].includes(containslist[j])) {
                         alreadycontained = true;
 						//containslist.push(commonwords[i]);
