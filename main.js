@@ -163,7 +163,7 @@ $('#login-button').click(function () {
         }
 
 		var commonwordcount = 0;
-        var containslist = [""];
+        var containslist = ["zzzzzzzzzz"];
 
 		var i;
 		for (i = 0; i <= commonwords.length; i++) {
