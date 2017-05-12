@@ -264,7 +264,7 @@ $('#login-button').click(function () {
 
 
     $('#register-button').click(function() {
-        //alert("register submitted")
+        alert("register submitted")
 		
 		//This doesn't work when you use backspace to go down to a lower score.
 
