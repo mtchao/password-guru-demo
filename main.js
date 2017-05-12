@@ -228,13 +228,15 @@ $('#login-button').click(function () {
 		console.log(containslist);
         containslist = [""];
 
-        if(commonwordcount > 0) {
-            document.getElementById("picture3").src = "cross.jpg";
+        if(commonwordcount > 1) {
+            document.getElementById("picture4").src = "cross.jpg";
             commonwordscore++;
-        } else if (commonwordcount > 1) {
+        } else if (commonwordcount > 0) {
+			 document.getElementById("picture4").src = "cross.jpg";
             commonwordscore++;
         } else {
             commonwordscore = 0;
+			document.getElementById("picture4").src = "che.jpg";
         }
         commonwordcount = 0;
 		
