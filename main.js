@@ -178,6 +178,7 @@ $('#login-button').click(function () {
                     if (!containslist[j].includes(commonwords[i]) && !commonwords[i].includes(containslist[j])) {
                         containslist.push(commonwords[i]);
                         commonwordcount++;
+						j++;
                     } else if ((containslist[j].includes(commonwords[i]) || commonwords[i].includes(containslist[j])) && commonwords[i].length > containslist[j].length){
                         containslist[j] = commonwords[i];
                     }
