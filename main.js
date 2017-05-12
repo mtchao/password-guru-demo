@@ -208,7 +208,8 @@ $('#login-button').click(function () {
 		longest = true;
 		word = containslist[i];
 		for (j = 0; j < containslist.length; j++){
-			if (word.includes(containslist[j]) && !word.equals(containslist[j])) {
+			//if we find a word that's included in our word and shorter
+			if (word.includes(containslist[j]) && (word.length > containslist[j].length)){
 			containslist.splice(j, 1);
 			}
 			if (containslist[j].includes(word)) {
