@@ -162,7 +162,7 @@ $('#login-button').click(function () {
 			commonwordscore = 1;
         }
 
-		var commonwordcount = 0;
+		
         var containslist = [""];
 
 		var i;
@@ -177,15 +177,16 @@ $('#login-button').click(function () {
                     console.log(commonwords[i]);
                     if (!containslist[j].includes(commonwords[i]) && !commonwords[i].includes(containslist[j])) {
                         containslist.push(commonwords[i]);
-                        commonwordcount++;
 						j++;
                     } else if ((containslist[j].includes(commonwords[i]) || commonwords[i].includes(containslist[j])) && commonwords[i].length > containslist[j].length){
-                        containslist[j] = commonwords[i];
+                        containslist.splice(j, 1);
+						containslist.push(commonwords[i]);
                     }
                 }
             }
 		}
 
+		var commonwordcount = containslist.length;
 		console.log(containslist);
         containslist = [""];
 
