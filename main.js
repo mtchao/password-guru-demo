@@ -161,19 +161,24 @@ $('#login-button').click(function () {
             document.getElementById("picture3").src = "che.jpg";
 			commonwordscore = 1;
         }
-		
-		var buildpass = '';
+
 		var commonwordcount = 0;
+        var containslist;
 
 		var i;
 		for (i = 0; i <= commonwords.length; i++) {
 			if(pass1.includes(commonwords[i]) && commonwords[i].length > 2) {
-                commonwordcount++;
-                console.log("contains: " + commonwords[i]);
+
+                //trying not to put the user in double jeopardy, i.e. registering "too" and "tool" as two separate instances
+                //this only works if the shorter of the two instances is inputted first. But I'm dumb someone fix this
+                if (!containslist.includes(commonwords[i])) {
+                    containslist = containslist + commonwords[i] + ', ';
+                    commonwordcount++;
+                }
             }
 		}
 
-		console.log(commonwordcount);
+		console.log(containslist);
 
         if(commonwordcount > 0) {
             document.getElementById("picture3").src = "cross.jpg";
@@ -185,22 +190,6 @@ $('#login-button').click(function () {
         }
         var commonwordcount = 0;
 		
-		/*
-		for (int i = 0; i <= pass1.length; i++) {
-			buildpass = pass1.substring(0, i);
-			if(commonwords.includes(buildpass) && buildpass.length){
-					commonwordcount++;
-			}
-			
-			if(commonwordcount > 1){
-				document.getElementById("picture3").src = "cross.jpg";
-				commonwordscore = 0;
-			} else () {
-				
-			}
-			
-			*/
-
 
 		totalscore = lengthscore + commonpasswordscore + commonwordscore;
 
@@ -213,7 +202,7 @@ $('#login-button').click(function () {
 			totalscore = 0;
 		}
 		
-		$('#score').text(totalscore * 25);
+		$('#score').text(totalscore * 20);
 
         //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
         //   if (!secret.localeCompare(Password1)) document.getElementById("picture2").src = "cross.jpg";
