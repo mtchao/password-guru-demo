@@ -234,7 +234,7 @@ $('#login-button').click(function () {
         } else if (commonwordcount = 1) {
 			document.getElementById("picture4").src = "cross.jpg";
             commonwordscore = 0;
-        } else {
+        } else if (commonwordcount = 0){
             commonwordscore++;
 			document.getElementById("picture4").src = "che.jpg";
         }
