@@ -163,7 +163,7 @@ $('#login-button').click(function () {
         }
 
 		var commonwordcount = 0;
-        var containslist = '';
+        var containslist = [];
 
 		var i;
 		for (i = 0; i <= commonwords.length; i++) {
@@ -171,9 +171,13 @@ $('#login-button').click(function () {
 
                 //trying not to put the user in double jeopardy, i.e. registering "too" and "tool" as two separate instances
                 //this only works if the shorter of the two instances is inputted first. But I'm dumb someone fix this
-                if (!containslist.includes(commonwords[i])) {
-                    containslist = containslist + commonwords[i] + ', ';
-                    commonwordcount++;
+                for (i = 0; i <= containslist.length; i++) {
+                    if (!containslist[i].includes(commonwords[i]) && !commonwords[i].includes(containslist[i])) {
+                        containslist.push(commonwords[i]);
+                        commonwordcount++;
+                    } else if ((containslist[i].includes(commonwords[i]) || commonwords[i].includes(containslist[i])) && commonwords[i].length > containslist[i]){
+                        containslist[i] = commonwords[i];
+                    }
                 }
             }
 		}
@@ -188,7 +192,7 @@ $('#login-button').click(function () {
         } else {
             commonwordscore = 0;
         }
-        var commonwordcount = 0;
+        commonwordcount = 0;
 		
 
 		totalscore = lengthscore + commonpasswordscore + commonwordscore;
