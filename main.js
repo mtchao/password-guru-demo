@@ -202,14 +202,13 @@ $('#login-button').click(function () {
 			*/
 		}
 	}
-			var longest = true;
-			var word;
-			var longest;
+	var longest = true;
+	var word;
 	for(i = 0; i < containslist.length; i++){
 		longest = true;
 		word = containslist[i];
 		for (j = 0; j < containslist.length; j++){
-			if (word.includes(containslist[j])){
+			if (word.includes(containslist[j]) && !word.equals(containslist[j]){
 			containslist.splice(j, 1);
 			}
 			if (containslist[j].includes(word)) {
