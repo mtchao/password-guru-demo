@@ -215,7 +215,7 @@ $('#login-button').click(function () {
 			}
 		}
 		if(!longest) {
-			containslist.splice(i, 1);
+			containslist.splice(containslist.indexOf(word), 1);
 		}
 	}
 			
