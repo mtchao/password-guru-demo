@@ -201,6 +201,7 @@ $('#login-button').click(function () {
             }
 			*/
 		}
+	}
 			var longest = true;
 			var word;
 			var longest;
