@@ -230,12 +230,12 @@ $('#login-button').click(function () {
 
         if(commonwordcount > 1) {
             document.getElementById("picture4").src = "cross.jpg";
-            commonwordscore++;
-        } else if (commonwordcount > 0) {
-			 document.getElementById("picture4").src = "cross.jpg";
-            commonwordscore++;
-        } else {
             commonwordscore = 0;
+        } else if (commonwordcount = 1) {
+			document.getElementById("picture4").src = "cross.jpg";
+            commonwordscore = 0;
+        } else {
+            commonwordscore++;
 			document.getElementById("picture4").src = "che.jpg";
         }
         commonwordcount = 0;
