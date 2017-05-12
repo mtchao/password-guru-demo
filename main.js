@@ -211,7 +211,8 @@ $('#login-button').click(function () {
 		for (j = 0; j < containslist.length; j++){
 			if (word.includes(containslist[j])){
 			containslist.splice(j, 1);
-			} else if (containslist[j].includes(word)) {
+			}
+			if (containslist[j].includes(word)) {
 			longest = false;
 			}
 		}
