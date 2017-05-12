@@ -167,6 +167,7 @@ $('#login-button').click(function () {
 
 		var i;
         var j;
+		var alreadycontained = false;
 		for (i = 0; i <= commonwords.length; i++) {
 			if(pass1.includes(commonwords[i]) && commonwords[i].length > 2) {
 
@@ -175,15 +176,21 @@ $('#login-button').click(function () {
                 for (j = 0; j < containslist.length; j++) {
                     console.log(containslist[j]);
                     console.log(commonwords[i]);
-                    if (!containslist.includes(commonwords[i]) && !commonwords[i].includes(containslist[j])) {
-                        containslist.push(commonwords[i]);
-						j++;
-                    } else if ((containslist[j].includes(commonwords[i]) || commonwords[i].includes(containslist[j])) && commonwords[i].length > containslist[j].length){
+                    if ((containslist[j].includes(commonwords[i]) || commonwords[i].includes(containslist[j])) && commonwords[i].length > containslist[j].length){
                         containslist.splice(j, 1);
 						containslist.push(commonwords[i]);
-                    }
+                    } else if (containslist[j].includes(commonwords[i]) || commonwords[i].includes(containslist[j])) {
+                        alreadycontained = true;
+						//containslist.push(commonwords[i]);
+						//j++;
+                    } 
+					
+					if(!alreadycontained){
+						containslist.push(commonwords[i];
+					}
                 }
             }
+			alreadycontained = false;
 		}
 
 		var commonwordcount = containslist.length;
