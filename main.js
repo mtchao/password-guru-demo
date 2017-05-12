@@ -168,18 +168,21 @@ $('#login-button').click(function () {
 		var i;
         var j;
 		var alreadycontained = false;
+		var longest = true;
 		for (i = 0; i <= commonwords.length; i++) {
 			if(pass1.includes(commonwords[i]) && commonwords[i].length > 2) {
-
-                //trying not to put the user in double jeopardy, i.e. registering "too" and "tool" as two separate instances
+				containslist.push(commonwords[i]);
+               
+				/*
+			   //trying not to put the user in double jeopardy, i.e. registering "too" and "tool" as two separate instances
                 //this only works if the shorter of the two instances is inputted first. But I'm dumb someone fix this
                 for (j = 0; j < containslist.length; j++) {
-                    console.log(containslist[j]);
+                     
+				   console.log(containslist[j]);
                     console.log(commonwords[i]);
                     if ((commonwords[i].includes(containslist[j]) || containslist[j].includes(commonwords[i])) && commonwords[i].length > containslist[j].length){
                         containslist.splice(j, 1);
-						containslist.push(commonwords[i]);
-						alreadycontained = true;
+						var longest = true;
                     } else if (containslist[j].includes(commonwords[i]) || commonwords[i].includes(containslist[j])) {
                         alreadycontained = true;
 						//containslist.push(commonwords[i]);
@@ -189,10 +192,32 @@ $('#login-button').click(function () {
 					if(!alreadycontained){
 						containslist.push(commonwords[i]);
 					}
+					if(longest){
+						containslist.push(commonwords[i]);
+					}
+					
+					
                 }
             }
-			alreadycontained = false;
+			*/
 		}
+			var longest = true;
+			var word;
+			var longest;
+	for(i = 0; i <= containslist.length; i++){
+		word = containslist[i];
+		for (j = 0; j <= containslist.length; j++){
+			if (word.includes(containslist[j])){
+			containslist.splice(j, 1);
+			} else if (containslist[j].includes(word){
+			longest = false;
+			}
+		}
+		if(!longest) {
+			containslist.splice(i, 1);
+		}
+	}
+			
 
 		var commonwordcount = containslist.length;
 		console.log(containslist);
