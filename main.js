@@ -166,19 +166,20 @@ $('#login-button').click(function () {
         var containslist = ["zzzzzzzzzz"];
 
 		var i;
+        var j;
 		for (i = 0; i <= commonwords.length; i++) {
 			if(pass1.includes(commonwords[i]) && commonwords[i].length > 2) {
 
                 //trying not to put the user in double jeopardy, i.e. registering "too" and "tool" as two separate instances
                 //this only works if the shorter of the two instances is inputted first. But I'm dumb someone fix this
-                for (i = 0; i <= containslist.length; i++) {
-                    console.log(containslist[i]);
+                for (j = 0; j <= containslist.length; j++) {
+                    console.log(containslist[j]);
                     console.log(commonwords[i]);
-                    if (!containslist[i].includes(commonwords[i]) && !commonwords[i].includes(containslist[i])) {
+                    if (!containslist[j].includes(commonwords[i]) && !commonwords[i].includes(containslist[j])) {
                         containslist.push(commonwords[i]);
                         commonwordcount++;
-                    } else if ((containslist[i].includes(commonwords[i]) || commonwords[i].includes(containslist[i])) && commonwords[i].length > containslist[i].length){
-                        containslist[i] = commonwords[i];
+                    } else if ((containslist[j].includes(commonwords[i]) || commonwords[i].includes(containslist[j])) && commonwords[i].length > containslist[j].length){
+                        containslist[j] = commonwords[i];
                     }
                 }
             }
