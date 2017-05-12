@@ -172,7 +172,7 @@ $('#login-button').click(function () {
 
                 //trying not to put the user in double jeopardy, i.e. registering "too" and "tool" as two separate instances
                 //this only works if the shorter of the two instances is inputted first. But I'm dumb someone fix this
-                for (j = 0; j <= containslist.length; j++) {
+                for (j = 0; j < containslist.length; j++) {
                     console.log(containslist[j]);
                     console.log(commonwords[i]);
                     if (!containslist[j].includes(commonwords[i]) && !commonwords[i].includes(containslist[j])) {
