@@ -175,7 +175,7 @@ $('#login-button').click(function () {
                 for (j = 0; j < containslist.length; j++) {
                     console.log(containslist[j]);
                     console.log(commonwords[i]);
-                    if (!containslist[j].includes(commonwords[i]) && !commonwords[i].includes(containslist[j])) {
+                    if (!containslist.includes(commonwords[i]) && !commonwords[i].includes(containslist[j])) {
                         containslist.push(commonwords[i]);
 						j++;
                     } else if ((containslist[j].includes(commonwords[i]) || commonwords[i].includes(containslist[j])) && commonwords[i].length > containslist[j].length){
