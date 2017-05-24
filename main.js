@@ -124,7 +124,8 @@ $('#login-button').click(function () {
 
         var pass1 = $('#password').val();
         var user1 = $('#username').val();
-        var passguruReturnArray = guruStrengthTest(pass1, user1);
+        var passguruReturnArray = "";
+		//guruStrengthTest(pass1, user1);
         var strengthScore = passguruReturnArray[0];
         var lengthBool = passguruReturnArray[0];
         var commonPassBool = passguruReturnArray[0];
