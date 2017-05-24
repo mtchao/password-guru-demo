@@ -32,7 +32,7 @@ function guruStrengthTest(username, password) {
 
         var specialCharCount = 0;
         var numberCount = 0;
-        var letterCount = 0;
+        var uppercaseCount = 0;
         var leetCount = 0;
 
         var specialCharList = "`~!@#$%^&*()_+-=-[]{}\|;:'<<,>.?//*-";
@@ -52,7 +52,7 @@ function guruStrengthTest(username, password) {
             } else if (specialCharList.includes(characterValue)) {
                 specialCharCount++;
             } else {
-                letterCount++;
+                uppercaseCount++;
             }
         }
 
