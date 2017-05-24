@@ -3,7 +3,7 @@ var totalscore = 0;
 var strengthScore = 0;
 
 function guruStrengthTest(pass1,user1) {
-  return [50,0,1,0,1];
+  return [99,0,1,0,1];
 }
 $(function() {
     $("#password").keyup(function checkCommon() {
