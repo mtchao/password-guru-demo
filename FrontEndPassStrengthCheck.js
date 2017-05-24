@@ -247,8 +247,9 @@ for(i = 0; i < containslist.length; i++){
   //create recommendation string
   
   var lowestScore = Math.min(lengthscore, commonpasswordscore, commonwordscore, specialCharScore, lowercaseScore, uppercaseScore, numberScore);
-  
-  if(lowestScore == lengthscore) {
+  if(lowestScore == 0){
+	strengthResults[5] = "Try making your password longer."
+  } else if(lowestScore == lengthscore) {
 	  strengthResults[5] = "Try making your password longer."
   } else if (lowestScore == commonpasswordscore) {
 	  strengthResults[5] = "This is a commonly used password. Please try another."
@@ -257,11 +258,15 @@ for(i = 0; i < containslist.length; i++){
   } else if (lowestScore == specialCharScore) {
 	  strengthResults[5] = "Try to use special characters in addition to letters, but avoid common substitutions such as an @ for an A."
   } else if (lowestScore == lowercaseScore) {
-	  strengthResults[5] = "Use capital letters in addition to lower case."
-  } else if (lowestScore == uppercaseScore) {
 	  strengthResults[5] = "Use lower case letters in addition to capitals"
+  } else if (lowestScore == uppercaseScore) {
+	 	  strengthResults[5] = "Use capital letters in addition to lower case."
   } else if (lowestScore == numberScore) {
 	  strengthResults[5] = "Try adding numbers."
+  }
+  
+  if(totalscore < 80){
+	  strengthResults[5] = "This looks like a strong password."
   }
   
   console.log(strengthResults);
