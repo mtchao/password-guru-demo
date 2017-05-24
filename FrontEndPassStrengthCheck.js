@@ -77,8 +77,6 @@ function guruStrengthTest(username, password) {
         var simplePassword = pass1;
         var commonSubstitutions = 0;
         for (var leetChar in leet) {
-			console.log(leetChar);
-			console.log(leet[leetChar]);
             simplePassword = simplePassword.replace(leetChar, leet[leetChar]);
         }
 
@@ -119,11 +117,12 @@ for(i = 0; i < containslist.length; i++){
 }
 
 
-  var commonwordcount = containslist.length;
+
   console.log(containslist);
-  console.log(commonwordcount);
+  
       // should clear containslist here but we're doing it later since that's where we do score calculations and we need it
 
+	  /*
       if(commonwordcount > 1) {
           document.getElementById("picture4").src = "cross.jpg";
           commonwordscore = 0;
@@ -136,9 +135,8 @@ for(i = 0; i < containslist.length; i++){
       }
   console.log(commonwordcount);
       commonwordcount = 0;
-
-
-  totalscore = lengthscore + commonpasswordscore + commonwordscore;
+	  
+	  
 
   if (simplePassword.length == 0) {
     document.getElementById("picture1").src = "che.jpg";
@@ -148,6 +146,8 @@ for(i = 0; i < containslist.length; i++){
   if(totalscore < 0) {
     totalscore = 0;
   }
+  
+  */
 
   //we want the user to get a total score out of 100. Trying to balance these scores to that scale... we'll also send
   //a response as to what the lowest score was.
@@ -237,8 +237,10 @@ for(i = 0; i < containslist.length; i++){
   totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore;
   
   strengthResults[0] = totalscore;
-
+  
   console.log(strengthResults);
+  
+  
   return strengthResults;
 
 }
