@@ -40,14 +40,14 @@ function guruStrengthTest(username, password) {
         var leets = "48({<31057";
 
         for (i = 0; i < pass1.length; i++) {
-            var at = pass1[i];
-            console.log(at);
+            var characterValue = pass1[i];
+            console.log(characterValue);
 
-            if (leets.includes(at)) {
+            if (leets.includes(characterValue)) {
                 leetCount++;
-            } else if (numberList.includes(at)) {
+            } else if (numberList.includes(characterValue)) {
                 numberCount++;
-            } else if (specialCharCountList.includes(at)) {
+            } else if (specialCharList.includes(characterValue)) {
                 specialCharCount++;
             } else {
                 letterCount++;

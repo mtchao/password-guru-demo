@@ -6,7 +6,7 @@ $(function() {
     $("#password").keyup(function checkCommon() {
         var pass1 = $('#password').val();
         var user1 = $('#username').val();
-        passguruReturnArray = guruStrengthTest(user1, pass1)
+        passguruReturnArray = guruStrengthTest(user1, pass1);
         strengthScore = passguruReturnArray[0];
         var lengthBool = passguruReturnArray[1];
 		    var commonPassBool = passguruReturnArray[2];
