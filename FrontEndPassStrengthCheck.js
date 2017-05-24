@@ -67,7 +67,7 @@ function guruStrengthTest(username, password) {
         }
 
         simplePassword = simplePassword.toLowerCase();
-        console.log(simplePassword + specialCharCount + numberCount + letterCount + leetCount);
+        console.log(simplePassword + leetCount + specialCharCount + numberCount + uppercaseCount + lowercaseCount);
 
 
 
