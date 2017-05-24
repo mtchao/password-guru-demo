@@ -159,7 +159,7 @@ for(i = 0; i < containslist.length; i++){
     lengthscore = -100;
 	strengthResults[1] = 0;
   }
-   else if (simplePassword.length == 9 ||) {
+   else if (simplePassword.length == 9) {
 	  // still short
     lengthscore = -20;
   }
