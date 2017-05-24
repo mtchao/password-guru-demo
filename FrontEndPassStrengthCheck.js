@@ -61,8 +61,6 @@ function guruStrengthTest(username, password) {
         var simplePassword = pass1;
         var commonSubstitutions = 0;
         for (var leetChar in leet) {
-			console.log(leetChar);
-			console.log(leet[leetChar]);
             simplePassword = simplePassword.replace(leetChar, leet[leetChar]);
         }
 
