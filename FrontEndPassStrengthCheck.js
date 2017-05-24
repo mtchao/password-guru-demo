@@ -154,26 +154,26 @@ for(i = 0; i < containslist.length; i++){
   
   
   //begining with a simple length test
-  if (simplePassword.length < 9) {
+  if (simplePassword.length < 7) {
 	  //do not allow 8 or lower
-    lengthscore = -100;
+    lengthscore = -101;
 	strengthResults[1] = 0;
   }
-   else if (simplePassword.length == 9) {
+   else if (simplePassword.length == 8) {
 	  // still short
     lengthscore = -20;
   }
-		else  if (simplePassword.length == 10){
+		else  if (simplePassword.length == 9){
 			//basically fine
 			 strengthResults[1] = 1;
 			lengthscore = 0;
-	} else if (simplePassword.length >= 18){
+	} else if (simplePassword.length >= 17){
 		//don't want to give them too many points for length so that other things can still weigh them down
 			lengthscore = 80;
   } else {
-	  //11-17 is between 10-70 points extra
+	  //10-17 is between 10-70 points extra
 	  //maybe some form of logarithm would be better 
-	  lengthscore = ((simplePassword.length - 10) * 10);
+	  lengthscore = ((simplePassword.length - 9) * 10);
   }
 
   //now checking if the words in the password are in the common passwords list
@@ -208,15 +208,17 @@ for(i = 0; i < containslist.length; i++){
   var uppercaseScore = 0;
   
  if(specialCharCount == 0){
-	specialCharScore = -5;
- }  else if (specialCharCount > 1) {
-	specialCharScore  = 5;
+	specialCharScore = -8;
+ }   else if (specialCharCount == 0 && leetCount > 0) {
+	specialCharScore  = -6;
+ } else if (specialCharCount > 1) {
+	specialCharScore  = 7;
  }
  
  if(numberCount == 0){
-	 numberScore = -5;
+	 numberScore = -6;
  } else if (numberCount > 1){
-	 numberScore = 5;
+	 numberScore = 6;
  }
  
  /* not counting lowercases because who cares really
@@ -228,9 +230,9 @@ for(i = 0; i < containslist.length; i++){
  */
  
  if(uppercaseCount == 0){
-	 uppercaseScore = -5;
+	 uppercaseScore = -4;
  } else if (uppercaseCount > 1){
-	 uppercaseScore = 5;
+	 uppercaseScore = 4;
  }
 	
 	
@@ -240,6 +242,29 @@ for(i = 0; i < containslist.length; i++){
   totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore;
   
   strengthResults[0] = totalscore;
+  
+  
+  //create recommendation string
+  
+  var lowestScore = Math.min(lengthscore, commonpasswordscore, commonwordscore, specialCharScore, lowercaseScore, uppercaseScore, numberScore);
+  
+  if(lowestScore == lengthscore) {
+	  strengthResults[5] = "Try making your password longer."
+  } else if {(lowestScore == commonpasswordscore) {
+	  strengthResults[5] = "This is a commonly used password. Please try another."
+  } else if {(lowestScore == commonwordscore) {
+	  strengthResults[5] = "Common words are easy to guess in passwords. Try using more uncommon words, or even better, an easy to remember acronym."
+  } else if {(lowestScore == specialCharScore) {
+	  strengthResults[5] = "Try to use special characters in addition to letters, but avoid common substitutions such as an @ for an A."
+  } else if { (lowestScore == lowercaseScore) {
+	  strengthResults[5] = "Use capital letters in addition to lower case."
+  } else if {(lowestScore == uppercaseScore) {
+	  strengthResults[5] = "Use lower case letters in addition to capitals"
+  } else if {(lowestScore == numberScore) {
+	  strengthResults[5] = "Try adding numbers."
+  } else if {
+	  
+  }
   
   console.log(strengthResults);
   

@@ -9,9 +9,10 @@ $(function() {
         passguruReturnArray = guruStrengthTest(user1, pass1);
         strengthScore = passguruReturnArray[0];
         var lengthBool = passguruReturnArray[1];
-		    var commonPassBool = passguruReturnArray[2];
+		var commonPassBool = passguruReturnArray[2];
         var commonWordBool = passguruReturnArray[3];
         var multipleCommonWordBool = passguruReturnArray[4];
+		var recommendation = passguruReturnArray[5];
 
         if (lengthBool == 1) {
 			      document.getElementById("picture1").src = "che.jpg";
@@ -43,6 +44,7 @@ $(function() {
         }
 
 		    $('#score').text(strengthScore);
+			$('#recommendation').text(recommendation);
     });
 
     $('#register-button').click(function() {
