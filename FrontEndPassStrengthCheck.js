@@ -68,7 +68,7 @@ function guruStrengthTest(username, password) {
 
 
         //creates a new password with common leetspeak taken out
-        var simplePassword = password.value;
+        var simplePassword = password;
         var commonSubstitutions = 0;
         for (var leetChar in leet) {
             simplePassword.replace(leetChar, leet[leetChar]);
