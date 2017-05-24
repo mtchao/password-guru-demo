@@ -81,7 +81,7 @@ function guruStrengthTest(username, password) {
         }
 
         simplePassword = simplePassword.toLowerCase();
-        console.log(simplePassword + specialCharCount + numberCount + upperCaseCount + leetCount);
+        console.log(simplePassword + specialCharCount + numberCount + uppercaseCount + leetCount);
   
   //filtering out "double jeopardy" matches
   var containslist = [""];
