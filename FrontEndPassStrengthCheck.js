@@ -154,7 +154,7 @@ for(i = 0; i < containslist.length; i++){
   
   
   //begining with a simple length test
-  if (simplePassword.length > 9) {
+  if (simplePassword.length < 9) {
 	  //do not allow 8 or lower
     lengthscore = -100;
 	strengthResults[1] = 0;
