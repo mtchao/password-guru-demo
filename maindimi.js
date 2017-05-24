@@ -2,16 +2,19 @@ var passguruReturnArray = [];
 var totalscore = 0;
 var strengthScore = 0;
 
+function guruStrengthTest(pass1,user1) {
+  return [50,0,1,0,1];
+}
 $(function() {
     $("#password").keyup(function checkCommon() {
         var pass1 = $('#password').val();
         var user1 = $('#username').val();
         passguruReturnArray = guruStrengthTest(pass1, user1)
         strengthScore = passguruReturnArray[0];
-        var lengthBool = passguruReturnArray[0];
-		    var commonPassBool = passguruReturnArray[0];
-        var commonWordBool = passguruReturnArray[0];
-        var capitalBool = passguruReturnArray[0];
+        var lengthBool = passguruReturnArray[1];
+		    var commonPassBool = passguruReturnArray[2];
+        var commonWordBool = passguruReturnArray[3];
+        var capitalBool = passguruReturnArray[4];
 
         if (lengthBool == 1) {
 			      document.getElementById("picture1").src = "che.jpg";
@@ -35,6 +38,11 @@ $(function() {
             document.getElementById("picture4").src = "che.jpg";
         } else {
 			       document.getElementById("picture4").src = "cross.jpg";
+        }
+        if (strengthScore < 70) {
+             document.getElementById("register-button").style.color = "grey";
+        } else {
+              document.getElementById("register-button").style.color = null;
         }
 
 		    $('#score').text(strengthScore);
