@@ -78,12 +78,14 @@ $('#login-button').click(function () {
 	var leets = "48({<31057"
 	
 	for(i = 0; i < password.length; i++){
+		var at = password.charAt(i);
+		console.log(at);
 		
-		if(specialCharList.contains(password.charAt(i)){
+		if(specialCharList.contains(at){
 			specialCharCount++;
-		} else if (numberList.contains(password.charAt(i){
+		} else if (numberList.contains(at){
 			numberlist++;
-		} else if (numberList.contains(password.charAt(i){
+		} else if (numberList.contains(at){
 			leetCount++;
 		} else {
 			letterlist++;
