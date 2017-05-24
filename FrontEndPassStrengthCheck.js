@@ -42,12 +42,12 @@ function guruStrengthTest(username, password) {
             var at = pass1[i];
             console.log(at);
 
-            if (specialCharList.includes(at)) {
-                specialCharCount++;
+            if (leetList.includes(at)) {
+                leetCount++;
             } else if (numberList.includes(at)) {
                 numberCount++;
-            } else if (numberList.includes(at)) {
-                leetCount++;
+            } else if (specialCharCountList.includes(at)) {
+                specialCharCount++;
             } else {
                 letterCount++;
             }
@@ -55,6 +55,7 @@ function guruStrengthTest(username, password) {
 
         var leet = {
             "0": "o",
+			"!": "i",
             "1": "i",
             "3": "e",
             "4": "a",
