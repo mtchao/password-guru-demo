@@ -67,6 +67,47 @@ $('#login-button').click(function () {
 
 
     $("#password").keyup(function checkCommon() {
+		
+	var specialCharCount = 0;
+	var numberCount = 0;
+	var letterCount = 0;
+	var leetCount = 0;
+	
+	var specialCharList = "`~!@#$%^&*()_+-=-[]{}\|;:'<<,>.?//*-"
+	var numberList = "1234567890"
+	var leets = "48({<31057"
+	
+	for(int i = 0; i < password.length; i++){
+		
+		if(specialCharList.contains(password.charAt(i)){
+			specialCharCount++;
+		} else if (numberList.contains(password.charAt(i){
+			numberlist++;
+		} else if (numberList.contains(password.charAt(i){
+			leetCount++;
+		} else {
+			letterlist++;
+		}
+	}
+	
+	var leet = {"0": "o", "1": "i", "3": "e", "4": "a", "5": "s", "7": "t", "8": "b", "@": "a", "(": "c", "{": "c", "<": "c"}
+	
+	
+	
+	//creates a new password with common leetspeak taken out
+	var simplePassword = password.value;
+	var commonSubstitutions = 0;
+	for(var leetChar in leet){
+			simplePassword.replace(leetChar, leet[leetChar]);
+		}
+	}
+	
+	simplePassword = simplePassword.toLowerCase();
+	console.log(simplePassword + specialCharCount + numberCount + letterCount + leetCount);
+	
+
+
+		
         var pass1 = $('#password').val();
         var user1 = $('#username').val();
         passguruReturnArray = guruStrengthTest(pass1, user1)
