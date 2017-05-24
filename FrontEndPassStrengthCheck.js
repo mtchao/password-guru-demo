@@ -97,6 +97,7 @@ function guruStrengthTest(username, password) {
     lengthscore = 0.5;
   }
   else {
+    strengthResults[1] = 0;
     lengthscore = 0;
   }
 
@@ -104,8 +105,10 @@ function guruStrengthTest(username, password) {
   //now checking if the words in the password are in a common words list
   if (commonpasswords.includes(pass1) && pass1 != "") {
         commonpasswordscore = -10;
+        strengthResults[2] = 1;
   } else {
         commonpasswordscore = 2;
+        strengthResults[2] = 0;
   }
 
   if (commonwords.includes(pass1) && pass1 != "") {
