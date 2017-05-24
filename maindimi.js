@@ -14,7 +14,7 @@ $(function() {
         var lengthBool = passguruReturnArray[1];
 		    var commonPassBool = passguruReturnArray[2];
         var commonWordBool = passguruReturnArray[3];
-        var capitalBool = passguruReturnArray[4];
+        var multipleCommonWordBool = passguruReturnArray[4];
 
         if (lengthBool == 1) {
 			      document.getElementById("picture1").src = "che.jpg";
