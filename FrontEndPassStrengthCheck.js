@@ -46,7 +46,7 @@ function guruStrengthTest(username, password) {
                 leetCount++;
             } else if (numberList.includes(at)) {
                 numberCount++;
-            } else if (specialCharCountList.includes(at)) {
+            } else if (specialCharList.includes(at)) {
                 specialCharCount++;
             } else if (upperCase.includes(at){
                 uppercaseCount++;
