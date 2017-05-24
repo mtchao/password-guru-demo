@@ -102,7 +102,6 @@ $('#login-button').click(function () {
 	for(var leetChar in leet){
 			simplePassword.replace(leetChar, leet[leetChar]);
 		}
-	}
 	
 	simplePassword = simplePassword.toLowerCase();
 	console.log(simplePassword + specialCharCount + numberCount + letterCount + leetCount);
