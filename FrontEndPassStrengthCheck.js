@@ -38,7 +38,7 @@ function guruStrengthTest(username, password) {
         var specialCharList = "`~!@#$%^&*()_+-=-[]{}\|;:'<<,>.?//*-";
         var numberList = "1234567890";
         var leets = "48({<31057";
-		var lowerCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
         for (i = 0; i < pass1.length; i++) {
             var at = pass1[i];
