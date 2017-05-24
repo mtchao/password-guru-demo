@@ -1,3 +1,4 @@
+
 //code that loads the common words and common passwords file
 
 $(document).ready(function() {
@@ -24,58 +25,65 @@ $(document).ready(function() {
     });
 });
 
-
+var strengthResults = [0,0,0,0,0]
 function guruStrengthTest(username, password) {
-	
+
 	var pass1 = password;
 
         var specialCharCount = 0;
         var numberCount = 0;
-        var lowercaseCount = 0;
-		var uppercaseCount = 0;
+        var letterCount = 0;
         var leetCount = 0;
 
         var specialCharList = "`~!@#$%^&*()_+-=-[]{}\|;:'<<,>.?//*-";
         var numberList = "1234567890";
         var leets = "48({<31057";
+
 		var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         for (i = 0; i < pass1.length; i++) {
-            var at = pass1[i];
-            if (leets.includes(at)) {
+            var characterValue = pass1[i];
+            console.log(characterValue);
+
+            if (leets.includes(characterValue)) {
                 leetCount++;
-            } else if (numberList.includes(at)) {
+            } else if (numberList.includes(characterValue)) {
                 numberCount++;
-            } else if (specialCharList.includes(at)) {
+            } else if (specialCharList.includes(characterValue)) {
                 specialCharCount++;
-            } else if (upperCase.includes(at)){
-                uppercaseCount++;
             } else {
-				lowercaseCount++;
-			}
+                letterCount++;
+            }
         }
 
-        var leet = {"0": "o", "!": "i", "1": "i", "3": "e", "4": "a", "5": "s", "7": "t", "8": "b", "@": "a", "(": "c", "{": "c", "<": "c"}
+        var leet = {
+            "0": "o",
+			"!": "i",
+            "1": "i",
+            "3": "e",
+            "4": "a",
+            "5": "s",
+            "7": "t",
+            "8": "b",
+            "@": "a",
+            "(": "c",
+            "{": "c",
+            "<": "c"
+        }
+
+
 
         //creates a new password with common leetspeak taken out
         var simplePassword = pass1;
         var commonSubstitutions = 0;
         for (var leetChar in leet) {
+			console.log(leetChar);
+			console.log(leet[leetChar]);
             simplePassword = simplePassword.replace(leetChar, leet[leetChar]);
-			simplePassword = simplePassword.replace(leetChar, leet[leetChar]);
-			simplePassword = simplePassword.replace(leetChar, leet[leetChar]);
         }
 
         simplePassword = simplePassword.toLowerCase();
-        console.log(simplePassword + leetCount + specialCharCount + numberCount + uppercaseCount + lowercaseCount);
-
-
-
-	
-
-
-
-
+        console.log(simplePassword + specialCharCount + numberCount + letterCount + leetCount);
   
   //filtering out "double jeopardy" matches
   var containslist = [""];
@@ -141,7 +149,6 @@ for(i = 0; i < containslist.length; i++){
     totalscore = 0;
   }
 
-  
   //we want the user to get a total score out of 100. Trying to balance these scores to that scale... we'll also send
   //a response as to what the lowest score was.
   
@@ -150,6 +157,7 @@ for(i = 0; i < containslist.length; i++){
   if (simplePassword.length > 9) {
 	  //do not allow 8 or lower
     lengthscore = -100;
+	strengthResults[1] = 0;
   }
    else if (simplePassword.length == 9 ||) {
 	  // still short
@@ -157,6 +165,7 @@ for(i = 0; i < containslist.length; i++){
   }
 		else  if (simplePassword.length == 10){
 			//basically fine
+			 strengthResults[1] = 1;
 			lengthscore = 0;
 	} else if (simplePassword.length >= 18){
 		//don't want to give them too many points for length so that other things can still weigh them down
@@ -170,8 +179,10 @@ for(i = 0; i < containslist.length; i++){
   //now checking if the words in the password are in the common passwords list
   if (commonpasswords.includes(simplePassword) ||  commonpasswords.includes(pass1) && simplePassword != "") {
         commonpasswordscore = -100;
+		strengthResults[2] = 1;
   } else {
         commonpasswordscore = 0;
+		strengthResults[2] = 0;
   }
   
   
@@ -225,5 +236,11 @@ for(i = 0; i < containslist.length; i++){
   
   totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore;
   
-  return totalscore;
+  strengthResults[0] = totalscore;
+
+  console.log(strengthResults);
+  return strengthResults;
+
 }
+
+

@@ -2,14 +2,11 @@ var passguruReturnArray = [];
 var totalscore = 0;
 var strengthScore = 0;
 
-function guruStrengthTest(pass1,user1) {
-  return [99,0,1,0,1];
-}
 $(function() {
     $("#password").keyup(function checkCommon() {
         var pass1 = $('#password').val();
         var user1 = $('#username').val();
-        passguruReturnArray = guruStrengthTest(user1, pass1)
+        passguruReturnArray = guruStrengthTest(user1, pass1);
         strengthScore = passguruReturnArray[0];
         var lengthBool = passguruReturnArray[1];
 		    var commonPassBool = passguruReturnArray[2];
