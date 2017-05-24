@@ -31,44 +31,31 @@ function guruStrengthTest(username, password) {
 
         var specialCharCount = 0;
         var numberCount = 0;
-        var letterCount = 0;
+        var lowercaseCount = 0;
+		var uppercaseCount = 0;
         var leetCount = 0;
 
         var specialCharList = "`~!@#$%^&*()_+-=-[]{}\|;:'<<,>.?//*-";
         var numberList = "1234567890";
         var leets = "48({<31057";
+		var lowerCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
         for (i = 0; i < pass1.length; i++) {
             var at = pass1[i];
-            console.log(at);
-
             if (leets.includes(at)) {
                 leetCount++;
             } else if (numberList.includes(at)) {
                 numberCount++;
             } else if (specialCharCountList.includes(at)) {
                 specialCharCount++;
+            } else if (upperCase.includes(at){
+                uppercaseCount++;
             } else {
-                letterCount++;
-            }
+				lowercaseCount++;
+			}
         }
 
-        var leet = {
-            "0": "o",
-			"!": "i",
-            "1": "i",
-            "3": "e",
-            "4": "a",
-            "5": "s",
-            "7": "t",
-            "8": "b",
-            "@": "a",
-            "(": "c",
-            "{": "c",
-            "<": "c"
-        }
-
-
+        var leet = {"0": "o", "!": "i", "1": "i", "3": "e", "4": "a", "5": "s", "7": "t", "8": "b", "@": "a", "(": "c", "{": "c", "<": "c"}
 
         //creates a new password with common leetspeak taken out
         var simplePassword = pass1;
