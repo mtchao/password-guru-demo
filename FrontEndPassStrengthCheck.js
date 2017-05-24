@@ -41,19 +41,19 @@ function guruStrengthTest(username, password) {
 
 		var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+		//this part could be rewritten to define "special character" as anything except a defined list (more exhaustive else case)
         for (i = 0; i < pass1.length; i++) {
             var characterValue = pass1[i];
-            console.log(characterValue);
-
+            
             if (leets.includes(characterValue)) {
                 leetCount++;
             } else if (numberList.includes(characterValue)) {
                 numberCount++;
             } else if (specialCharList.includes(characterValue)) {
                 specialCharCount++;
-            } else {
+            } else if (upperCase.includes(characterValue)) {
                 uppercaseCount++;
-            }
+            } 
         }
 
         var leet = {
@@ -81,7 +81,7 @@ function guruStrengthTest(username, password) {
         }
 
         simplePassword = simplePassword.toLowerCase();
-        console.log(simplePassword + specialCharCount + numberCount + letterCount + leetCount);
+        console.log(simplePassword + specialCharCount + numberCount + upperCaseCount + leetCount);
   
   //filtering out "double jeopardy" matches
   var containslist = [""];
