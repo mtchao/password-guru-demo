@@ -1,3 +1,4 @@
+
 //code that loads the common words and common passwords file
 
 $(document).ready(function() {
@@ -24,58 +25,72 @@ $(document).ready(function() {
     });
 });
 
-
+var strengthResults = [0,0,0,0,0]
 function guruStrengthTest(username, password) {
-	
+
 	var pass1 = password;
 
         var specialCharCount = 0;
         var numberCount = 0;
-        var lowercaseCount = 0;
-		var uppercaseCount = 0;
+        var letterCount = 0;
         var leetCount = 0;
 
         var specialCharList = "`~!@#$%^&*()_+-=-[]{}\|;:'<<,>.?//*-";
         var numberList = "1234567890";
         var leets = "48({<31057";
-		var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
         for (i = 0; i < pass1.length; i++) {
             var at = pass1[i];
+            console.log(at);
+
             if (leets.includes(at)) {
                 leetCount++;
             } else if (numberList.includes(at)) {
                 numberCount++;
-            } else if (specialCharList.includes(at)) {
+            } else if (specialCharCountList.includes(at)) {
                 specialCharCount++;
-            } else if (upperCase.includes(at)){
-                uppercaseCount++;
             } else {
-				lowercaseCount++;
-			}
+                letterCount++;
+            }
         }
 
-        var leet = {"0": "o", "!": "i", "1": "i", "3": "e", "4": "a", "5": "s", "7": "t", "8": "b", "@": "a", "(": "c", "{": "c", "<": "c"}
+        var leet = {
+            "0": "o",
+			"!": "i",
+            "1": "i",
+            "3": "e",
+            "4": "a",
+            "5": "s",
+            "7": "t",
+            "8": "b",
+            "@": "a",
+            "(": "c",
+            "{": "c",
+            "<": "c"
+        }
+
+
 
         //creates a new password with common leetspeak taken out
         var simplePassword = pass1;
         var commonSubstitutions = 0;
         for (var leetChar in leet) {
+			console.log(leetChar);
+			console.log(leet[leetChar]);
             simplePassword = simplePassword.replace(leetChar, leet[leetChar]);
-			simplePassword = simplePassword.replace(leetChar, leet[leetChar]);
-			simplePassword = simplePassword.replace(leetChar, leet[leetChar]);
         }
 
         simplePassword = simplePassword.toLowerCase();
-        console.log(simplePassword + leetCount + specialCharCount + numberCount + uppercaseCount + lowercaseCount);
+        console.log(simplePassword + specialCharCount + numberCount + letterCount + leetCount);
 
 
 
-	
+
 
   //begining with a simple length test
   if (pass1.length > 9) {
     lengthscore = 1;
+    strengthResults[1] = 1;
   }
 
    else if (pass1.length <= 9 && pass1.length >=8) {
@@ -189,6 +204,6 @@ for(i = 0; i < containslist.length; i++){
   if(totalscore < 0) {
     totalscore = 0;
   }
-
-  return totalscore * 20;
+  console.log(strengthResults);
+  return strengthResults;
 }
