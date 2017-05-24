@@ -26,6 +26,8 @@ $(document).ready(function() {
 
 
 function guruStrengthTest(username, password) {
+	
+	var pass1 = password;
 
         var specialCharCount = 0;
         var numberCount = 0;
