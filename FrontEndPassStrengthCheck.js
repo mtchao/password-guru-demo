@@ -48,7 +48,7 @@ function guruStrengthTest(username, password) {
                 numberCount++;
             } else if (specialCharList.includes(at)) {
                 specialCharCount++;
-            } else if (upperCase.includes(at){
+            } else if (upperCase.includes(at)){
                 uppercaseCount++;
             } else {
 				lowercaseCount++;
