@@ -1,44 +1,5 @@
-/*
-    $.get("/ping", function(data){
-        if(data.error == "true"){
-            $("#results").prepend("<div class='alert alert-danger'><strong>Error!</strong> "+ data.message +"</div>");
-        }
-    }, "json")
-
-    $("#submit1").click(function(){
-      alert("it worked!")
-      submitData();
-    });
-*/
-var commonpasswords = '';
-var commonwords = '';
+var passguruReturnArray = [];
 var totalscore = 0;
-
-$(document).ready(function() {
-    fetch('10k_most_common.txt').then(function(response) {
-        if (response.ok) {
-            response.text().then(function(text) {
-
-                commonpasswords = text.split('\n');
-            });
-        } else {
-            console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
-        }
-    })
-
-    fetch('google-10000-english-usa.txt').then(function(response) {
-        if (response.ok) {
-            response.text().then(function(text) {
-
-                commonwords = text.split('\n');
-            });
-        } else {
-            console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
-        }
-    });
-});
-
-
 function getForm(form) {
     console.log(words.length);
 
@@ -103,66 +64,37 @@ $('#login-button').click(function () {
 })
 })
 */
+
+
     $("#password").keyup(function checkCommon() {
-
-		if (totalscore < 3.0) {
-      document.getElementById("register-button").style["color"] = "grey";
-    }
-    if (totalscore > 3.0) {
-      document.getElementById("register-button").style["color"] = "white";
-    }
-		var lengthscore = 0;
-		var commonpasswordscore = 0;
-		var commonwordscore = 0;
-        //console.log("into parse")
-        /*$.get('10k_most_common.txt', function(data) {
-        //split on new lines
-        var lines = data.split('\n');
-        console.log(lines);
-       });*/
-        // var secret = "password";
-        //console.log(typeof Password1);
         var pass1 = $('#password').val();
-		
-		//value of password once it has been split to check for combination of common words
-		var splitpass = '';
+        var user1 = $('#username').val();
+        passguruReturnArray = guruStrengthTest(pass1, user1)
+        var strengthScore = passguruReturnArray[0];
+        var lengthBool = passguruReturnArray[0];
+		    var commonPassBool = passguruReturnArray[0];
+        var commonWordBool = passguruReturnArray[0];
+        var capitalBool = passguruReturnArray[0];
 
-        //Password1 = Password1.toString();
-        //reader.readAsText(10k_most_common.txt, "UTF-8");
-        if (pass1.length > 9) {
-			document.getElementById("picture1").src = "che.jpg";
-			lengthscore = 1;
-		}
+        if (lengthBool == 1) {
+			      document.getElementById("picture1").src = "che.jpg";
+		    } else {
+      			document.getElementById("picture1").src = "cross.jpg";
+  		  }
 
-		 if (pass1.length <= 9 && pass1.length >=8) {
-			document.getElementById("picture1").src = "che.jpg";
-			lengthscore = 0.5;
-		}
-
-        if (pass1.length <= 7) {
-			document.getElementById("picture1").src = "cross.jpg";
-			lengthscore = 0;
-		}
-
-
-
-        if (commonpasswords.includes(pass1) && pass1 != "") {
-            document.getElementById("picture2").src = "cross.jpg";
-			commonpasswordscore = -10;
-        } else {
+        if (commonPassBool == 1) {
             document.getElementById("picture2").src = "che.jpg";
-			commonpasswordscore = 2;
-        }
-
-        if (commonwords.includes(pass1) && pass1 != "") {
-            document.getElementById("picture3").src = "cross.jpg";
-			commonwordscore = 0;
         } else {
-            document.getElementById("picture3").src = "che.jpg";
-			commonwordscore = 1;
+            document.getElementById("picture2").src = "cross.jpg";
         }
 
-		
+        if (commonWordBool == 1) {
+            document.getElementById("picture3").src = "che.jpg";
+        } else {
+            document.getElementById("picture3").src = "cross.jpg";
+        }
+
+
         var containslist = [""];
 
 		var i;
@@ -172,12 +104,12 @@ $('#login-button').click(function () {
 		for (i = 0; i <= commonwords.length; i++) {
 			if(pass1.includes(commonwords[i]) && commonwords[i].length > 2) {
 				containslist.push(commonwords[i]);
-               
+
 				/*
 			   //trying not to put the user in double jeopardy, i.e. registering "too" and "tool" as two separate instances
                 //this only works if the shorter of the two instances is inputted first. But I'm dumb someone fix this
                 for (j = 0; j < containslist.length; j++) {
-                     
+
 				   console.log(containslist[j]);
                     console.log(commonwords[i]);
                     if ((commonwords[i].includes(containslist[j]) || containslist[j].includes(commonwords[i])) && commonwords[i].length > containslist[j].length){
@@ -187,16 +119,16 @@ $('#login-button').click(function () {
                         alreadycontained = true;
 						//containslist.push(commonwords[i]);
 						//j++;
-                    } 
-					
+                    }
+
 					if(!alreadycontained){
 						containslist.push(commonwords[i]);
 					}
 					if(longest){
 						containslist.push(commonwords[i]);
 					}
-					
-					
+
+
                 }
             }
 			*/
@@ -215,14 +147,14 @@ $('#login-button').click(function () {
 			if (word.includes(containslist[j]) && (word.length > containslist[j].length)){
 			containslist.splice(j, 1);
 			}
-			
+
 		}
 		if(!longest) {
 			containslist.splice(containslist.indexOf(word), 1);
 			i = 0;
 		}
 	}
-			
+
 
 		var commonwordcount = containslist.length;
 		console.log(containslist);
@@ -242,7 +174,7 @@ $('#login-button').click(function () {
         }
 		console.log(commonwordcount);
         commonwordcount = 0;
-		
+
 
 		totalscore = lengthscore + commonpasswordscore + commonwordscore;
 
@@ -254,7 +186,7 @@ $('#login-button').click(function () {
 		if(totalscore < 0) {
 			totalscore = 0;
 		}
-		
+
 		$('#score').text(totalscore * 20);
 
         //  if (secret.localeCompare(Password1)) document.getElementById("picture2").src = "che.jpg";
@@ -265,7 +197,7 @@ $('#login-button').click(function () {
 
     $('#register-button').click(function() {
         alert("register submitted")
-		
+
 		//This doesn't work when you use backspace to go down to a lower score.
 
         if($('#score').text == "100" || $('#score').text == "90" ){
