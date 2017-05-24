@@ -219,11 +219,13 @@ for(i = 0; i < containslist.length; i++){
 	 numberScore = 5;
  }
  
+ /* not counting lowercases because who cares really
  if(lowercaseCount == 0){
 	 lowercaseScore = -5;
  } else if (lowercaseCount > 1){
 	 lowercaseScore = 5;
  } 
+ */
  
  if(uppercaseCount == 0){
 	 uppercaseScore = -5;
@@ -231,7 +233,7 @@ for(i = 0; i < containslist.length; i++){
 	 uppercaseScore = 5;
  }
 	
-	charscore = specialCharScore + numberScore + lowercaseScore + uppercaseScore;
+	charscore = specialCharScore + numberScore + uppercaseScore;
   
   
   totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore;
