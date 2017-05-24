@@ -36,6 +36,11 @@ $(function() {
         } else {
 			       document.getElementById("picture4").src = "cross.jpg";
         }
+        if (strengthScore < 70) {
+             document.getElementById("register-button").style.color = "grey";
+        } else {
+              document.getElementById("register-button").style.color = null;
+        }
 
 		    $('#score').text(strengthScore);
     });
