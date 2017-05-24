@@ -250,20 +250,18 @@ for(i = 0; i < containslist.length; i++){
   
   if(lowestScore == lengthscore) {
 	  strengthResults[5] = "Try making your password longer."
-  } else if {(lowestScore == commonpasswordscore) {
+  } else if (lowestScore == commonpasswordscore) {
 	  strengthResults[5] = "This is a commonly used password. Please try another."
-  } else if {(lowestScore == commonwordscore) {
+  } else if (lowestScore == commonwordscore) {
 	  strengthResults[5] = "Common words are easy to guess in passwords. Try using more uncommon words, or even better, an easy to remember acronym."
-  } else if {(lowestScore == specialCharScore) {
+  } else if (lowestScore == specialCharScore) {
 	  strengthResults[5] = "Try to use special characters in addition to letters, but avoid common substitutions such as an @ for an A."
-  } else if { (lowestScore == lowercaseScore) {
+  } else if (lowestScore == lowercaseScore) {
 	  strengthResults[5] = "Use capital letters in addition to lower case."
-  } else if {(lowestScore == uppercaseScore) {
+  } else if (lowestScore == uppercaseScore) {
 	  strengthResults[5] = "Use lower case letters in addition to capitals"
-  } else if {(lowestScore == numberScore) {
+  } else if (lowestScore == numberScore) {
 	  strengthResults[5] = "Try adding numbers."
-  } else if {
-	  
   }
   
   console.log(strengthResults);
