@@ -38,8 +38,8 @@ function guruStrengthTest(username, password) {
         var numberList = "1234567890"
         var leets = "48({<31057"
 
-        for (i = 0; i < password.length; i++) {
-            var at = password.charAt(i);
+        for (i = 0; i < pass1.length; i++) {
+            var at = pass1[i];
             console.log(at);
 
             if (specialCharList.contains(at)) {
@@ -70,7 +70,7 @@ function guruStrengthTest(username, password) {
 
 
         //creates a new password with common leetspeak taken out
-        var simplePassword = password;
+        var simplePassword = pass1;
         var commonSubstitutions = 0;
         for (var leetChar in leet) {
             simplePassword.replace(leetChar, leet[leetChar]);
@@ -182,7 +182,6 @@ for(i = 0; i < containslist.length; i++){
     document.getElementById("picture4").src = "cross.jpg";
           commonwordscore = 0;
       } else {
-    console.log("hit");
     document.getElementById("picture4").src = "che.jpg";
     commonwordscore++;
       }
