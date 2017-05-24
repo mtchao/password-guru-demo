@@ -233,9 +233,10 @@ for(i = 0; i < containslist.length; i++){
 	 uppercaseScore = 5;
  }
 	
+	
 	charscore = specialCharScore + numberScore + uppercaseScore;
   
-  
+  console.log(lengthscore + " " + commonpasswordscore + " " + commonwordscore + " " + charscore);
   totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore;
   
   strengthResults[0] = totalscore;
