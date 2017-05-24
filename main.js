@@ -77,7 +77,7 @@ $('#login-button').click(function () {
 	var numberList = "1234567890"
 	var leets = "48({<31057"
 	
-	for(int i = 0; i < password.length; i++){
+	for(i = 0; i < password.length; i++){
 		
 		if(specialCharList.contains(password.charAt(i)){
 			specialCharCount++;
