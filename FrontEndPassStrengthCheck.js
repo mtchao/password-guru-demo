@@ -38,7 +38,7 @@ function guruStrengthTest(username, password) {
         var specialCharList = "`~!@#$%^&*()_+-=-[]{}\|;:'<<,>.?//*-";
         var numberList = "1234567890";
         var leets = "48({<31057";
-		var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         for (i = 0; i < pass1.length; i++) {
             var at = pass1[i];
@@ -73,33 +73,11 @@ function guruStrengthTest(username, password) {
 
 	
 
-  //begining with a simple length test
-  if (pass1.length > 9) {
-    lengthscore = 1;
-  }
-
-   else if (pass1.length <= 9 && pass1.length >=8) {
-    lengthscore = 0.5;
-  }
-  else {
-    lengthscore = 0;
-  }
 
 
-  //now checking if the words in the password are in a common words list
-  if (commonpasswords.includes(pass1) && pass1 != "") {
-        commonpasswordscore = -10;
-  } else {
-        commonpasswordscore = 2;
-  }
 
-  if (commonwords.includes(pass1) && pass1 != "") {
-        commonwordscore = 0;
-  } else {
-        commonwordscore = 1;
-  }
-
-
+  
+  //filtering out "double jeopardy" matches
   var containslist = [""];
 
   var i;
@@ -107,38 +85,11 @@ function guruStrengthTest(username, password) {
   var alreadycontained = false;
   var longest = true;
   for (i = 0; i <= commonwords.length; i++) {
-    if(pass1.includes(commonwords[i]) && commonwords[i].length > 2) {
+    if(simplePassword.includes(commonwords[i]) && commonwords[i].length > 2) {
       containslist.push(commonwords[i]);
-
-      /*
-       //trying not to put the user in double jeopardy, i.e. registering "too" and "tool" as two separate instances
-              //this only works if the shorter of the two instances is inputted first. But I'm dumb someone fix this
-              for (j = 0; j < containslist.length; j++) {
-
-         console.log(containslist[j]);
-                  console.log(commonwords[i]);
-                  if ((commonwords[i].includes(containslist[j]) || containslist[j].includes(commonwords[i])) && commonwords[i].length > containslist[j].length){
-                      containslist.splice(j, 1);
-          var longest = true;
-                  } else if (containslist[j].includes(commonwords[i]) || commonwords[i].includes(containslist[j])) {
-                      alreadycontained = true;
-          //containslist.push(commonwords[i]);
-          //j++;
-                  }
-
-        if(!alreadycontained){
-          containslist.push(commonwords[i]);
-        }
-        if(longest){
-          containslist.push(commonwords[i]);
-        }
-
-
-              }
-          }
-    */
   }
 }
+
 var longest = true;
 var word;
 for(i = 0; i < containslist.length; i++){
@@ -163,7 +114,7 @@ for(i = 0; i < containslist.length; i++){
   var commonwordcount = containslist.length;
   console.log(containslist);
   console.log(commonwordcount);
-      containslist = [""];
+      // should clear containslist here but we're doing it later since that's where we do score calculations and we need it
 
       if(commonwordcount > 1) {
           document.getElementById("picture4").src = "cross.jpg";
@@ -181,7 +132,7 @@ for(i = 0; i < containslist.length; i++){
 
   totalscore = lengthscore + commonpasswordscore + commonwordscore;
 
-  if (pass1.length == 0) {
+  if (simplePassword.length == 0) {
     document.getElementById("picture1").src = "che.jpg";
     totalscore = 0;
   }
@@ -190,5 +141,89 @@ for(i = 0; i < containslist.length; i++){
     totalscore = 0;
   }
 
-  return totalscore * 20;
+  
+  //we want the user to get a total score out of 100. Trying to balance these scores to that scale... we'll also send
+  //a response as to what the lowest score was.
+  
+  
+  //begining with a simple length test
+  if (simplePassword.length > 9) {
+	  //do not allow 8 or lower
+    lengthscore = -100;
+  }
+   else if (simplePassword.length == 9 ||) {
+	  // still short
+    lengthscore = -20;
+  }
+		else  if (simplePassword.length == 10){
+			//basically fine
+			lengthscore = 0;
+	} else if (simplePassword.length >= 18){
+		//don't want to give them too many points for length so that other things can still weigh them down
+			lengthscore = 80;
+  } else {
+	  //11-17 is between 10-70 points extra
+	  //maybe some form of logarithm would be better 
+	  lengthscore = ((simplePassword.length - 10) * 10);
+  }
+
+  //now checking if the words in the password are in the common passwords list
+  if (commonpasswords.includes(simplePassword) ||  commonpasswords.includes(pass1) && simplePassword != "") {
+        commonpasswordscore = -100;
+  } else {
+        commonpasswordscore = 0;
+  }
+  
+  
+  //checking the common words combinations list
+  if ((containslist.length == 1 && containslist[0].length < 4) || containslist.length == 0) {
+	  //we don't care if there's just one value of some short word, or if there are none
+        commonwordscore = 0;
+  } else if (containslist.length == 1){
+	  //if they are using a substantial common word, give them a minus
+        commonwordscore = -20;
+  } else {
+	  //if there are more than one common word I feel like its maybe better since its longer? idk anymore
+	  commonwordscore = -10;
+  }
+
+  //spaghetti, sorry. Should be up with common words double jeopardy check.
+  containslist = [""];
+  
+  
+  var specialCharScore = 0;
+  var numberScore = 0;
+  var lowercaseScore = 0;
+  var uppercaseScore = 0;
+  
+ if(specialCharCount == 0){
+	specialCharScore = -5;
+ }  else if (specialCharCount > 1) {
+	specialCharScore  = 5;
+ }
+ 
+ if(numberCount == 0){
+	 numberScore = -5;
+ } else if (numberCount > 1){
+	 numberScore = 5;
+ }
+ 
+ if(lowercaseCount == 0){
+	 lowercaseScore = -5;
+ } else if (lowercaseCount > 1){
+	 lowercaseScore = 5;
+ } 
+ 
+ if(uppercaseCount == 0){
+	 uppercaseScore = -5;
+ } else if (uppercaseCount > 1){
+	 uppercaseScore = 5;
+ }
+	
+	charscore = specialCharScore + numberScore + lowercaseScore + uppercaseScore;
+  
+  
+  totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore;
+  
+  return totalscore;
 }
