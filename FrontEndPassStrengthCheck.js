@@ -265,7 +265,7 @@ for(i = 0; i < containslist.length; i++){
 	  strengthResults[5] = "Try adding numbers."
   }
   
-  if(totalscore < 80){
+  if(totalscore >= 80){
 	  strengthResults[5] = "This looks like a strong password."
   }
   
