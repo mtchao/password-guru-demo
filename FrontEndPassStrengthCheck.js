@@ -41,6 +41,7 @@ function guruStrengthTest(username, password) {
 		var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		
 		var tooManyConsecutive = false;
+		var consecutive = 0;
 
 		//this part could be rewritten to define "special character" as anything except a defined list (more exhaustive else case)
         for (i = 0; i < pass1.length; i++) {
