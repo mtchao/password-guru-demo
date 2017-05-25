@@ -48,7 +48,6 @@ function guruStrengthTest(username, password) {
             var characterValue = pass1[i];
 			
 			if(i > 0) {
-				console.log(pass1[i].toLowerCase() + pass1[i-1].toLowerCase());
 				if (pass1[i].toLowerCase().includes(pass1[i-1].toLowerCase())) {
 					consecutive++;
 				} else {
@@ -225,7 +224,7 @@ for(i = 0; i < containslist.length; i++){
  if(specialCharCount == 0 && leetCount > 0){
 	specialCharScore = -6;
  }   else if (specialCharCount > 1) {
-	specialCharScore  = 7;
+	specialCharScore  = 8;
  } else if (specialCharCount == 0) {
 	specialCharScore  = -8;
  } 
@@ -234,7 +233,7 @@ for(i = 0; i < containslist.length; i++){
  if(numberCount == 0){
 	 numberScore = -6;
  } else if (numberCount > 1){
-	 numberScore = 6;
+	 numberScore = 7;
  }
  
  /* not counting lowercases because who cares really
@@ -248,7 +247,7 @@ for(i = 0; i < containslist.length; i++){
  if(uppercaseCount == 0){
 	 uppercaseScore = -4;
  } else if (uppercaseCount > 1){
-	 uppercaseScore = 4;
+	 uppercaseScore = 5;
  }
  	
 charscore = specialCharScore + numberScore + uppercaseScore;
