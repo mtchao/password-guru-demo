@@ -45,8 +45,9 @@ function guruStrengthTest(username, password) {
 		//this part could be rewritten to define "special character" as anything except a defined list (more exhaustive else case)
         for (i = 0; i < pass1.length; i++) {
             var characterValue = pass1[i];
-			if(i<0) {
-				if(pass1[i].equals(pass1[i-1]){
+			
+			if(i < 0) {
+				if(pass1[i].toLowerCase().equals(pass1[i-1].toLowerCase())){
 					consecutive++;
 				} else {
 					consecutive = 0;
