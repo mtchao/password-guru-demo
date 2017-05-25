@@ -38,12 +38,23 @@ function guruStrengthTest(username, password) {
         var specialCharList = "`~!@#$%^&*()_+-=-[]{}\|;:'<<,>.?//*-";
         var numberList = "1234567890";
         var leets = "48({<31057";
-
 		var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		
+		var tooManyConsecutive = false;
 
 		//this part could be rewritten to define "special character" as anything except a defined list (more exhaustive else case)
         for (i = 0; i < pass1.length; i++) {
             var characterValue = pass1[i];
+			if(i<0) {
+				if(pass1[i].equals(pass1[i-1]){
+					consecutive++;
+				} else {
+					consecutive = 0;
+				}
+				if consecutive > 2 {
+					tooManyConsecutive = true;
+				}
+			}
             
             if (leets.includes(characterValue)) {
                 leetCount++;
@@ -207,13 +218,14 @@ for(i = 0; i < containslist.length; i++){
   var lowercaseScore = 0;
   var uppercaseScore = 0;
   
- if(specialCharCount == 0){
-	specialCharScore = -8;
- }   else if (specialCharCount == 0 && leetCount > 0) {
-	specialCharScore  = -6;
- } else if (specialCharCount > 1) {
+ if(specialCharCount == 0 && leetCount > 0){
+	specialCharScore = -6;
+ }   else if (specialCharCount > 1) {
 	specialCharScore  = 7;
- }
+ } else if (specialCharCount == 0) {
+	specialCharScore  = -8;
+ } 
+ 
  
  if(numberCount == 0){
 	 numberScore = -6;
@@ -234,21 +246,33 @@ for(i = 0; i < containslist.length; i++){
  } else if (uppercaseCount > 1){
 	 uppercaseScore = 4;
  }
+ 	
+charscore = specialCharScore + numberScore + uppercaseScore;
+
+
+var consecutiveScore = 0;
+if(tooManyConsecutive) {
+	 consecutiveScore = -50
+ }
 	
-	
-	charscore = specialCharScore + numberScore + uppercaseScore;
+
   
   console.log(lengthscore + " " + commonpasswordscore + " " + commonwordscore + " " + charscore);
-  totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore;
+  totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore + consecutiveScore;
   
+  if(totalscore > 0) {
   strengthResults[0] = totalscore;
-  
+  } else {
+	  strengthResults[0] = 0;
+  }
   
   //create recommendation string
   
   var lowestScore = Math.min(lengthscore, commonpasswordscore, commonwordscore, specialCharScore, lowercaseScore, uppercaseScore, numberScore);
   if(lowestScore == 0){
 	strengthResults[5] = "Try making your password longer."
+  } else if(tooManyConsecutive == true) {
+	  strengthResults[5] = "Don't use too many of the same character. Someone might be watching you type!"
   } else if(lowestScore == lengthscore) {
 	  strengthResults[5] = "Try making your password longer."
   } else if (lowestScore == commonpasswordscore) {
