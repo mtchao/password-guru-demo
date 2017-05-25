@@ -48,6 +48,7 @@ function guruStrengthTest(username, password) {
             var characterValue = pass1[i];
 			
 			if(i < 0) {
+				console.log(pass1[i].toLowerCase() + pass1[i-1].toLowerCase());
 				if (pass1[i].toLowerCase().includes(pass1[i-1].toLowerCase())) {
 					consecutive++;
 				} else {
