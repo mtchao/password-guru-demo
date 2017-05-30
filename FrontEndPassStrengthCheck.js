@@ -162,9 +162,9 @@ function guruStrengthTest(username, password) {
         //10-17 is between 10-70 points extra
         //maybe some form of logarithm would be better
         strengthResults[1] = 1;
-        lengthscore = 2;
+        lengthscore = 5;
         for(i = 1; i <= simplePassword.length - 9; i++) {
-            lengthscore = lengthscore + (17 - (i));
+            lengthscore = lengthscore + (16 - (i));
         }
     }
 
