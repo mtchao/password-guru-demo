@@ -156,7 +156,7 @@ for(i = 0; i < containslist.length; i++){
 			//basically fine
 			 strengthResults[1] = 1;
 			lengthscore = 0;
-	} else if (simplePassword.length >= 17){
+	} else if (simplePassword.length > 17){
 		//don't want to give them too many points for length so that other things can still weigh them down
 			lengthscore = 80;
             strengthResults[1] = 1;
@@ -164,9 +164,9 @@ for(i = 0; i < containslist.length; i++){
 	  //10-17 is between 10-70 points extra
 	  //maybe some form of logarithm would be better
       strengthResults[1] = 1;
-      lengthscore = 4;
-      for(i = 0; i < simplePassword.length - 9; i++) {
-          lengthscore = lengthscore + (11 - (i));
+      lengthscore = 2;
+      for(i = 1; i <= simplePassword.length - 9; i++) {
+          lengthscore = lengthscore + (12 - (i));
       }
   }
 
