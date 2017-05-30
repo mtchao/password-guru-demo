@@ -166,7 +166,7 @@ for(i = 0; i < containslist.length; i++){
       strengthResults[1] = 1;
       lengthscore = 2;
       for(i = 1; i <= simplePassword.length - 9; i++) {
-          lengthscore = lengthscore + (12 - (i));
+          lengthscore = lengthscore + (13 - (i));
       }
   }
 
