@@ -165,7 +165,7 @@ for(i = 0; i < containslist.length; i++){
 	  //maybe some form of logarithm would be better
       strengthResults[1] = 1;
       lengthscore = 4;
-      for(i = 0; i < simplePassword.length - 9; i++) {
+      for(i = 0; i < simplePassword.length - 8; i++) {
           lengthscore = lengthscore + (10 - (i));
       }
   }
