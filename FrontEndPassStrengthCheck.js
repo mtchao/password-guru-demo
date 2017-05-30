@@ -11,7 +11,7 @@ $(document).ready(function() {
         } else {
             console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
         }
-    })
+    });
 
     fetch('google-10000-english-usa.txt').then(function(response) {
         if (response.ok) {
@@ -25,7 +25,7 @@ $(document).ready(function() {
     });
 });
 
-var strengthResults = [0,0,0,0,0]
+var strengthResults = [0,0,0,0,0];
 function guruStrengthTest(username, password) {
 
 	var pass1 = password;
@@ -83,7 +83,7 @@ function guruStrengthTest(username, password) {
             "(": "c",
             "{": "c",
             "<": "c"
-        }
+        };
 
 
 
@@ -109,8 +109,6 @@ function guruStrengthTest(username, password) {
       containslist.push(commonwords[i]);
   }
 }
-
-var longest = true;
 var word;
 for(i = 0; i < containslist.length; i++){
   longest = true;
@@ -136,62 +134,45 @@ for(i = 0; i < containslist.length; i++){
   
       // should clear containslist here but we're doing it later since that's where we do score calculations and we need it
 
-	  /*
-      if(commonwordcount > 1) {
-          document.getElementById("picture4").src = "cross.jpg";
-          commonwordscore = 0;
-      } else if (commonwordcount == 1) {
-    document.getElementById("picture4").src = "cross.jpg";
-          commonwordscore = 0;
-      } else {
-    document.getElementById("picture4").src = "che.jpg";
-    commonwordscore++;
-      }
-  console.log(commonwordcount);
-      commonwordcount = 0;
-	  
-	  
-
-  if (simplePassword.length == 0) {
-    document.getElementById("picture1").src = "che.jpg";
-    totalscore = 0;
-  }
-
-  if(totalscore < 0) {
-    totalscore = 0;
-  }
-  
-  */
 
   //we want the user to get a total score out of 100. Trying to balance these scores to that scale... we'll also send
   //a response as to what the lowest score was.
   
   
   //begining with a simple length test
+
+    var lengthscore = 0;
   if (simplePassword.length < 7) {
 	  //do not allow 8 or lower
     lengthscore = -101;
 	strengthResults[1] = 0;
   }
-   else if (simplePassword.length == 8) {
+   else if (simplePassword.length === 8) {
 	  // still short
     lengthscore = -20;
+      strengthResults[1] = 0;
   }
-		else  if (simplePassword.length == 9){
+		else  if (simplePassword.length === 9){
 			//basically fine
 			 strengthResults[1] = 1;
 			lengthscore = 0;
 	} else if (simplePassword.length >= 17){
 		//don't want to give them too many points for length so that other things can still weigh them down
 			lengthscore = 80;
+            strengthResults[1] = 1;
   } else {
 	  //10-17 is between 10-70 points extra
 	  //maybe some form of logarithm would be better 
-	  lengthscore = ((simplePassword.length - 9) * 10);
+	  lengthscore = ((simplePassword.length - 9) * 10) - (simplePassword.length);
+      strengthResults[1] = 1;
+      lengthscore = 4;
+      for(i = 0; i < lengthscore.length; i++) {
+          lengthscore = lengthscore + (11 - (simplePassword.length - 9))
+      }
   }
 
   //now checking if the words in the password are in the common passwords list
-  if (commonpasswords.includes(simplePassword) ||  commonpasswords.includes(pass1) && simplePassword != "") {
+  if (commonpasswords.includes(simplePassword) ||  commonpasswords.includes(pass1) && simplePassword !== "") {
         commonpasswordscore = -100;
 		strengthResults[2] = 1;
   } else {
@@ -201,18 +182,26 @@ for(i = 0; i < containslist.length; i++){
   
   
   //checking the common words combinations list
-  if ((containslist.length == 1 && containslist[0].length < 4) || containslist.length == 0) {
+  if ((containslist.length === 1 && containslist[0].length < 4) || containslist.length === 0) {
 	  //we don't care if there's just one value of some short word, or if there are none
         commonwordscore = 0;
-  } else if (containslist.length == 1){
+        strengthResults[3] = 1;
+        //if the password is sufficiently long we don't care about these common words
+  } else if (containslist.length === 1 && simplePassword.length > 14){
 	  //if they are using a substantial common word, give them a minus
         commonwordscore = -20;
-  } else {
+        strengthResults[3] = 0;
+  } else if (containslist.length > 1 && simplePassword.length > 14){
 	  //if there are more than one common word I feel like its maybe better since its longer? idk anymore
 	  commonwordscore = -10;
+      strengthResults[3] = 0;
+  } else {
+      //spaghetti
+      commonwordscore = 0;
+      strengthResults[3] = 1;
   }
 
-  //spaghetti, sorry. Should be up with common words double jeopardy check.
+  //more spaghetti, sorry. Should be up with common words double jeopardy check, but needs to be here.
   containslist = [""];
   
   
@@ -221,16 +210,16 @@ for(i = 0; i < containslist.length; i++){
   var lowercaseScore = 0;
   var uppercaseScore = 0;
   
- if(specialCharCount == 0 && leetCount > 0){
+ if(specialCharCount === 0 && leetCount > 0){
 	specialCharScore = -6;
  }   else if (specialCharCount > 1) {
 	specialCharScore  = 8;
- } else if (specialCharCount == 0) {
+ } else if (specialCharCount === 0) {
 	specialCharScore  = -8;
  } 
  
  
- if(numberCount == 0){
+ if(numberCount === 0){
 	 numberScore = -6;
  } else if (numberCount > 1){
 	 numberScore = 7;
@@ -244,25 +233,29 @@ for(i = 0; i < containslist.length; i++){
  } 
  */
  
- if(uppercaseCount == 0){
+ if(uppercaseCount === 0){
 	 uppercaseScore = -4;
  } else if (uppercaseCount > 1){
 	 uppercaseScore = 5;
  }
  	
-charscore = specialCharScore + numberScore + uppercaseScore;
+var charscore = specialCharScore + numberScore + uppercaseScore;
 
 
 var consecutiveScore = 0;
 if(tooManyConsecutive) {
 	 consecutiveScore = -50;
- }
+	 strengthResults[4] = 0;
+ } else {
+    strengthResults[4] = 1;
+}
 	
 
   
   console.log(lengthscore + " " + commonpasswordscore + " " + commonwordscore + " " + charscore);
   totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore + consecutiveScore;
-  
+
+  //return a non-negative value
   if(totalscore > 0) {
   strengthResults[0] = totalscore;
   } else {
@@ -272,23 +265,23 @@ if(tooManyConsecutive) {
   //create recommendation string
   
   var lowestScore = Math.min(lengthscore, commonpasswordscore, commonwordscore, specialCharScore, lowercaseScore, uppercaseScore, numberScore);
-  if(lowestScore == 0){
+  if(lowestScore === 0){
 	strengthResults[5] = "Try making your password longer."
-  } else if(tooManyConsecutive == true) {
+  } else if(tooManyConsecutive === true) {
 	  strengthResults[5] = "Don't use too many of the same character. Someone might be watching you type!"
-  } else if(lowestScore == lengthscore) {
+  } else if(lowestScore === lengthscore) {
 	  strengthResults[5] = "Try making your password longer."
-  } else if (lowestScore == commonpasswordscore) {
+  } else if (lowestScore === commonpasswordscore) {
 	  strengthResults[5] = "This is a commonly used password. Please try another."
-  } else if (lowestScore == commonwordscore) {
-	  strengthResults[5] = "Common words are easy to guess in passwords. Try using more uncommon words, or even better, an easy to remember acronym."
-  } else if (lowestScore == specialCharScore) {
+  } else if (lowestScore === commonwordscore) {
+	  strengthResults[5] = "Common words are easy to guess in passwords. Try using more uncommon words, or even better, an easy to remember acronym. However, if your password is long enough, that's fine too."
+  } else if (lowestScore === specialCharScore) {
 	  strengthResults[5] = "Try to use special characters in addition to letters, but avoid common substitutions such as an @ for an A."
-  } else if (lowestScore == lowercaseScore) {
+  } else if (lowestScore === lowercaseScore) {
 	  strengthResults[5] = "Use lower case letters in addition to capitals"
-  } else if (lowestScore == uppercaseScore) {
+  } else if (lowestScore === uppercaseScore) {
 	 	  strengthResults[5] = "Use capital letters in addition to lower case."
-  } else if (lowestScore == numberScore) {
+  } else if (lowestScore === numberScore) {
 	  strengthResults[5] = "Try adding numbers."
   }
   
