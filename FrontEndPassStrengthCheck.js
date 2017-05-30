@@ -142,8 +142,8 @@ for(i = 0; i < containslist.length; i++){
   //begining with a simple length test
 
     var lengthscore = 0;
-  if (simplePassword.length < 7) {
-	  //do not allow 8 or lower
+  if (simplePassword.length < 8) {
+	  //do not allow 7 or lower
     lengthscore = -101;
 	strengthResults[1] = 0;
   }
@@ -165,7 +165,7 @@ for(i = 0; i < containslist.length; i++){
 	  //maybe some form of logarithm would be better
       strengthResults[1] = 1;
       lengthscore = 4;
-      for(i = 0; i < simplePassword.length - 8; i++) {
+      for(i = 0; i < simplePassword.length - 9; i++) {
           lengthscore = lengthscore + (10 - (i));
       }
   }
