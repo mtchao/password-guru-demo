@@ -186,11 +186,11 @@ for(i = 0; i < containslist.length; i++){
         commonwordscore = 0;
         strengthResults[3] = 1;
         //if the password is sufficiently long we don't care about these common words
-  } else if (containslist.length === 1 && simplePassword.length > 14){
+  } else if (containslist.length === 1 && simplePassword.length < 14){
 	  //if they are using a substantial common word, give them a minus
         commonwordscore = -20;
         strengthResults[3] = 0;
-  } else if (containslist.length > 1 && simplePassword.length > 14){
+  } else if (containslist.length > 1 && simplePassword.length < 14){
 	  //if there are more than one common word I feel like its maybe better since its longer? idk anymore
 	  commonwordscore = -10;
       strengthResults[3] = 0;
