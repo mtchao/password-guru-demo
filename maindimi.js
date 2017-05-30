@@ -10,8 +10,7 @@ $(function() {
         strengthScore = passguruReturnArray[0];
         var lengthBool = passguruReturnArray[1];
 		var commonPassBool = passguruReturnArray[2];
-        var commonWordBool = passguruReturnArray[3];
-        var multipleCommonWordBool = passguruReturnArray[4];
+        var multipleCommonWordBool = passguruReturnArray[3];
 		var recommendation = passguruReturnArray[5];
 
         if (lengthBool == 1) {
@@ -26,18 +25,13 @@ $(function() {
             document.getElementById("picture2").src = "cross.jpg";
         }
 
-        if (commonWordBool == 1) {
-            document.getElementById("picture3").src = "che.jpg";
-        } else {
-            document.getElementById("picture3").src = "cross.jpg";
-        }
 
         if (multipleCommonWordBool == 1) {
-            document.getElementById("picture4").src = "che.jpg";
+            document.getElementById("picture3").src = "che.jpg";
         } else {
-			       document.getElementById("picture4").src = "cross.jpg";
+			       document.getElementById("picture3").src = "cross.jpg";
         }
-        if (strengthScore < 70) {
+        if (strengthScore < 80) {
              document.getElementById("register-button").style.color = "grey";
         } else {
               document.getElementById("register-button").style.color = null;
@@ -67,16 +61,4 @@ $(function() {
             alert(data);
         });
     })
-})
-
-
-
-/*
-$('.submitnewuser').submit(function() {
-    alert("Form Submitted")
-    $.post("/createnewuser", {
-        username: $("#username").val(),
-        password: $("#password").val()
-    })
 });
-*/

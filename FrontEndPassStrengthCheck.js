@@ -131,7 +131,6 @@ function guruStrengthTest(username, password) {
 
 
     console.log(containslist);
-
     // should clear containslist here but we're doing it later since that's where we do score calculations and we need it
 
 
@@ -221,14 +220,6 @@ function guruStrengthTest(username, password) {
     } else if (numberCount > 1){
         numberScore = 7;
     }
-
-    /* not counting lowercases because who cares really
-     if(lowercaseCount == 0){
-     lowercaseScore = -5;
-     } else if (lowercaseCount > 1){
-     lowercaseScore = 5;
-     }
-     */
 
     if(uppercaseCount === 0){
         uppercaseScore = -4;
