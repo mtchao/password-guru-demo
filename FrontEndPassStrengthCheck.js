@@ -154,7 +154,7 @@ function guruStrengthTest(username, password) {
         //basically fine
         strengthResults[1] = 1;
         lengthscore = 0;
-    } else if (simplePassword.length > 17){
+    } else if (simplePassword.length > 15){
         //don't want to give them too many points for length so that other things can still weigh them down
         lengthscore = 80;
         strengthResults[1] = 1;
@@ -164,7 +164,7 @@ function guruStrengthTest(username, password) {
         strengthResults[1] = 1;
         lengthscore = 2;
         for(i = 1; i <= simplePassword.length - 9; i++) {
-            lengthscore = lengthscore + (13 - (i));
+            lengthscore = lengthscore + (17 - (i));
         }
     }
 
