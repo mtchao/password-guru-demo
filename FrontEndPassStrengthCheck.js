@@ -162,12 +162,11 @@ for(i = 0; i < containslist.length; i++){
             strengthResults[1] = 1;
   } else {
 	  //10-17 is between 10-70 points extra
-	  //maybe some form of logarithm would be better 
-	  lengthscore = ((simplePassword.length - 9) * 10) - (simplePassword.length);
+	  //maybe some form of logarithm would be better
       strengthResults[1] = 1;
       lengthscore = 4;
-      for(i = 0; i < lengthscore.length; i++) {
-          lengthscore = lengthscore + (11 - (simplePassword.length - 9))
+      for(i = 0; i < simplePassword.length - 9; i++) {
+          lengthscore = lengthscore + (10 - (i));
       }
   }
 
