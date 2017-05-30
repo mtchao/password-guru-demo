@@ -151,7 +151,6 @@ $('#login-button').click(function () {
             document.getElementById("picture3").src = "cross.jpg";
         }
 
-
         var containslist = [""];
 
         var i;
