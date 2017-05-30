@@ -166,7 +166,7 @@ for(i = 0; i < containslist.length; i++){
       strengthResults[1] = 1;
       lengthscore = 4;
       for(i = 0; i < simplePassword.length - 9; i++) {
-          lengthscore = lengthscore + (10 - (i));
+          lengthscore = lengthscore + (11 - (i));
       }
   }
 
@@ -178,8 +178,8 @@ for(i = 0; i < containslist.length; i++){
         commonpasswordscore = 0;
 		strengthResults[2] = 0;
   }
-  
-  
+
+
   //checking the common words combinations list
   if ((containslist.length === 1 && containslist[0].length < 4) || containslist.length === 0) {
 	  //we don't care if there's just one value of some short word, or if there are none
