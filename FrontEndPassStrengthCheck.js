@@ -77,6 +77,7 @@ function guruStrengthTest(username, password) {
         "3": "e",
         "4": "a",
         "5": "s",
+        "$": "s",
         "7": "t",
         "8": "b",
         "@": "a",
