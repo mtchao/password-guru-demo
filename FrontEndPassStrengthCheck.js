@@ -6,7 +6,7 @@ $(document).ready(function() {
         if (response.ok) {
             response.text().then(function(text) {
 
-                commonpasswords = text.split('\n');
+                var commonpasswords = text.split('\n');
             });
         } else {
             console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
@@ -17,7 +17,7 @@ $(document).ready(function() {
         if (response.ok) {
             response.text().then(function(text) {
 
-                commonwords = text.split('\n');
+                var commonwords = text.split('\n');
             });
         } else {
             console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
@@ -179,6 +179,7 @@ function guruStrengthTest(username, password) {
         }
     }
 
+    var commonpasswordscore = 0;
     //now checking if the words in the password are in the common passwords list
     if (commonpasswords.includes(simplePassword) ||  commonpasswords.includes(pass1) && simplePassword !== "") {
         commonpasswordscore = -100;
@@ -189,6 +190,7 @@ function guruStrengthTest(username, password) {
     }
 
 
+    var commonwordscore = 0;
     //checking the common words combinations list
     if ((containslist.length === 1 && containslist[0].length < 4) || containslist.length === 0) {
         //we don't care if there's just one value of some short word, or if there are none
@@ -241,6 +243,8 @@ function guruStrengthTest(username, password) {
     var charscore = specialCharScore + numberScore + uppercaseScore;
 
 
+    var strengthResults = [];
+
     var consecutiveScore = 0;
     if(tooManyConsecutive) {
         consecutiveScore = -50;
@@ -250,7 +254,7 @@ function guruStrengthTest(username, password) {
     }
 
     console.log(lengthscore + " " + commonpasswordscore + " " + commonwordscore + " " + charscore);
-    totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore + consecutiveScore;
+    var totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore + consecutiveScore;
     totalscore = totalscore + commonpasswordscore;
 
     //return a non-negative value
