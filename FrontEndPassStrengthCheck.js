@@ -145,7 +145,7 @@ function guruStrengthTest(username, password) {
 
 
     //begining with a simple length test
-    var lengthscore = 0;
+    lengthscore = 0;
 
     if (simplePassword.length < 7) {
         //do not allow 7 or lower
@@ -181,7 +181,7 @@ function guruStrengthTest(username, password) {
         }
     }
 
-    var commonpasswordscore = 0;
+    commonpasswordscore = 0;
     //now checking if the words in the password are in the common passwords list
     if (commonpasswords.includes(simplePassword) ||  commonpasswords.includes(pass1) && simplePassword !== "") {
         commonpasswordscore = 100;
@@ -192,7 +192,7 @@ function guruStrengthTest(username, password) {
     }
 
 
-    var commonwordscore = 0;
+    commonwordscore = 0;
     //checking the common words combinations list
     if ((containslist.length === 1 && containslist[0].length < 4) || containslist.length === 0) {
         //we don't care if there's just one value of some short word, or if there are none
@@ -216,10 +216,10 @@ function guruStrengthTest(username, password) {
     containslist = [""];
 
 
-    var specialCharScore = 0;
-    var numberScore = 0;
-    var lowercaseScore = 0;
-    var uppercaseScore = 0;
+    specialCharScore = 0;
+    numberScore = 0;
+    lowercaseScore = 0;
+    uppercaseScore = 0;
 
     if(specialCharCount === 0 && leetCount > 0){
         specialCharScore = -15;
@@ -242,9 +242,9 @@ function guruStrengthTest(username, password) {
         uppercaseScore = 7;
     }
 
-    var charscore = specialCharScore + numberScore + uppercaseScore;
+    charscore = specialCharScore + numberScore + uppercaseScore;
 
-    var consecutiveScore = 0;
+    consecutiveScore = 0;
     if(tooManyConsecutive) {
         consecutiveScore = -50;
         strengthResults[4] = 0;
@@ -253,7 +253,7 @@ function guruStrengthTest(username, password) {
     }
 
     console.log(lengthscore + " " + commonpasswordscore + " " + commonwordscore + " " + charscore);
-    var totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore + consecutiveScore;
+    totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore + consecutiveScore;
 
     //return a non-negative value
     if(totalscore > 100) {
@@ -266,7 +266,7 @@ function guruStrengthTest(username, password) {
 
     //create recommendation string
 
-    var lowestScore = Math.min(lengthscore, commonpasswordscore, commonwordscore, specialCharScore, lowercaseScore, uppercaseScore, numberScore);
+    lowestScore = Math.min(lengthscore, commonpasswordscore, commonwordscore, specialCharScore, lowercaseScore, uppercaseScore, numberScore);
     if(lowestScore === 0){
         strengthResults[5] = "Try making your password longer."
     } else if(tooManyConsecutive === true) {
