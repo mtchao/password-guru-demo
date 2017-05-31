@@ -1,7 +1,5 @@
 
 //code that loads the common words and common passwords file
-var commonpasswords = "";
-var commonwords = "";
 
 $(document).ready(function() {
 
@@ -9,7 +7,7 @@ $(document).ready(function() {
         if (response.ok) {
             response.text().then(function(text) {
 
-                commonpasswords = text.split('\n');
+                var commonpasswords = text.split('\n');
             });
         } else {
             console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
@@ -20,7 +18,7 @@ $(document).ready(function() {
         if (response.ok) {
             response.text().then(function(text) {
 
-                commonwords = text.split('\n');
+                var commonwords = text.split('\n');
             });
         } else {
             console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
@@ -245,9 +243,6 @@ function guruStrengthTest(username, password) {
     }
 
     var charscore = specialCharScore + numberScore + uppercaseScore;
-
-
-    var strengthResults = [];
 
     var consecutiveScore = 0;
     if(tooManyConsecutive) {
