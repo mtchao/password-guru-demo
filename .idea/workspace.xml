@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="894a1067-1837-452e-a793-a22bf6dbe131" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontEndPassStrengthCheck.js" afterPath="$PROJECT_DIR$/FrontEndPassStrengthCheck.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="guru-test-environment.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,8 +38,8 @@
       <file leaf-file-name="FrontEndPassStrengthCheck.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FrontEndPassStrengthCheck.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="100" column="21" lean-forward="false" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
+            <state relative-caret-position="612">
+              <caret line="105" column="50" lean-forward="true" selection-start-line="105" selection-start-column="50" selection-end-line="105" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -246,12 +245,12 @@
       <option name="presentableId" value="Default" />
       <updated>1494546085141</updated>
       <workItem from="1494546086865" duration="4378000" />
-      <workItem from="1496181698108" duration="15890000" />
+      <workItem from="1496181698108" duration="15941000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20268000" />
+    <option name="totallyTimeSpent" value="20319000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1273" y="0" width="1294" height="1407" extended-state="0" />
@@ -351,8 +350,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FrontEndPassStrengthCheck.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="100" column="21" lean-forward="false" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
+        <state relative-caret-position="612">
+          <caret line="105" column="50" lean-forward="true" selection-start-line="105" selection-start-column="50" selection-end-line="105" selection-end-column="50" />
           <folding />
         </state>
       </provider>
