@@ -3,11 +3,14 @@
 
 $(document).ready(function() {
 
-    fetch('10k_most_common.txt').then(function(response) {
+    fetch('10_million_password_list_top_100000.txt').then(function(response) {
         if (response.ok) {
             response.text().then(function(text) {
 
                 commonpasswords = text.split('\n');
+
+                //10_million_password_list_top_100000.txt
+                //10k_most_common.txt
             });
         } else {
             console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
