@@ -251,6 +251,7 @@ function guruStrengthTest(username, password) {
 
     console.log(lengthscore + " " + commonpasswordscore + " " + commonwordscore + " " + charscore);
     totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore + consecutiveScore;
+    totalscore = totalscore - commonpasswordscore;
 
     //return a non-negative value
     if(totalscore > 100) {
