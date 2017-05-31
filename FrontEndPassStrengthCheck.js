@@ -253,10 +253,10 @@ function guruStrengthTest(username, password) {
     totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore + consecutiveScore;
 
     //return a non-negative value
-    if(totalscore > 0) {
-        strengthResults[0] = totalscore;
-    } else if (totalscore > 100){
+    if(totalscore > 100) {
         strengthResults[0] = 100;
+    } else if (totalscore > 0){
+        strengthResults[0] = totalscore;
     } else {
         strengthResults[5] = 0;
     }
