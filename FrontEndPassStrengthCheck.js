@@ -66,7 +66,7 @@ function guruStrengthTest(username, password) {
         if (numberList.includes(characterValue)) {
             numberCount++;
         } else if (leets.includes(characterValue)) {
-            leetsCount++;
+            leetCount++;
         } else if (specialCharList.includes(characterValue)) {
             specialCharCount++;
         } else if (upperCase.includes(characterValue)) {
