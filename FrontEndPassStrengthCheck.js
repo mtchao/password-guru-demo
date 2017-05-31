@@ -175,7 +175,7 @@ function guruStrengthTest(username, password) {
         strengthResults[1] = 1;
         lengthscore = 27;
         for(i = 1; i <= simplePassword.length - 9; i++) {
-            lengthscore = lengthscore + (20 - (i));
+            lengthscore = lengthscore + (19 - (i));
         }
     }
 
