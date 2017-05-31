@@ -7,7 +7,7 @@ $(document).ready(function() {
         if (response.ok) {
             response.text().then(function(text) {
 
-                var commonpasswords = text.split('\n');
+                commonpasswords = text.split('\n');
             });
         } else {
             console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
@@ -18,7 +18,7 @@ $(document).ready(function() {
         if (response.ok) {
             response.text().then(function(text) {
 
-                var commonwords = text.split('\n');
+                commonwords = text.split('\n');
             });
         } else {
             console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
