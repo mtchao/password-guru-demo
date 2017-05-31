@@ -250,8 +250,10 @@ function guruStrengthTest(username, password) {
     //return a non-negative value
     if(totalscore > 0) {
         strengthResults[0] = totalscore;
+    } else if (totalscore < 100){
+        strengthResults[0] = 100;
     } else {
-        strengthResults[0] = 0;
+        strengthResults[5] = 0;
     }
 
     //create recommendation string
@@ -276,7 +278,6 @@ function guruStrengthTest(username, password) {
     } else if (lowestScore === numberScore) {
         strengthResults[5] = "Try adding numbers."
     }
-
     if(totalscore >= 80){
         strengthResults[5] = "This looks like a strong password."
     }
