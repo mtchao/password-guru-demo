@@ -104,6 +104,19 @@ function guruStrengthTest(username, password) {
     }
 
     simplePassword = simplePassword.toLowerCase();
+
+    var simpleUsername = username;
+    for (var leetChar in leet) {
+        simplePassword = simpleUsername.replaceAll(leetChar, leet[leetChar]);
+    }
+
+    simpleUsername = simpleUsername.toLowerCase();
+
+    sameAsUsername = false;
+    if(simpleUsername === simplePassword) {
+        sameAsUsername = true;
+    }
+
     console.log(simplePassword + specialCharCount + numberCount + uppercaseCount + leetCount);
 
     //filtering out "double jeopardy" matches
@@ -255,6 +268,11 @@ function guruStrengthTest(username, password) {
         strengthResults[4] = 1;
     }
 
+    usernameScore = 0;
+    if(sameAsUsername) {
+        usernameScore = -1000;
+    }
+
     console.log(lengthscore + " " + commonpasswordscore + " " + commonwordscore + " " + charscore + " " + consecutiveScore);
 
 
@@ -272,7 +290,7 @@ function guruStrengthTest(username, password) {
 
     //create recommendation string
 
-    lowestScore = Math.min(lengthscore, commonpasswordscore, commonwordscore, specialCharScore, lowercaseScore, uppercaseScore, numberScore);
+    lowestScore = Math.min(lengthscore, commonpasswordscore, commonwordscore, specialCharScore, lowercaseScore, uppercaseScore, numberScore, usernameScore);
     if(lowestScore === 0){
         strengthResults[5] = "Try making your password longer."
     } else if(tooManyConsecutive === true) {
@@ -291,6 +309,8 @@ function guruStrengthTest(username, password) {
         strengthResults[5] = "Use capital letters in addition to lower case."
     } else if (lowestScore === numberScore) {
         strengthResults[5] = "Try adding numbers."
+    } else if (lowestScore === usernameScore) {
+        strengthResults[5] = "Password cannot be too similar to username."
     }
     if(totalscore >= 80){
         strengthResults[5] = "This looks like a strong password."
