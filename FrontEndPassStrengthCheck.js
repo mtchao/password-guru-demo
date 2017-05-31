@@ -167,7 +167,7 @@ function guruStrengthTest(username, password) {
     } else if (simplePassword.length > 13){
         //don't want to give them too many points for length so that other things can still weigh them down
         //actually if its long enough its probably fine
-        lengthscore = 90;
+        lengthscore = 100;
         strengthResults[1] = 1;
     } else {
         //10-17 is between 10-70 points extra
@@ -175,7 +175,7 @@ function guruStrengthTest(username, password) {
         strengthResults[1] = 1;
         lengthscore = 27;
         for(i = 1; i <= simplePassword.length - 9; i++) {
-            lengthscore = lengthscore + (19 - (i));
+            lengthscore = lengthscore + (18 - (i));
         }
     }
 
@@ -251,7 +251,7 @@ function guruStrengthTest(username, password) {
 
     console.log(lengthscore + " " + commonpasswordscore + " " + commonwordscore + " " + charscore);
     totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore + consecutiveScore;
-    totalscore = totalscore - commonpasswordscore;
+    totalscore = totalscore + commonpasswordscore;
 
     //return a non-negative value
     if(totalscore > 100) {
