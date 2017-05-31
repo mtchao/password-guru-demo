@@ -173,7 +173,7 @@ function guruStrengthTest(username, password) {
         //10-17 is between 10-70 points extra
         //maybe some form of logarithm would be better
         strengthResults[1] = 1;
-        lengthscore = 30;
+        lengthscore = 27;
         for(i = 1; i <= simplePassword.length - 9; i++) {
             lengthscore = lengthscore + (14 - (i));
         }
@@ -220,9 +220,9 @@ function guruStrengthTest(username, password) {
     if(specialCharCount === 0 && leetCount > 0){
         specialCharScore = -6;
     }   else if (specialCharCount > 1) {
-        specialCharScore  = 8;
+        specialCharScore  = 10;
     } else if (specialCharCount === 0) {
-        specialCharScore  = -8;
+        specialCharScore  = 7;
     }
 
 
@@ -235,7 +235,7 @@ function guruStrengthTest(username, password) {
     if(uppercaseCount === 0){
         uppercaseScore = -4;
     } else if (uppercaseCount > 1){
-        uppercaseScore = 5;
+        uppercaseScore = 7;
     }
 
     var charscore = specialCharScore + numberScore + uppercaseScore;
