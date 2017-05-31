@@ -250,7 +250,7 @@ function guruStrengthTest(username, password) {
     //return a non-negative value
     if(totalscore > 0) {
         strengthResults[0] = totalscore;
-    } else if (totalscore < 100){
+    } else if (totalscore > 100){
         strengthResults[0] = 100;
     } else {
         strengthResults[5] = 0;
@@ -288,5 +288,3 @@ function guruStrengthTest(username, password) {
     return strengthResults;
 
 }
-
-
