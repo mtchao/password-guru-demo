@@ -184,7 +184,7 @@ function guruStrengthTest(username, password) {
     var commonpasswordscore = 0;
     //now checking if the words in the password are in the common passwords list
     if (commonpasswords.includes(simplePassword) ||  commonpasswords.includes(pass1) && simplePassword !== "") {
-        commonpasswordscore = -100;
+        commonpasswordscore = 100;
         strengthResults[2] = 0;
     } else {
         commonpasswordscore = 0;
@@ -222,7 +222,7 @@ function guruStrengthTest(username, password) {
     var uppercaseScore = 0;
 
     if(specialCharCount === 0 && leetCount > 0){
-        specialCharScore = -6;
+        specialCharScore = -15;
     }   else if (specialCharCount > 1) {
         specialCharScore  = 10;
     } else if (specialCharCount === 0) {
@@ -231,13 +231,13 @@ function guruStrengthTest(username, password) {
 
 
     if(numberCount === 0){
-        numberScore = -6;
+        numberScore = -10;
     } else if (numberCount > 1){
         numberScore = 7;
     }
 
     if(uppercaseCount === 0){
-        uppercaseScore = -4;
+        uppercaseScore = -5;
     } else if (uppercaseCount > 1){
         uppercaseScore = 7;
     }
@@ -253,8 +253,7 @@ function guruStrengthTest(username, password) {
     }
 
     console.log(lengthscore + " " + commonpasswordscore + " " + commonwordscore + " " + charscore);
-    var totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore + consecutiveScore;
-    totalscore = totalscore + commonpasswordscore;
+    var totalscore = lengthscore - commonpasswordscore + commonwordscore + charscore + consecutiveScore;
 
     //return a non-negative value
     if(totalscore > 100) {
