@@ -253,12 +253,12 @@ function guruStrengthTest(username, password) {
     }
 
     console.log(lengthscore + " " + commonpasswordscore + " " + commonwordscore + " " + charscore);
-    var totalscore = lengthscore - commonpasswordscore + commonwordscore + charscore + consecutiveScore;
+    var totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore + consecutiveScore;
 
     //return a non-negative value
     if(totalscore > 100) {
         strengthResults[0] = 100;
-    } else if (totalscore > 0){
+    } else if (totalscore > -1){
         strengthResults[0] = totalscore;
     } else {
         strengthResults[5] = 0;
