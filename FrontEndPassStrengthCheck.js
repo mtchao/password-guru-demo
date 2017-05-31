@@ -1,9 +1,10 @@
 
 //code that loads the common words and common passwords file
+var commonpasswords = "";
+var commonwords = "";
 
 $(document).ready(function() {
-    var commonpasswords;
-    var commonwords;
+
     fetch('10k_most_common.txt').then(function(response) {
         if (response.ok) {
             response.text().then(function(text) {
