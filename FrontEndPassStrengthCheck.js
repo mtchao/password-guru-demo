@@ -58,7 +58,7 @@ function guruStrengthTest(username, password) {
                 consecutive = 0;
             }
 
-            if (consecutive > 2) {
+            if (consecutive > (simplePassword.length / 2) + 1) {
                 tooManyConsecutive = true;
             }
         }
@@ -261,7 +261,7 @@ function guruStrengthTest(username, password) {
     charscore = specialCharScore + numberScore + uppercaseScore;
 
     consecutiveScore = 0;
-    if(tooManyConsecutive && length < 10) {
+    if(tooManyConsecutive) {
         consecutiveScore = -50;
         strengthResults[4] = 0;
     } else {
