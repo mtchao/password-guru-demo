@@ -2,6 +2,8 @@
 //code that loads the common words and common passwords file
 
 $(document).ready(function() {
+    var commonpasswords;
+    var commonwords;
     fetch('10k_most_common.txt').then(function(response) {
         if (response.ok) {
             response.text().then(function(text) {
@@ -89,7 +91,7 @@ function guruStrengthTest(username, password) {
 
     String.prototype.replaceAll = function(str1, str2, ignore)
     {
-        return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+        return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)==="string")?str2.replace(/\$/g,"$$$$"):str2);
     };
 
     //creates a new password with common leetspeak taken out
