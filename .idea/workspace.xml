@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="894a1067-1837-452e-a793-a22bf6dbe131" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontEndPassStrengthCheck.js" afterPath="$PROJECT_DIR$/FrontEndPassStrengthCheck.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/maindimi.js" afterPath="$PROJECT_DIR$/maindimi.js" />
     </list>
     <ignored path="guru-test-environment.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,21 +25,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="maindimi.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="maindimi.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/maindimi.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="32" lean-forward="false" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
+            <state relative-caret-position="408">
+              <caret line="24" column="56" lean-forward="true" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FrontEndPassStrengthCheck.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FrontEndPassStrengthCheck.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FrontEndPassStrengthCheck.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="47" lean-forward="false" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+            <state relative-caret-position="-1241">
+              <caret line="5" column="47" lean-forward="true" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -66,8 +66,8 @@
       <find>var st</find>
       <find>strengthresults[0]</find>
       <find>commonwords</find>
-      <find>toomanyconsecutive</find>
       <find>score</find>
+      <find>toomanyconsecutive</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -78,8 +78,8 @@
       <list>
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/main.js" />
-        <option value="$PROJECT_DIR$/maindimi.js" />
         <option value="$PROJECT_DIR$/FrontEndPassStrengthCheck.js" />
+        <option value="$PROJECT_DIR$/maindimi.js" />
       </list>
     </option>
   </component>
@@ -236,12 +236,12 @@
       <option name="presentableId" value="Default" />
       <updated>1494546085141</updated>
       <workItem from="1494546086865" duration="4378000" />
-      <workItem from="1496181698108" duration="12410000" />
+      <workItem from="1496181698108" duration="13561000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16788000" />
+    <option name="totallyTimeSpent" value="17939000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1273" y="0" width="1294" height="1407" extended-state="0" />
@@ -301,14 +301,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="48" column="36" lean-forward="true" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1683">
@@ -317,18 +309,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/maindimi.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="32" lean-forward="false" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
+        <state relative-caret-position="138">
+          <caret line="48" column="36" lean-forward="true" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FrontEndPassStrengthCheck.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="47" lean-forward="false" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+        <state relative-caret-position="-1241">
+          <caret line="5" column="47" lean-forward="true" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maindimi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="56" lean-forward="true" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
           <folding />
         </state>
       </provider>

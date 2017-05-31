@@ -19,10 +19,10 @@ $(function() {
       			document.getElementById("picture1").src = "cross.jpg";
   		  }
 
-        if (commonPassBool == 1) {
-            document.getElementById("picture2").src = "che.jpg";
-        } else {
+        if (commonPassBool == 0) {
             document.getElementById("picture2").src = "cross.jpg";
+        } else {
+            document.getElementById("picture2").src = "che.jpg";
         }
 
 
