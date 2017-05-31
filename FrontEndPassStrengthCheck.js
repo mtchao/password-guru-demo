@@ -261,7 +261,7 @@ function guruStrengthTest(username, password) {
     charscore = specialCharScore + numberScore + uppercaseScore;
 
     consecutiveScore = 0;
-    if(tooManyConsecutive) {
+    if(tooManyConsecutive && length < 10) {
         consecutiveScore = -50;
         strengthResults[4] = 0;
     } else {
