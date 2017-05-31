@@ -41,7 +41,7 @@ function guruStrengthTest(username, password) {
     var leets = "48({<31057";
     var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    var tooManyConsecutive = false;
+    tooManyConsecutive = false;
     var consecutive = 0;
 
     //this part could be rewritten to define "special character" as anything except a defined list (more exhaustive else case)
@@ -184,7 +184,7 @@ function guruStrengthTest(username, password) {
     commonpasswordscore = 0;
     //now checking if the words in the password are in the common passwords list
     if (commonpasswords.includes(simplePassword) ||  commonpasswords.includes(pass1) && simplePassword !== "") {
-        commonpasswordscore = 100;
+        commonpasswordscore = -100;
         strengthResults[2] = 0;
     } else {
         commonpasswordscore = 0;
@@ -252,16 +252,19 @@ function guruStrengthTest(username, password) {
         strengthResults[4] = 1;
     }
 
-    console.log(lengthscore + " " + commonpasswordscore + " " + commonwordscore + " " + charscore);
-    totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore + consecutiveScore;
+    console.log(lengthscore + " " + commonpasswordscore + " " + commonwordscore + " " + charscore + " " + consecutiveScore);
 
-    //return a non-negative value
+
+    totalscore = lengthscore + commonpasswordscore + commonwordscore + charscore + consecutiveScore;
+    console.log(totalscore);
+
+    //return a value between 0 and 100
     if(totalscore > 100) {
         strengthResults[0] = 100;
-    } else if (totalscore > -1){
-        strengthResults[0] = totalscore;
+    } else if (totalscore < 0){
+        strengthResults[0] = 0;
     } else {
-        strengthResults[5] = 0;
+        strengthResults[5] = totalscore;
     }
 
     //create recommendation string
