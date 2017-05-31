@@ -38,7 +38,7 @@
       <file leaf-file-name="FrontEndPassStrengthCheck.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FrontEndPassStrengthCheck.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1989">
+            <state relative-caret-position="306">
               <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
@@ -62,6 +62,7 @@
       <find>strengthresults</find>
       <find>commonpasswordscore</find>
       <find>strength</find>
+      <find>commonwords</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -230,12 +231,12 @@
       <option name="presentableId" value="Default" />
       <updated>1494546085141</updated>
       <workItem from="1494546086865" duration="4378000" />
-      <workItem from="1496181698108" duration="9762000" />
+      <workItem from="1496181698108" duration="9922000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14140000" />
+    <option name="totallyTimeSpent" value="14300000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1273" y="0" width="1294" height="1407" extended-state="0" />
@@ -321,7 +322,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FrontEndPassStrengthCheck.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1989">
+        <state relative-caret-position="306">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
