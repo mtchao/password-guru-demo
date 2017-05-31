@@ -11,6 +11,7 @@ $(function() {
         var lengthBool = passguruReturnArray[1];
 		var commonPassBool = passguruReturnArray[2];
         var multipleCommonWordBool = passguruReturnArray[3];
+        var similarUsername = passguruReturnArray[4];
 		var recommendation = passguruReturnArray[5];
 
         if (lengthBool == 1) {
