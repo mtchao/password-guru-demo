@@ -222,11 +222,11 @@ function guruStrengthTest(username, password) {
     uppercaseScore = 0;
 
     if(specialCharCount === 0 && leetCount > 0){
-        specialCharScore = -15;
+        specialCharScore = 4;
     }   else if (specialCharCount > 1) {
         specialCharScore  = 10;
     } else if (specialCharCount === 0) {
-        specialCharScore  = 7;
+        specialCharScore  = -15;
     }
 
 
