@@ -41,7 +41,7 @@ function guruStrengthTest(username, password) {
 
     var specialCharList = "`~!@#$%^&*()_+-=-[]{}\|;:'<<,>.?//*-";
     var numberList = "1234567890";
-    var leets = "48({<31057";
+    var leets = "48({<31057$@!";
     var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     tooManyConsecutive = false;
@@ -63,10 +63,10 @@ function guruStrengthTest(username, password) {
             }
         }
 
-        if (leets.includes(characterValue)) {
-            leetCount++;
-        } else if (numberList.includes(characterValue)) {
+        if (numberList.includes(characterValue)) {
             numberCount++;
+        } else if (leets.includes(characterValue)) {
+            leetsCount++;
         } else if (specialCharList.includes(characterValue)) {
             specialCharCount++;
         } else if (upperCase.includes(characterValue)) {
