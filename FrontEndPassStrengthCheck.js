@@ -3,7 +3,7 @@
 
 $(document).ready(function() {
 
-    fetch('10_million_password_list_top_100000.txt').then(function(response) {
+    fetch('10_million_password_list_top_1000000.txt').then(function(response) {
         if (response.ok) {
             response.text().then(function(text) {
 
