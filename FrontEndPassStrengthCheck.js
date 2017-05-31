@@ -264,7 +264,7 @@ function guruStrengthTest(username, password) {
     } else if (totalscore < 0){
         strengthResults[0] = 0;
     } else {
-        strengthResults[5] = totalscore;
+        strengthResults[0] = totalscore;
     }
 
     //create recommendation string
