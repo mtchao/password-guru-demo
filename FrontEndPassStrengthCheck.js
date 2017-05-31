@@ -238,10 +238,12 @@ function guruStrengthTest(username, password) {
     uppercaseScore = 0;
 
     if(specialCharCount > 1){
-        specialCharScore = 10;
+        specialCharScore = 12;
     }   else if (specialCharCount === 0 && leetCount > 0) {
         specialCharScore  = 4;
-    } else if (specialCharCount === 0) {
+    }  else if (specialCharCount > 0 && leetCount === 0) {
+        specialCharScore  = 9;
+    }  else if (specialCharCount === 0) {
         specialCharScore  = -15;
     }
 
