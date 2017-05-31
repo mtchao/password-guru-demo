@@ -87,14 +87,16 @@ function guruStrengthTest(username, password) {
     };
 
 
+    String.prototype.replaceAll = function(str1, str2, ignore)
+    {
+        return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+    };
 
     //creates a new password with common leetspeak taken out
     var simplePassword = pass1;
     var commonSubstitutions = 0;
     for (var leetChar in leet) {
-        simplePassword = simplePassword.replace(leetChar, leet[leetChar]);
-        simplePassword = simplePassword.replace(leetChar, leet[leetChar]);
-        simplePassword = simplePassword.replace(leetChar, leet[leetChar]);
+        simplePassword = simplePassword.replaceAll(leetChar, leet[leetChar]);
     }
 
     simplePassword = simplePassword.toLowerCase();
