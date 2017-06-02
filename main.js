@@ -15,10 +15,10 @@ $(function() {
 		var recommendation = passguruReturnArray[5];
 
         if (lengthBool == 1) {
-			      document.getElementById("picture1").src = "img/check.ico";
-		    } else {
-      			document.getElementById("picture1").src = "img/x.ico";
-  		  }
+			document.getElementById("picture1").src = "img/check.ico";
+		} else {
+      		document.getElementById("picture1").src = "img/x.ico";
+  		}
 
         if (commonPassBool == 0) {
             document.getElementById("picture2").src = "img/x.ico";
@@ -30,16 +30,16 @@ $(function() {
         if (multipleCommonWordBool == 1) {
             document.getElementById("picture3").src = "img/check.ico";
         } else {
-			       document.getElementById("picture3").src = "img/x.ico";
+			document.getElementById("picture3").src = "img/x.ico";
         }
         if (strengthScore < 80) {
-             document.getElementById("register-button").style.color = "grey";
+            document.getElementById("register-button").style.color = "grey";
         } else {
-              document.getElementById("register-button").style.color = null;
+            document.getElementById("register-button").style.color = null;
         }
 
-		    $('#score').text(strengthScore);
-			$('#recommendation').text(recommendation);
+		$('#score').text(strengthScore);
+		$('#recommendation').text(recommendation);
     });
 
     $('#register-button').click(function() {
