@@ -3,64 +3,36 @@
     <head>
         <meta charset="utf-8">
         <title>Password Guru</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-        <!-- <link rel="stylesheet" href="static/public/css/main.css" /> -->
+        <link rel="stylesheet" href="css/main.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-        <script src="maindimi.js"></script>
-		<script src="FrontEndPassStrengthCheck.js"></script>
-
+        <script src="js/main.js"></script>
+		<script src="lib/FrontEndPassStrengthCheck.js"></script>
     </head>
     <body>
-      <br><br> <br> <br> <br> <br><br> <br> <br> <br>
-        <header>
-            <h1 style="text-align:center;" class="jumbotron">Password Guru Demo</h1>
-        </header>
-
-        <div class="container">
-            <div class="row">
-
-
-                <form class="submitnewuser">
-                    <input type="hidden" name="whatToDo" value="updatePlayerLevel" />
-                    <div class="form-group">
-                        <label for="username" class="control-label col-xs-2">Username</label>
-                        <div class="col-xs-10">
-                            <input type="text" class="form-control" id="username" placeholder="Username" name="username">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="control-label col-xs-2">Password</label>
-                        <div class="col-xs-10">
-                            <input type="text" class="form-control" id="password" placeholder="Password" name="password"> <!-- onkeyup="getForm(this.form)" -->
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-xs-offset-4 col-xs-4">
-                            <input style="width:100%;" value="Register New User" name="btn-submit" id="register-button" class="btn btn-primary"></input>
-                        <!--  onClick="getForm(this.form)" -->
-						            </div>
-									   <!-- <div class="form-group">
-                        <div class="col-xs-offset-4 col-xs-4">
-                            <input style="width:100%;" type="submit" value="Login Existing User" name="btn-login" id="login-button" class="btn btn-primary "></input>
-                          onClick="getForm(this.form)"
-						            </div>
-                    </div>
-                    -->
-                    </div>
-                </form>
-              </div> </div>
-
-        <div >
-               <label style="padding-left: 150px;">Length minimum 10 chars</label> <img src="che.jpg" id="picture1" alt="HTML5 Icon" style="width:30px;height:30px;"><br>
-               <label style="padding-left: 150px;">Not a common password</label> <img src="che.jpg" id="picture2" alt="HTML5 Icon" style="width:30px;height:30px;"><br>
-			   <label style="padding-left: 150px;">Doesn't contain any common dictionary words</label> <img src="che.jpg" id="picture3" alt="HTML5 Icon" style="width:30px;height:30px;"><br>
-            <label style="padding-left: 150px;" id="minimum">Minimum Score: 80</label>   <br>
-            <label style="padding-left: 150px;">Your Score:</label>
-			   <label style="padding-left: 20px;" id="score"></label>
-			   <br>
-			   <label style="padding-left: 150px;">Recommendation:</label>
-			   <label style="padding-left: 10px;" id="recommendation"></label>
+        <div id="title">
+            <h1>Password Guru Demo</h1>
         </div>
-
+        <div class="login-page">
+            <div class="form">
+                <form class="login-form">
+                    <input type="text" id="username" name="username" placeholder="username"/>
+                    <input type="text" id="password" name="password" placeholder="password"/>
+                    <div id="feedback">
+                        <label>Length minimum 10 chars</label> <img src="img/check.jpg" id="picture1" alt="HTML5 Icon" style="width:14px;height:14px;"><br>
+                        <label>Not a common password</label> <img src="img/check.jpg" id="picture2" alt="HTML5 Icon" style="width:14px;height:14px;"><br>
+                        <label>Doesn't contain any common dictionary words</label> <img src="img/check.jpg" id="picture3" alt="HTML5 Icon" style="width:14px;height:14px;"><br>
+                        <br>
+                        <label id="minimum">Minimum Score: 80</label>
+                        <br>
+                        <label>Your Score:</label>
+                        <label id="score"></label>
+                        <br>
+                        <label>Recommendation:</label>
+                        <label id="recommendation"></label>
+                    </div>
+                    <button value="Register New User" id="register-button">Sign Up</button>
+                </form>
+            </form>
+        </div>
     </body>
 </html>
