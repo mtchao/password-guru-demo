@@ -2,12 +2,12 @@
   "name": "guru",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "js/server.js",
   "engines": {
     "node": "6.10.2"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node js/server.js"
   },
   "author": "",
   "license": "ISC",
