@@ -15,22 +15,22 @@ $(function() {
 		var recommendation = passguruReturnArray[5];
 
         if (lengthBool == 1) {
-			      document.getElementById("picture1").src = "img/check.jpg";
+			      document.getElementById("picture1").src = "img/check.ico";
 		    } else {
-      			document.getElementById("picture1").src = "img/cross.jpg";
+      			document.getElementById("picture1").src = "img/x.ico";
   		  }
 
         if (commonPassBool == 0) {
-            document.getElementById("picture2").src = "img/cross.jpg";
+            document.getElementById("picture2").src = "img/x.ico";
         } else {
-            document.getElementById("picture2").src = "img/check.jpg";
+            document.getElementById("picture2").src = "img/check.ico";
         }
 
 
         if (multipleCommonWordBool == 1) {
-            document.getElementById("picture3").src = "img/check.jpg";
+            document.getElementById("picture3").src = "img/check.ico";
         } else {
-			       document.getElementById("picture3").src = "img/cross.jpg";
+			       document.getElementById("picture3").src = "img/x.ico";
         }
         if (strengthScore < 80) {
              document.getElementById("register-button").style.color = "grey";
