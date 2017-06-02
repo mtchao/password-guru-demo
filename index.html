@@ -9,9 +9,12 @@
 		<script src="lib/passwordguru.js"></script>
     </head>
     <body>
-        <div id="title">
-            <h1>Password Guru Demo</h1>
+        <h1>Password Guru Demo</h1>
+        <div id="para">
+        <p>Below is an example of a signup page using Password Guru. Type in a<br>username and try out different passwords to see your score. Please note<br>that the passwords you type will not be obscured on your screen.</p>
+        <br>
         </div>
+
         <div class="login-page">
             <div class="form">
                 <form class="login-form">
@@ -19,15 +22,15 @@
                     <input type="text" id="password" name="password" placeholder="password"/>
                     <div id="feedback">
                         <img src="img/blank.png" id="picture1" alt="HTML5 Icon" style="width:12px;height:12px;">
-                        <label>Length minimum 10 chars</label>
+                        <label>At least 10 characters long</label>
                         <br>
 
                         <img src="img/blank.png" id="picture2" alt="HTML5 Icon" style="width:12px;height:12px;">
-                        <label>Not a common password</label>
+                        <label>Not a publicly known password</label>
                         <br>
 
                         <img src="img/blank.png" id="picture3" alt="HTML5 Icon" style="width:12px;height:12px;">
-                        <label>Doesn't contain any common dictionary words</label>
+                        <label>Does not contain any guessable words</label>
                         <br><br>
 
                         <label id="minimum">Minimum Score: 80</label>
@@ -42,5 +45,8 @@
                 </form>
             </form>
         </div>
+
+        <p>For more information, visit the repository at </p>
+
     </body>
 </html>

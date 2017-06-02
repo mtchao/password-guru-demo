@@ -36,6 +36,7 @@
   padding: 15px;
   color: #FFFFFF;
   font-size: 14px;
+  font-weight: bold;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
@@ -53,8 +54,11 @@ h1 {
   font-size: 36px;
   font-family: "Helvetica", sans-serif;
   color: #FFFFFF;
-  padding-top: 8%;
+  padding-top: 4%;
   font-weight: bold;
+}
+#para {
+  text-align: center;
 }
 body {
   background: #c6b2d1; /* fallback for old browsers */
