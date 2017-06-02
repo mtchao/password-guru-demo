@@ -3,7 +3,7 @@
 
 $(document).ready(function() {
 
-    fetch('10_million_password_list_top_1000000.txt').then(function(response) {
+    fetch('./data/10_million_password_list_top_1000000.txt').then(function(response) {
         if (response.ok) {
             response.text().then(function(text) {
 
@@ -17,7 +17,7 @@ $(document).ready(function() {
         }
     });
 
-    fetch('google-10000-english-usa.txt').then(function(response) {
+    fetch('./data/google-10000-english-usa.txt').then(function(response) {
         if (response.ok) {
             response.text().then(function(text) {
 
